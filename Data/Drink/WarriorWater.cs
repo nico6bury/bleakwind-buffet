@@ -3,12 +3,25 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
+/*
+ * Author: Nicholas Sixbury
+ * Class Name: WarriorWater.cs
+ * Purpose: Holds all the information for the 
+ * Warrior Water drink
+ */
+
 namespace BleakwindBuffet.Data.Drink
 {
+    /// <summary>
+    /// Represents the Warrior Water drink
+    /// </summary>
     public class WarriorWater
     {
+        // backer variable for Ice
         private bool ice = true;
+        // backer variable for Size
         private Size size = Size.Small;
+        // backer variable for Lemon
         private bool lemon = false;
         /// <summary>
         /// Whether or not the drink should have ice.
@@ -56,8 +69,8 @@ namespace BleakwindBuffet.Data.Drink
             get
             {
                 List<string> specialIntructions = new List<string>();
-                if(!ice){ specialIntructions.Add("Hold ice"); }
-                if(lemon){ specialIntructions.Add("Add lemon"); }
+                if(!Ice){ specialIntructions.Add("Hold ice"); }
+                if(Lemon){ specialIntructions.Add("Add lemon"); }
                 return specialIntructions;
             }//end SpecialInstructions getter
         }//end SpecialInstructions getter
