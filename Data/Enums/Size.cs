@@ -14,5 +14,5 @@ namespace BleakwindBuffet.Data.Enums
         Small,
         Medium,
         Large
-    }
-}
+    }//end enum
+}//end namespace
