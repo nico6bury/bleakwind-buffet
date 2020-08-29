@@ -4,17 +4,17 @@ using System.Text;
 
 /*
  * Author: Nicholas Sixbury
- * Class Name: DoubleDraugr.cs
- * Purpose: Represents the Double Draugr item and holds most of 
+ * Class Name: ThalmorTriple.cs
+ * Purpose: Represents the Thalmor Triplecs item and holds most of 
  * its information in one place
  */
 
 namespace BleakwindBuffet.Data.Entree
 {
     /// <summary>
-    /// Represents the Double Draugr item
+    /// Represents the Thalmor Triplecs item
     /// </summary>
-    public class DoubleDraugr
+    public class ThalmorTriple
     {
         // backer variable for Bun
         private bool bun = true;
@@ -32,6 +32,10 @@ namespace BleakwindBuffet.Data.Entree
         private bool lettuce = true;
         // backer variable for Mayo
         private bool mayo = true;
+        // backer variable for Bacon
+        private bool bacon = true;
+        // backer variable for Egg
+        private bool egg = true;
         /// <summary>
         /// Whether or not this item has bun
         /// </summary>
@@ -45,7 +49,7 @@ namespace BleakwindBuffet.Data.Entree
         /// </summary>
         public bool Mustard { get { return mustard; } set { mustard = value; } }
         /// <summary>
-        /// Whether or not this item has pickle
+        /// Whether or not this item has pickles
         /// </summary>
         public bool Pickle { get { return pickle; } set { pickle = value; } }
         /// <summary>
@@ -65,18 +69,26 @@ namespace BleakwindBuffet.Data.Entree
         /// </summary>
         public bool Mayo { get { return mayo; } set { mayo = value; } }
         /// <summary>
+        /// Whether or not this item has bacon
+        /// </summary>
+        public bool Bacon { get { return bacon; } set { bacon = value; } }
+        /// <summary>
+        /// Whether or not this item has an egg
+        /// </summary>
+        public bool Egg { get { return egg; } set { egg = value; } }
+        /// <summary>
         /// Represents the price of this item
         /// </summary>
         public double Price
         {
-            get { return 7.32; }
+            get { return 8.32; }
         }//end getter
         /// <summary>
         /// Represents the number of calories this item has
         /// </summary>
         public uint Calories
         {
-            get { return 843; }
+            get { return 943; }
         }//end getter
         /// <summary>
         /// Contains any special instructions this item has
@@ -94,6 +106,8 @@ namespace BleakwindBuffet.Data.Entree
                 if (!Tomato) { specialInstructions.Add("Hold tomato"); }
                 if (!Lettuce) { specialInstructions.Add("Hold lettuce"); }
                 if (!Mayo) { specialInstructions.Add("Hold mayo"); }
+                if (!Bacon) { specialInstructions.Add("Hold bacon"); }
+                if (!Egg) { specialInstructions.Add("Hold egg"); }
                 return specialInstructions;
             }//end getter
         }//end getter
@@ -105,7 +119,7 @@ namespace BleakwindBuffet.Data.Entree
         /// <returns>the name as a string</returns>
         public override string ToString()
         {
-            return "Double Draugr";
+            return "Thalmor Triple";
         }//end ToString()
-    }//end class DoubleDraugr
+    }//end class ThalmorTriplecs
 }//end namespace
