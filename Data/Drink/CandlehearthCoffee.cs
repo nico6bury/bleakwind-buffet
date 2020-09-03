@@ -15,7 +15,7 @@ namespace BleakwindBuffet.Data.Drinks
     /// <summary>
     /// Represents the Candlehearth Coffee drink item
     /// </summary>
-    class CandlehearthCoffee
+    public class CandlehearthCoffee
     {
         // backer variable for Ice
         private bool ice = false;

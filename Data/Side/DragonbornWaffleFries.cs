@@ -16,7 +16,7 @@ namespace BleakwindBuffet.Data.Sides
     /// <summary>
     /// Represents a Dragonborn Waffle Fries item
     /// </summary>
-    class DragonbornWaffleFries
+    public class DragonbornWaffleFries
     {
         // backer variable for Size
         private Size size = Size.Small;

@@ -15,7 +15,7 @@ namespace BleakwindBuffet.Data.Sides
     /// <summary>
     /// Represents a Mod Otar Grits item
     /// </summary>
-    class MadOtarGrits
+    public class MadOtarGrits
     {
         // backer variable for Size
         private Size size = Size.Small;

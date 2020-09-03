@@ -15,7 +15,7 @@ namespace BleakwindBuffet.Data.Drinks
     /// <summary>
     /// Represents the Markarth Milk drink item
     /// </summary>
-    class MarkarthMilk
+    public class MarkarthMilk
     {
         // backer variable for Ice.
         private bool ice = false;
