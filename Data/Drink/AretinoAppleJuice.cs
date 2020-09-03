@@ -10,7 +10,7 @@ using System.Text;
  * that info in one place.
  */
 
-namespace BleakwindBuffet.Data.Drink
+namespace BleakwindBuffet.Data.Drinks
 {
     /// <summary>
     /// Represents the Aretino Apple Juice drink item

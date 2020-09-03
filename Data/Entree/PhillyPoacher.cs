@@ -9,7 +9,7 @@ using System.Text;
  * its information in one place
  */
 
-namespace BleakwindBuffet.Data.Entree
+namespace BleakwindBuffet.Data.Entrees
 {
     /// <summary>
     /// Represents the Philly Poacher item

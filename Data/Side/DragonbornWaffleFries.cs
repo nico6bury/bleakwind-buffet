@@ -11,7 +11,7 @@ using System.Text;
  * one place.
  */
 
-namespace BleakwindBuffet.Data.Side
+namespace BleakwindBuffet.Data.Sides
 {
     /// <summary>
     /// Represents a Dragonborn Waffle Fries item

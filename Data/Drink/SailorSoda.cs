@@ -10,7 +10,7 @@ using System.Text;
  * Soda drink
  */
 
-namespace BleakwindBuffet.Data.Drink
+namespace BleakwindBuffet.Data.Drinks
 {
     /// <summary>
     /// Represents the old-fashioned soda drink 

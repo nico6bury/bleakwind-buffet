@@ -10,7 +10,7 @@ using System.Text;
  * Warrior Water drink
  */
 
-namespace BleakwindBuffet.Data.Drink
+namespace BleakwindBuffet.Data.Drinks
 {
     /// <summary>
     /// Represents the Warrior Water drink

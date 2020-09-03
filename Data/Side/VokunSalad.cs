@@ -10,7 +10,7 @@ using System.Text;
  * information pertaining to it in one place.
  */
 
-namespace BleakwindBuffet.Data.Side
+namespace BleakwindBuffet.Data.Sides
 {
     /// <summary>
     /// represents a Vokun Salad object

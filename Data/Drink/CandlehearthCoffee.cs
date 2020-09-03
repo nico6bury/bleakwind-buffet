@@ -10,7 +10,7 @@ using System.Text;
  * hold this item's information
  */
 
-namespace BleakwindBuffet.Data.Drink
+namespace BleakwindBuffet.Data.Drinks
 {
     /// <summary>
     /// Represents the Candlehearth Coffee drink item

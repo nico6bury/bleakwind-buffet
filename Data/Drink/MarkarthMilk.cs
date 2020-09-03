@@ -10,7 +10,7 @@ using System.Text;
  * this item's information
  */
 
-namespace BleakwindBuffet.Data.Drink
+namespace BleakwindBuffet.Data.Drinks
 {
     /// <summary>
     /// Represents the Markarth Milk drink item
