@@ -15,17 +15,20 @@ namespace BleakwindBuffet.DataTests.UnitTests.SideTests
         [Fact]
         public void ShouldBeSmallByDefault()
         {
-        }
+
+        }//end test
 
         [Fact]
         public void ShouldBeAbleToSetSize()
         {
-        }
+
+        }//end test
 
         [Fact]
         public void ShouldReturnCorrectSpecialInstructions()
         {
-        }
+
+        }//end test
 
         [Theory]
         [InlineData(Size.Small, 1.78)]
@@ -33,7 +36,8 @@ namespace BleakwindBuffet.DataTests.UnitTests.SideTests
         [InlineData(Size.Large, 2.88)]
         public void ShouldReturnCorrectPriceBasedOnSize(Size size, double price)
         {
-        }
+
+        }//end test
 
         [Theory]
         [InlineData(Size.Small, 151)]
@@ -41,7 +45,8 @@ namespace BleakwindBuffet.DataTests.UnitTests.SideTests
         [InlineData(Size.Large, 306)]
         public void ShouldReturnCorrectCaloriesBasedOnSize(Size size, uint calories)
         {
-        }
+
+        }//end test
 
         [Theory]
         [InlineData(Size.Small, "Small Fried Miraak")]
@@ -49,6 +54,7 @@ namespace BleakwindBuffet.DataTests.UnitTests.SideTests
         [InlineData(Size.Large, "Large Fried Miraak")]
         public void ShouldReturnCorrectToStringBasedOnSize(Size size, string name)
         {
-        }
-    }
-}
+
+        }//end test
+    }//end class
+}//end namespace

@@ -15,42 +15,50 @@ namespace BleakwindBuffet.DataTests.UnitTests.DrinkTests
         [Fact]
         public void ShouldNotIncludeIceByDefault()
         {
-        }
+
+        }//end test
 
         [Fact]
         public void ShouldNotBeDecafByDefault()
         {
-        }
+
+        }//end test
 
         [Fact]
         public void ShouldNotHaveRoomForCreamByDefault()
         {
-        }
+
+        }//end test
 
         [Fact]
         public void ShouldBeSmallByDefault()
         {
-        }
+
+        }//end test
 
         [Fact]
         public void ShouldBeAbleToSetIce()
         {
-        }
+
+        }//end test
 
         [Fact]
         public void ShouldBeAbleToSetDecaf()
         {
-        }
+
+        }//end test
 
         [Fact]
         public void ShouldBeAbleToSetRoomForCream()
         {
-        }
+
+        }//end test
 
         [Fact]
         public void ShouldBeAbleToSetSize()
         {
-        }
+
+        }//end test
 
         [Theory]
         [InlineData(Size.Small, 0.75)]
@@ -58,7 +66,8 @@ namespace BleakwindBuffet.DataTests.UnitTests.DrinkTests
         [InlineData(Size.Large, 1.75)]
         public void ShouldHaveCorrectPriceForSize(Size size, double price)
         {
-        }
+
+        }//end test
 
         [Theory]
         [InlineData(Size.Small, 7)]
@@ -66,7 +75,8 @@ namespace BleakwindBuffet.DataTests.UnitTests.DrinkTests
         [InlineData(Size.Large, 20)]
         public void ShouldHaveCorrectCaloriesForSize(Size size, uint cal)
         {
-        }
+
+        }//end test
 
         [Theory]
         [InlineData(true, true)]
@@ -75,7 +85,8 @@ namespace BleakwindBuffet.DataTests.UnitTests.DrinkTests
         [InlineData(false, false)]
         public void ShouldHaveCorrectSpecialInstructions(bool includeIce, bool includeCream)
         {
-        }
+
+        }//end test
 
         [Theory]
         [InlineData(true, Size.Small, "Small Decaf Candlehearth Coffee")]
@@ -86,6 +97,7 @@ namespace BleakwindBuffet.DataTests.UnitTests.DrinkTests
         [InlineData(false, Size.Large, "Large Candlehearth Coffee")]
         public void ShouldReturnCorrectToStringBasedOnSize(bool decaf, Size size, string name)
         {
-        }
-    }
-}
+
+        }//end test
+    }//end class
+}//end namespace

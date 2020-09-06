@@ -14,112 +14,134 @@ namespace BleakwindBuffet.DataTests.UnitTests.EntreeTests
         [Fact]
         public void ShouldIncludeBunByDefault()
         {
-        }
+
+        }//end test
 
         [Fact]
         public void ShouldIncludeKetchupByDefault()
         {
-        }
+
+        }//end test
 
         [Fact]
         public void ShouldIncludeMustardByDefault()
         {
-        }
+
+        }//end test
 
         [Fact]
         public void ShouldIncludePickleByDefault()
         {
-        }
+
+        }//end test
 
         [Fact]
         public void ShouldIncludeCheeseByDefault()
         {
-        }
+
+        }//end test
 
         [Fact]
         public void ShouldIncludeTomatoByDefault()
         {
-        }
+
+        }//end test
 
         [Fact]
         public void ShouldIncludeLettuceByDefault()
         {
-        }
+
+        }//end test
 
         [Fact]
         public void ShouldIncludeMayoByDefault()
         {
-        }
+
+        }//end test
 
         [Fact]
         public void ShouldIncludeBaconByDefault()
         {
-        }
+
+        }//end test
 
         [Fact]
         public void ShouldIncludeEggByDefault()
         {
-        }
+
+        }//end test
 
         [Fact]
         public void ShouldBeAbleToSetBun()
         {
-        }
+
+        }//end test
 
         [Fact]
         public void ShouldBeAbleToSetKetchup()
         {
-        }
+
+        }//end test
 
         [Fact]
         public void ShouldBeAbleToSetMustard()
         {
-        }
+
+        }//end test
 
         [Fact]
         public void ShouldBeAbleToSetPickle()
         {
-        }
+
+        }//end test
 
         [Fact]
         public void ShouldBeAbleToSetCheese()
         {
-        }
+
+        }//end test
 
         [Fact]
         public void ShouldBeAbleToSetTomato()
         {
-        }
+
+        }//end test
 
         [Fact]
         public void ShouldBeAbleToSetLettuce()
         {
-        }
+
+        }//end test
 
         [Fact]
         public void ShouldBeAbleToSetMayo()
         {
-        }
+
+        }//end test
 
         [Fact]
         public void ShouldBeAbleToSetBacon()
         {
-        }
+
+        }//end test
 
         [Fact]
         public void ShouldBeAbleToSetEgg()
         {
-        }
+
+        }//end test
 
         [Fact]
         public void ShouldReturnCorrectPrice()
         {
-        }
+
+        }//end test
 
         [Fact]
         public void ShouldReturnCorrectCalories()
         {
-        }
+
+        }//end test
 
         [Theory]
         [InlineData(true, true, true, true, true, true, true, true, true, true)]
@@ -129,11 +151,13 @@ namespace BleakwindBuffet.DataTests.UnitTests.EntreeTests
                                                                     bool includeLettuce, bool includeMayo,
                                                                     bool includeBacon, bool includeEgg)
         {
-        }
+
+        }//end test
 
         [Fact]
         public void ShouldReturnCorrectToString()
         {
-        }
-    }
-}
+
+        }//end test
+    }//end class
+}//end namespace

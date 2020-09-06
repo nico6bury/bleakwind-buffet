@@ -17,32 +17,38 @@ namespace BleakwindBuffet.DataTests.UnitTests.DrinkTests
         [Fact]
         public void ShouldIncludeIceByDefault()
         {
-        }
+
+        }//end test
 
         [Fact]
         public void ShouldBeSmallByDefault()
         {
-        }
+
+        }//end test
 
         [Fact]
         public void FlavorShouldBeCherryByDefault()
         {
-        }
+
+        }//end test
 
         [Fact]
         public void ShouldBeAbleToSetIce()
         {
-        }
+
+        }//end test
 
         [Fact]
         public void ShouldBeAbleToSetSize()
         {
-        }
+
+        }//end test
 
         [Fact]
         public void ShouldBeAbleToSetFlavor()
         {
-        }
+
+        }//end test
 
         [Theory]
         [InlineData(Size.Small, 1.42)]
@@ -50,7 +56,8 @@ namespace BleakwindBuffet.DataTests.UnitTests.DrinkTests
         [InlineData(Size.Large, 2.07)]
         public void ShouldHaveCorrectPriceForSize(Size size, double price)
         {
-        }
+
+        }//end test
 
         [Theory]
         [InlineData(Size.Small, 117)]
@@ -58,15 +65,17 @@ namespace BleakwindBuffet.DataTests.UnitTests.DrinkTests
         [InlineData(Size.Large, 205)]
         public void ShouldHaveCorrectCaloriesForSize(Size size, uint cal)
         {
-        }
+
+        }//end test
 
         [Theory]
         [InlineData(true)]
         [InlineData(false)]
         public void ShouldHaveCorrectSpecialInstructions(bool includeIce)
         {
-        }
-        
+
+        }//end test
+
         [Theory]
         [InlineData(SodaFlavor.Cherry, Size.Small, "Small Cherry Sailor Soda")]
         [InlineData(SodaFlavor.Cherry, Size.Medium, "Medium Cherry Sailor Soda")]
@@ -93,6 +102,7 @@ namespace BleakwindBuffet.DataTests.UnitTests.DrinkTests
         [InlineData(SodaFlavor.Watermelon, Size.Large, "Large Watermelon Sailor Soda")]
         public void ShouldHaveCorrectToStringBasedOnSizeAndFlavor(SodaFlavor flavor, Size size, string name)
         {
-        }
-    }
-}
+
+        }//end test
+    }//end class
+}//end namespace

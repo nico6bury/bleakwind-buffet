@@ -14,42 +14,50 @@ namespace BleakwindBuffet.DataTests.UnitTests.EntreeTests
         [Fact]
         public void ShouldInlcudeSirloinByDefault()
         {
-        }
+
+        }//end test
 
         [Fact]
         public void ShouldInlcudeOnionByDefault()
         {
-        }
+
+        }//end test
 
         [Fact]
         public void ShouldInlcudeRollByDefault()
         {
-        }
+
+        }//end test
 
         [Fact]
         public void ShouldBeAbleToSetSirloin()
         {
-        }
+
+        }//end test
 
         [Fact]
         public void ShouldBeAbleToSetOnions()
         {
-        }
+
+        }//end test
 
         [Fact]
         public void ShouldBeAbleToSetRoll()
         {
-        }
+
+        }//end test
 
         [Fact]
         public void ShouldReturnCorrectPrice()
         {
-        }
+
+        }//end test
 
         [Fact]
         public void ShouldReturnCorrectCalories()
         {
-        }
+
+        }//end test
 
         [Theory]
         [InlineData(true, true, true)]
@@ -57,11 +65,13 @@ namespace BleakwindBuffet.DataTests.UnitTests.EntreeTests
         public void ShouldReturnCorrectSpecialInstructions(bool includeSirloin, bool includeOnion,
                                                             bool includeRoll)
         {
-        }
+
+        }//end test
 
         [Fact]
         public void ShouldReturnCorrectToString()
         {
-        }
-    }
-}
+
+        }//end test
+    }//end class
+}//end namespace

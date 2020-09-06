@@ -15,17 +15,20 @@ namespace BleakwindBuffet.DataTests.UnitTests.SideTests
         [Fact]
         public void ShouldBeSmallByDefault()
         {
-        }
-                
+
+        }//end test
+
         [Fact]
         public void ShouldBeAbleToSetSize()
         {
-        }
+
+        }//end test
 
         [Fact]
         public void ShouldReturnCorrectStringOnSpecialInstructions()
         {
-        }
+
+        }//end test
 
         [Theory]
         [InlineData(Size.Small, 1.22)]
@@ -33,7 +36,8 @@ namespace BleakwindBuffet.DataTests.UnitTests.SideTests
         [InlineData(Size.Large, 1.93)]
         public void ShouldReturnCorrectPriceBasedOnSize(Size size, double price)
         {
-        }
+
+        }//end test
 
         [Theory]
         [InlineData(Size.Small, 105)]
@@ -41,7 +45,8 @@ namespace BleakwindBuffet.DataTests.UnitTests.SideTests
         [InlineData(Size.Large, 179)]
         public void ShouldReturnCorrectCaloriesBasedOnSize(Size size, uint calories)
         {
-        }
+
+        }//end test
 
         [Theory]
         [InlineData(Size.Small, "Small Mad Otar Grits")]
@@ -49,6 +54,7 @@ namespace BleakwindBuffet.DataTests.UnitTests.SideTests
         [InlineData(Size.Large, "Large Mad Otar Grits")]
         public void ShouldReturnCorrectToStringBasedOnSize(Size size, string name)
         {
-        }
-    }
-}
+
+        }//end test
+    }//end class
+}//end namespace

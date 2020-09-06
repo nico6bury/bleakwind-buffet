@@ -14,21 +14,25 @@ namespace BleakwindBuffet.DataTests.UnitTests.EntreeTests
         [Fact]
         public void ShouldReturnCorrectPrice()
         {
-        }
+
+        }//end test
 
         [Fact]
         public void ShouldReturnCorrectCalories()
         {
-        }
+
+        }//end test
 
         [Fact]
         public void ShouldReturnCorrectSpecialInstructions()
         {
-        }
+
+        }//end test
 
         [Fact]
         public void ShouldReturnCorrectToString()
         {
-        }
-    }
-}
+
+        }//end test
+    }//end class
+}//end namespace
