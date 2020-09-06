@@ -32,6 +32,9 @@ namespace BleakwindBuffet.Data.Sides
         /// Represents the price of this item, dependant
         /// on size
         /// </summary>
+        /// <exception cref="System.NotImplementedException">
+        /// If size is not recognized, throws an exception
+        /// </exception>
         public double Price
         {
             get
@@ -45,7 +48,7 @@ namespace BleakwindBuffet.Data.Sides
                     case Size.Large:
                         return 2.88;
                     default:
-                        return 0;
+                        throw new NotImplementedException("That size is no implemented.");
                 }//end switch case
             }//end setter
         }//end getter
@@ -53,6 +56,9 @@ namespace BleakwindBuffet.Data.Sides
         /// Represents the number of calories this item has,
         /// dependant on size
         /// </summary>
+        /// <exception cref="System.NotImplementedException">
+        /// If size is not recognized, throws an exception
+        /// </exception>
         public uint Calories
         {
             get
@@ -66,7 +72,7 @@ namespace BleakwindBuffet.Data.Sides
                     case Size.Large:
                         return 306;
                     default:
-                        return 0;
+                        throw new NotImplementedException("That size is no implemented.");
                 }//end switch case
             }//end setter
         }//end getter

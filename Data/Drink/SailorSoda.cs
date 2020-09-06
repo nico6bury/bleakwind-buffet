@@ -51,6 +51,9 @@ namespace BleakwindBuffet.Data.Drinks
         /// <summary>
         /// The Price of this item as a double, which depends on size.
         /// </summary>
+        /// <exception cref="System.NotImplementedException">
+        /// If size is not recognized, throws an exception
+        /// </exception>
         public double Price
         {
             get
@@ -64,7 +67,7 @@ namespace BleakwindBuffet.Data.Drinks
                     case Size.Large:
                         return 2.07;
                     default:
-                        return 0;
+                        throw new NotImplementedException("That size is no implemented.");
                 }//end switch case
             }//end getter
         }//end getter
@@ -72,6 +75,9 @@ namespace BleakwindBuffet.Data.Drinks
         /// The number of calories present in this item, depending 
         /// on size.
         /// </summary>
+        /// <exception cref="System.NotImplementedException">
+        /// If size is not recognized, throws an exception
+        /// </exception>
         public uint Calories
         {
             get
@@ -85,7 +91,7 @@ namespace BleakwindBuffet.Data.Drinks
                     case Size.Large:
                         return 205;
                     default:
-                        return 0;
+                        throw new NotImplementedException("That size is no implemented.");
                 }//end switch case
             }//end getter
         }//end getter
