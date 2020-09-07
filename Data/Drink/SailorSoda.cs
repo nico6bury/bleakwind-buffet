@@ -63,7 +63,7 @@ namespace BleakwindBuffet.Data.Drinks
                     case Size.Small:
                         return 1.42;
                     case Size.Medium:
-                        return 1.72;
+                        return 1.74;
                     case Size.Large:
                         return 2.07;
                     default:

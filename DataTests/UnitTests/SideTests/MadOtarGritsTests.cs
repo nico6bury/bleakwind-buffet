@@ -7,6 +7,8 @@ using Xunit;
 
 using BleakwindBuffet.Data;
 using BleakwindBuffet.Data.Enums;
+using BleakwindBuffet.Data.Sides;
+using System.Reflection;
 
 namespace BleakwindBuffet.DataTests.UnitTests.SideTests
 {
@@ -15,19 +17,23 @@ namespace BleakwindBuffet.DataTests.UnitTests.SideTests
         [Fact]
         public void ShouldBeSmallByDefault()
         {
-
+            MadOtarGrits mog = new MadOtarGrits();
+            Assert.Equal(Size.Small, mog.Size);
         }//end test
 
         [Fact]
         public void ShouldBeAbleToSetSize()
         {
-
+            MadOtarGrits mog = new MadOtarGrits();
+            mog.Size = Size.Medium;
+            Assert.Equal(Size.Medium, mog.Size);
         }//end test
 
         [Fact]
         public void ShouldReturnCorrectStringOnSpecialInstructions()
         {
-
+            MadOtarGrits mog = new MadOtarGrits();
+            Assert.Empty(mog.SpecialInstructions);
         }//end test
 
         [Theory]
@@ -36,7 +42,9 @@ namespace BleakwindBuffet.DataTests.UnitTests.SideTests
         [InlineData(Size.Large, 1.93)]
         public void ShouldReturnCorrectPriceBasedOnSize(Size size, double price)
         {
-
+            MadOtarGrits mog = new MadOtarGrits();
+            mog.Size = size;
+            Assert.Equal(price, mog.Price);
         }//end test
 
         [Theory]
@@ -45,7 +53,9 @@ namespace BleakwindBuffet.DataTests.UnitTests.SideTests
         [InlineData(Size.Large, 179)]
         public void ShouldReturnCorrectCaloriesBasedOnSize(Size size, uint calories)
         {
-
+            MadOtarGrits mog = new MadOtarGrits();
+            mog.Size = size;
+            Assert.Equal(calories, mog.Calories);
         }//end test
 
         [Theory]
@@ -54,7 +64,9 @@ namespace BleakwindBuffet.DataTests.UnitTests.SideTests
         [InlineData(Size.Large, "Large Mad Otar Grits")]
         public void ShouldReturnCorrectToStringBasedOnSize(Size size, string name)
         {
-
+            MadOtarGrits mog = new MadOtarGrits();
+            mog.Size = size;
+            Assert.Equal(name, mog.ToString());
         }//end test
     }//end class
 }//end namespace

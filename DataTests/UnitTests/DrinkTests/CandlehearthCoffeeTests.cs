@@ -6,6 +6,7 @@
 using Xunit;
 
 using BleakwindBuffet.Data;
+using BleakwindBuffet.Data.Drinks;
 using BleakwindBuffet.Data.Enums;
 
 namespace BleakwindBuffet.DataTests.UnitTests.DrinkTests
@@ -15,49 +16,61 @@ namespace BleakwindBuffet.DataTests.UnitTests.DrinkTests
         [Fact]
         public void ShouldNotIncludeIceByDefault()
         {
-
+            CandlehearthCoffee cc = new CandlehearthCoffee();
+            Assert.False(cc.Ice);
         }//end test
 
         [Fact]
         public void ShouldNotBeDecafByDefault()
         {
-
+            CandlehearthCoffee cc = new CandlehearthCoffee();
+            Assert.False(cc.Decaf);
         }//end test
 
         [Fact]
         public void ShouldNotHaveRoomForCreamByDefault()
         {
-
+            CandlehearthCoffee cc = new CandlehearthCoffee();
+            Assert.False(cc.RoomForCream);
         }//end test
 
         [Fact]
         public void ShouldBeSmallByDefault()
         {
-
+            CandlehearthCoffee cc = new CandlehearthCoffee();
+            Assert.Equal(Size.Small, cc.Size);
         }//end test
 
         [Fact]
         public void ShouldBeAbleToSetIce()
         {
-
+            CandlehearthCoffee cc = new CandlehearthCoffee();
+            cc.Ice = true;
+            Assert.True(cc.Ice);
         }//end test
 
         [Fact]
         public void ShouldBeAbleToSetDecaf()
         {
-
+            CandlehearthCoffee cc = new CandlehearthCoffee();
+            cc.Decaf = true;
+            Assert.True(cc.Decaf);
         }//end test
 
         [Fact]
         public void ShouldBeAbleToSetRoomForCream()
         {
-
+            CandlehearthCoffee cc = new CandlehearthCoffee();
+            cc.RoomForCream = true;
+            Assert.True(cc.RoomForCream);
         }//end test
 
         [Fact]
         public void ShouldBeAbleToSetSize()
         {
-
+            CandlehearthCoffee cc = new CandlehearthCoffee();
+            cc.Size = Size.Large;
+            Assert.Equal(Size.Large, cc.Size);
         }//end test
 
         [Theory]
@@ -66,7 +79,9 @@ namespace BleakwindBuffet.DataTests.UnitTests.DrinkTests
         [InlineData(Size.Large, 1.75)]
         public void ShouldHaveCorrectPriceForSize(Size size, double price)
         {
-
+            CandlehearthCoffee cc = new CandlehearthCoffee();
+            cc.Size = size;
+            Assert.Equal(price, cc.Price);
         }//end test
 
         [Theory]
@@ -75,7 +90,9 @@ namespace BleakwindBuffet.DataTests.UnitTests.DrinkTests
         [InlineData(Size.Large, 20)]
         public void ShouldHaveCorrectCaloriesForSize(Size size, uint cal)
         {
-
+            CandlehearthCoffee cc = new CandlehearthCoffee();
+            cc.Size = size;
+            Assert.Equal(cal, cc.Calories);
         }//end test
 
         [Theory]
@@ -83,9 +100,15 @@ namespace BleakwindBuffet.DataTests.UnitTests.DrinkTests
         [InlineData(true, false)]
         [InlineData(false, true)]
         [InlineData(false, false)]
-        public void ShouldHaveCorrectSpecialInstructions(bool includeIce, bool includeCream)
+        public void ShouldHaveCorrectSpecialInstructions(bool ice, bool cream)
         {
-
+            CandlehearthCoffee cc = new CandlehearthCoffee();
+            cc.Ice = ice;
+            cc.RoomForCream = cream;
+            if (ice) Assert.Contains("Add ice", cc.SpecialInstructions);
+            if (!ice) Assert.DoesNotContain("Add ice", cc.SpecialInstructions);
+            if (cream) Assert.Contains("Add cream", cc.SpecialInstructions);
+            if (!cream) Assert.DoesNotContain("Add cream", cc.SpecialInstructions);
         }//end test
 
         [Theory]
@@ -97,7 +120,10 @@ namespace BleakwindBuffet.DataTests.UnitTests.DrinkTests
         [InlineData(false, Size.Large, "Large Candlehearth Coffee")]
         public void ShouldReturnCorrectToStringBasedOnSize(bool decaf, Size size, string name)
         {
-
+            CandlehearthCoffee cc = new CandlehearthCoffee();
+            cc.Decaf = decaf;
+            cc.Size = size;
+            Assert.Equal(name, cc.ToString());
         }//end test
     }//end class
 }//end namespace

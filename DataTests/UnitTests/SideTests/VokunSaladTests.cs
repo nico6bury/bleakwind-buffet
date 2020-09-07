@@ -7,6 +7,7 @@ using Xunit;
 
 using BleakwindBuffet.Data;
 using BleakwindBuffet.Data.Enums;
+using BleakwindBuffet.Data.Sides;
 
 namespace BleakwindBuffet.DataTests.UnitTests.SideTests
 {
@@ -15,19 +16,23 @@ namespace BleakwindBuffet.DataTests.UnitTests.SideTests
         [Fact]
         public void ShouldBeSmallByDefault()
         {
-
+            VokunSalad vs = new VokunSalad();
+            Assert.Equal(Size.Small, vs.Size);
         }//end test
 
         [Fact]
         public void ShouldBeAbleToSetSize()
         {
-
+            VokunSalad vs = new VokunSalad();
+            vs.Size = Size.Medium;
+            Assert.Equal(Size.Medium, vs.Size);
         }//end test
 
         [Fact]
         public void ShouldReturnCorrectSpecialInstructions()
         {
-
+            VokunSalad vs = new VokunSalad();
+            Assert.Empty(vs.SpecialInstructions);
         }//end test
 
         [Theory]
@@ -36,7 +41,9 @@ namespace BleakwindBuffet.DataTests.UnitTests.SideTests
         [InlineData(Size.Large, 1.82)]
         public void ShouldReturnCorrectPriceBasedOnSize(Size size, double price)
         {
-
+            VokunSalad vs = new VokunSalad();
+            vs.Size = size;
+            Assert.Equal(price, vs.Price);
         }//end test
 
         [Theory]
@@ -45,7 +52,9 @@ namespace BleakwindBuffet.DataTests.UnitTests.SideTests
         [InlineData(Size.Large, 73)]
         public void ShouldReturnCorrectCaloriesBasedOnSize(Size size, uint calories)
         {
-
+            VokunSalad vs = new VokunSalad();
+            vs.Size = size;
+            Assert.Equal(calories, vs.Calories);
         }//end test
 
         [Theory]
@@ -54,7 +63,9 @@ namespace BleakwindBuffet.DataTests.UnitTests.SideTests
         [InlineData(Size.Large, "Large Vokun Salad")]
         public void ShouldReturnCorrectToStringBasedOnSize(Size size, string name)
         {
-
+            VokunSalad vs = new VokunSalad();
+            vs.Size = size;
+            Assert.Equal(name, vs.ToString());
         }//end test
     }//end class
 }//end namespace

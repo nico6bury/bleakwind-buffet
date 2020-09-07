@@ -125,13 +125,13 @@ namespace BleakwindBuffet.Data.Drinks
             string de_caffine;
             if (Decaf == true)
             {
-                de_caffine = "Decaf";
+                de_caffine = " Decaf";
             }//end if item is decaf
             else
             {
                 de_caffine = "";
             }//end if item does have caffine
-            return $"{Size} {de_caffine} Candlehearth Coffee";
+            return $"{Size}{de_caffine} Candlehearth Coffee";
         }//end ToString()
     }//end class CandlehearthCoffee
 }//end namespace
