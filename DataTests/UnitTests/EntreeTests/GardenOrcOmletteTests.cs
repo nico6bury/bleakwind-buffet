@@ -114,6 +114,7 @@ namespace BleakwindBuffet.DataTests.UnitTests.EntreeTests
         {
             GardenOrcOmelette goo = new GardenOrcOmelette();
             string name = "Garden Orc Omelette";
+            Assert.Equal(name, goo.ToString());
         }//end test
     }//end class
 }//end namespace
