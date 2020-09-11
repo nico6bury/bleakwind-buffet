@@ -15,7 +15,7 @@ namespace BleakwindBuffet.Data.Sides
     /// The base class for all sides, which contains a few common 
     /// fields and is inherited by all sides.
     /// </summary>
-    abstract class Side : IOrderItem
+    public abstract class Side : IOrderItem
     {
         /// <summary>
         /// The size of this item. Based on Size enum found in this project.

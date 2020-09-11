@@ -15,7 +15,6 @@ namespace BleakwindBuffet.Data.Entrees
     /// Represents the Briarheart Burger item
     /// </summary>
     public class BriarheartBurger
-    {
         // backer variable for Bun
         private bool bun = true;
         // backer variable for Ketchup

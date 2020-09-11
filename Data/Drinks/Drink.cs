@@ -15,7 +15,7 @@ namespace BleakwindBuffet.Data.Drinks
     /// The base class for all drinks, which contains a few common 
     /// fields and is inherited by all drinks.
     /// </summary>
-    abstract class Drink : IOrderItem
+    public abstract class Drink : IOrderItem
     {
         /// <summary>
         /// The size of this item. Based on Size enum found in this project.
