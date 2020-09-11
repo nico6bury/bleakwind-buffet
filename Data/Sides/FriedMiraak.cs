@@ -15,7 +15,7 @@ namespace BleakwindBuffet.Data.Sides
     /// <summary>
     /// Represents a Fried Miraak object
     /// </summary>
-    public class FriedMiraak
+    public class FriedMiraak : Side
     {
         // backer variable for Size
         private Size size = Size.Small;
@@ -23,7 +23,7 @@ namespace BleakwindBuffet.Data.Sides
         /// Represents the size of this item, small, 
         /// medium, or large
         /// </summary>
-        public Size Size
+        public override Size Size
         {
             get { return size; }
             set { size = value; }
@@ -35,7 +35,7 @@ namespace BleakwindBuffet.Data.Sides
         /// <exception cref="System.NotImplementedException">
         /// If size is not recognized, throws an exception
         /// </exception>
-        public double Price
+        public override double Price
         {
             get
             {
@@ -59,7 +59,7 @@ namespace BleakwindBuffet.Data.Sides
         /// <exception cref="System.NotImplementedException">
         /// If size is not recognized, throws an exception
         /// </exception>
-        public uint Calories
+        public override uint Calories
         {
             get
             {
@@ -80,7 +80,7 @@ namespace BleakwindBuffet.Data.Sides
         /// Contains any special instructions this item might
         /// have
         /// </summary>
-        public List<string> SpecialInstructions
+        public override List<string> SpecialInstructions
         {
             get
             {
