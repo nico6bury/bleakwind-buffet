@@ -14,7 +14,7 @@ namespace BleakwindBuffet.Data.Entrees
     /// <summary>
     /// Represents the Thalmor Triplecs item
     /// </summary>
-    public class ThalmorTriple
+    public class ThalmorTriple : Entree
     {
         // backer variable for Bun
         private bool bun = true;
@@ -79,21 +79,21 @@ namespace BleakwindBuffet.Data.Entrees
         /// <summary>
         /// Represents the price of this item
         /// </summary>
-        public double Price
+        public override double Price
         {
             get { return 8.32; }
         }//end getter
         /// <summary>
         /// Represents the number of calories this item has
         /// </summary>
-        public uint Calories
+        public override uint Calories
         {
             get { return 943; }
         }//end getter
         /// <summary>
         /// Contains any special instructions this item has
         /// </summary>
-        public List<string> SpecialInstructions
+        public override List<string> SpecialInstructions
         {
             get
             {
