@@ -4,7 +4,6 @@ using BleakwindBuffet.Data.Enums;
 using BleakwindBuffet.Data.Sides;
 using System;
 using System.Collections.Generic;
-using System.Text;
 
 /*
  * Author: Nicholas Sixbury
