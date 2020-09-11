@@ -4,7 +4,6 @@
  * Purpose: Test the GardenOrcOmelette.cs class in the Data library
  */
 using Xunit;
-
 using BleakwindBuffet.Data;
 using BleakwindBuffet.Data.Entrees;
 
