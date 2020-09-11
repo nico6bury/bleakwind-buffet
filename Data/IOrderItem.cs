@@ -15,7 +15,7 @@ namespace BleakwindBuffet.Data
     /// interface for all items that can be ordered, has
     /// price, calories, and special instructions for the item
     /// </summary>
-    interface IOrderItem
+    public interface IOrderItem
     {
         /// <summary>
         /// The price of the item in question, in dollars
