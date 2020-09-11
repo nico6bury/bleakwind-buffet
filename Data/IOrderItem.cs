@@ -2,6 +2,13 @@
 using System.Collections.Generic;
 using System.Text;
 
+/*
+ * Author: Nicholas Sixbury
+ * Interface: IOrderItem.cs
+ * Purpose: To provide a weak has-a connection between all the
+ * food/drink item classes along with a few variables common between them.
+ */ 
+
 namespace BleakwindBuffet.Data
 {
     /// <summary>
