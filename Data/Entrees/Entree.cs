@@ -9,7 +9,7 @@ using BleakwindBuffet.Data.Enums;
  * Purpose: To serve as a base class for all Entrees
  */
 
-namespace BleakwindBuffet.Data.Entree
+namespace BleakwindBuffet.Data.Entrees
 {
     /// <summary>
     /// The base class for all entrees, which contains a few common 

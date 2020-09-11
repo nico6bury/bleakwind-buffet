@@ -9,7 +9,7 @@ using System.Text;
  * Purpose: To serve as a base class for all Sides
  */ 
 
-namespace BleakwindBuffet.Data.Side
+namespace BleakwindBuffet.Data.Sides
 {
     /// <summary>
     /// The base class for all sides, which contains a few common 

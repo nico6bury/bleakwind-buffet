@@ -9,7 +9,7 @@ using System.Text;
  * Purpose: To serve as a base class for all Drinks
  */
 
-namespace BleakwindBuffet.Data.Drink
+namespace BleakwindBuffet.Data.Drinks
 {
     /// <summary>
     /// The base class for all drinks, which contains a few common 
