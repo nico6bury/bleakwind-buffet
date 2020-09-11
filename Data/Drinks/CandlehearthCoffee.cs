@@ -15,7 +15,7 @@ namespace BleakwindBuffet.Data.Drinks
     /// <summary>
     /// Represents the Candlehearth Coffee drink item
     /// </summary>
-    public class CandlehearthCoffee
+    public class CandlehearthCoffee : Drink
     {
         // backer variable for Ice
         private bool ice = false;
@@ -49,7 +49,7 @@ namespace BleakwindBuffet.Data.Drinks
         /// <summary>
         /// The size of this item
         /// </summary>
-        public Size Size
+        public override Size Size
         {
             get { return size; }
             set { size = value; }
@@ -60,7 +60,7 @@ namespace BleakwindBuffet.Data.Drinks
         /// <exception cref="System.NotImplementedException">
         /// If size is not recognized, throws an exception
         /// </exception>
-        public double Price
+        public override double Price
         {
             get
             {
@@ -83,7 +83,7 @@ namespace BleakwindBuffet.Data.Drinks
         /// <exception cref="System.NotImplementedException">
         /// If size is not recognized, throws an exception
         /// </exception>
-        public uint Calories
+        public override uint Calories
         {
             get
             {
@@ -103,7 +103,7 @@ namespace BleakwindBuffet.Data.Drinks
         /// <summary>
         /// Any special instructions this item might have
         /// </summary>
-        public List<string> SpecialInstructions
+        public override List<string> SpecialInstructions
         {
             get
             {
