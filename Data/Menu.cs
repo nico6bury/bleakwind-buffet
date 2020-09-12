@@ -97,19 +97,24 @@ namespace BleakwindBuffet.Data
                 aaj.Size = sizes[i];
                 drinks.Add(aaj);
 
-                CandlehearthCoffee chc = new CandlehearthCoffee();
-                chc.Size = sizes[i];
-                drinks.Add(chc);
+                CandlehearthCoffee chc1 = new CandlehearthCoffee();
+                chc1.Size = sizes[i];
+                chc1.Decaf = false;
+                drinks.Add(chc1);
+                CandlehearthCoffee chc2 = new CandlehearthCoffee();
+                chc2.Size = sizes[i];
+                chc2.Decaf = true;
+                drinks.Add(chc2);
 
                 MarkarthMilk mm = new MarkarthMilk();
                 mm.Size = sizes[i];
                 drinks.Add(mm);
 
-                SailorSoda ss = new SailorSoda();
-                ss.Size = sizes[i];
                 for(int j = 0; j < flavors.Count; j++)
                 {
-                    ss.Flavor = flavors[i];
+                    SailorSoda ss = new SailorSoda();
+                    ss.Size = sizes[i];
+                    ss.Flavor = flavors[j];
                     drinks.Add(ss);
                 }//end looping for all flavors
 
