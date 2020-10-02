@@ -24,6 +24,6 @@ namespace PointOfSale
         public MainWindow()
         {
             InitializeComponent();
-        }
-    }
-}
+        }//end constructor
+    }//end partial class
+}//end namespace

@@ -28,13 +28,10 @@ namespace PointOfSale.ItemSelection
         List<Button> SizeButtons;
         
         /// <summary>
-        /// This holds the main button which was most recently pressed
-        /// </summary>
-        Button mostRecentButton;
-        
-        /// <summary>
         /// whether or not the size change has been read or not,
-        /// likely redundant
+        /// somehow not redundant because it's used to tell the buttons what they
+        /// should do. There's probably a way to cut it out, but I don't know what,
+        /// and I don't know that I have the time
         /// </summary>
         bool unreadSizeChange;
 
@@ -48,13 +45,14 @@ namespace PointOfSale.ItemSelection
             foreach (BleakwindBuffet.Data.Enums.Size s in Enum.GetValues(typeof(BleakwindBuffet.Data.Enums.Size)))
                 names.Add(s);
 
+            
+
             for(int i = 0; i < names.Count; i++)
             {
                 Button button = new Button
                 {
                     FontSize = 20,
                     Visibility = Visibility.Hidden,
-                    //button.Name = $"{names[i]}Button";
                     Content = names[i]
                 };
                 Grid.SetColumnSpan(button, 1);
@@ -172,16 +170,6 @@ namespace PointOfSale.ItemSelection
         /// <returns>The Size that the user selected</returns>
         private void GetSize(Button replacement)
         {
-            mostRecentButton = replacement;
-
-            int W1a2 = (int)replacement.ActualWidth / 3;
-            double W3 = (replacement.ActualWidth) - (2 * (replacement.ActualWidth / 3));
-            SizeButtons[0].Width = W1a2;
-            SizeButtons[0].MinWidth = W1a2;
-            SizeButtons[1].Width = W1a2;
-            SizeButtons[1].MinWidth = W1a2;
-            SizeButtons[2].Width = W3;
-            SizeButtons[2].MinWidth = W3;
             for (int i = 0; i < 3; i++)
             {
                 SizeButtons[i].Visibility = Visibility.Visible;
@@ -203,7 +191,7 @@ namespace PointOfSale.ItemSelection
                 //we'll want to do two things here
                 //1. create the IOrderItem object we want to send
                 dynamic item;
-                switch (mostRecentButton.Content)
+                switch (button.Content)
                 {
                     case "Vokun Salad":
                         item = new VokunSalad();
@@ -235,6 +223,9 @@ namespace PointOfSale.ItemSelection
             }//end if the right thing sent the event
         }//end GotSize event handler
 
+        /// <summary>
+        /// Resets Button Visibility to that of default
+        /// </summary>
         private void ResetButtons()
         {
             vsButton.Visibility = Visibility.Visible;
@@ -249,6 +240,12 @@ namespace PointOfSale.ItemSelection
             unreadSizeChange = false;
         }//end ResetButtons
 
+        /// <summary>
+        /// Just lets the ItemCustomizer know how we've been doing lately.
+        /// I don't think this actually does anything in this class, but it
+        /// will be useful for Drinks and Entrees, so I'll keep it in for 
+        /// consistency I guess.
+        /// </summary>
         private void ItemCustomizerCheckUp()
         {
             ItemCustomizer.cameFrom = "Side";
