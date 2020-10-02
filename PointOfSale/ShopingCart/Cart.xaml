@@ -14,22 +14,31 @@
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="1*"/>
+            <RowDefinition Height="20"/>
             <RowDefinition Height="30"/>
             <RowDefinition Height="30"/>
         </Grid.RowDefinitions>
-        <Button Grid.Row="2" Grid.Column="0" Name="priorButton" Width="80" 
+
+        <Border Grid.Row="1" BorderThickness="1" BorderBrush="SlateGray"
+                Grid.ColumnSpan="3">
+            <TextBlock Name="orderNumberTextBlock" TextAlignment="Center">
+                order number
+            </TextBlock>
+        </Border>
+
+        <Button Grid.Row="3" Grid.Column="0" Name="priorButton" Width="80" 
                 Height="30" Click="PriorOrder">
             &lt; Prior Order
         </Button>
-        <Button Grid.Row="2" Grid.Column="1" Click="AddNewOrder" Width="80" 
+        <Button Grid.Row="3" Grid.Column="1" Click="AddNewOrder" Width="80" 
                 Height="30">
             Add Order
         </Button>
-        <Button Grid.Row="2" Grid.Column="2" Name="nextButton" Width="80" 
+        <Button Grid.Row="3" Grid.Column="2" Name="nextButton" Width="80" 
                 Height="30" Click="NextOrder">
             Next Order &gt;
         </Button>
-        <DockPanel Grid.Row="1" Grid.ColumnSpan="3">
+        <DockPanel Grid.Row="2" Grid.ColumnSpan="3">
             <Button DockPanel.Dock="Left" Width="120" Height="30"
                     Name="cancelOrderButton">
                 Cancel Order</Button>

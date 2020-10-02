@@ -12,18 +12,17 @@
             Order Name:
         </TextBlock>
         <TextBox DockPanel.Dock="Top" FontWeight="Bold" TextAlignment="Center"
-                 FontSize="20"/>
+                 FontSize="20" Name="orderListCustName"/>
 
-        <Border DockPanel.Dock="Bottom" Height="35" BorderThickness="1" BorderBrush="SlateGray">
-            <TextBlock Name="orderNumberTextBlock">
-            This is what will show which order<LineBreak/> you're on</TextBlock>
-            
+
+        <Border DockPanel.Dock="Bottom" Height="20" BorderThickness="1" BorderBrush="SlateGray">
+            <TextBlock Name="orderTotalTextBlock" TextAlignment="Center">
+                Total goes here
+            </TextBlock>
         </Border>
-        <Border DockPanel.Dock="Bottom" Height="35" BorderThickness="1" BorderBrush="SlateGray">
-            <TextBlock Name="orderTotalTextBlock">
-            This is where the total will go<LineBreak/>Also tax</TextBlock>
-        </Border>
-        
+        <Button DockPanel.Dock="Bottom" Height="25" Name="removeButton" Click="RemoveItem">
+            Remove Selected Item
+        </Button>
         <ListView Name="orderItems" DockPanel.Dock="Bottom"/>
     </DockPanel>
 </UserControl>

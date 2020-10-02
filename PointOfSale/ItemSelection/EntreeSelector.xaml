@@ -18,6 +18,20 @@
             <RowDefinition/>
         </Grid.RowDefinitions>
 
+        <Grid.Resources>
+            <Style TargetType="Button">
+                <Setter Property="ContentTemplate">
+                    <Setter.Value>
+                        <DataTemplate>
+                            <TextBlock Text="{TemplateBinding Content}" 
+                                       TextWrapping="Wrap"
+                                       TextAlignment="Center"/>
+                        </DataTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+        </Grid.Resources>
+
         <Button Grid.Column="0" Grid.Row="0" FontSize="20">
             Briarheart Burger
         </Button>

@@ -12,7 +12,7 @@
             <ColumnDefinition Width="240"/>
         </Grid.ColumnDefinitions>
         <Border BorderThickness="1" BorderBrush="SlateGray">
-            <local1:ItemSelector></local1:ItemSelector>
+            <local1:ItemSelector/>
         </Border>
         <Border Grid.Column="1" BorderThickness="1" BorderBrush="SlateGray">
             <local:Cart/>

@@ -1,4 +1,5 @@
-﻿using PointOfSale.ShopingCart;
+﻿using BleakwindBuffet.Data;
+using PointOfSale.ShopingCart;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -23,15 +24,18 @@ namespace PointOfSale
         /// <summary>
         /// Holds all the orders for different customers
         /// </summary>
-        List<OrderList> lists = new List<OrderList>();
+        static List<OrderList> lists = new List<OrderList>();
+
         /// <summary>
         /// Holds which index of lists is currently displayed
         /// </summary>
-        int curIndex = 0;
+        static int curIndex = 0;
+
         public Cart()
         {
             InitializeComponent();
             AddNewOrder(null, null);
+            UpdateOrderListNumber();
             EnableOrDisableButtons();
         }//end constructor
 
@@ -44,7 +48,9 @@ namespace PointOfSale
             curIndex = lists.Count;
             lists.Add(list);
             orderBorder.Child = list;
+            list.orderListCustName.Text = "Customer Name " + (curIndex+1);
             EnableOrDisableButtons();
+            UpdateOrderListNumber();
         }//end AddNewOrder event handler
 
         /// <summary>
@@ -57,6 +63,7 @@ namespace PointOfSale
             if (curIndex < 0) curIndex = 0;
             orderBorder.Child = lists[curIndex];
             EnableOrDisableButtons();
+            UpdateOrderListNumber();
         }//end AddNewOrder event handler
 
         /// <summary>
@@ -69,7 +76,14 @@ namespace PointOfSale
             if (curIndex > lists.Count - 1) curIndex = lists.Count - 1;
             orderBorder.Child = lists[curIndex];
             EnableOrDisableButtons();
+            UpdateOrderListNumber();
         }//end AddNewOrder event handler
+
+        public static void AddItem(IOrderItem item)
+        {
+            lists[curIndex].items.Add(item);
+            lists[curIndex].UpdateItems();
+        }//end AddItem(item)
 
         /// <summary>
         /// Enables or Disables the priorButton and nextButton objects
@@ -99,5 +113,19 @@ namespace PointOfSale
                 nextButton.IsEnabled = true;
             }//end else we're in the middle
         }//end EnableOrDisableButtons()
+
+        /// <summary>
+        /// Just a helper method to update the displayed number of orders
+        /// </summary>
+        public void UpdateOrderListNumber()
+        {
+            
+            StringBuilder sb = new StringBuilder();
+            sb.Append("Order ");
+            sb.Append(curIndex + 1);
+            sb.Append("/");
+            sb.Append(lists.Count);
+            orderNumberTextBlock.Text = sb.ToString();
+        }//end UpdateOrderListNumber
     }//end partial class
 }//end namespace

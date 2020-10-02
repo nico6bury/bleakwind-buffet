@@ -51,6 +51,11 @@ namespace PointOfSale.ItemSelection
         /// </summary>
         public static SideSelector ss = new SideSelector();
 
+        /// <summary>
+        /// Allows the user to customize their selected item
+        /// </summary>
+        public static ItemCustomizer ic = new ItemCustomizer();
+
         public ItemSelector()
         {
             InitializeComponent();

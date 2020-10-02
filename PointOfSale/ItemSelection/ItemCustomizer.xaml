@@ -5,8 +5,14 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:PointOfSale.ItemSelection"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
-    <Grid>
-            
-    </Grid>
+             d:DesignHeight="450" d:DesignWidth="600">
+    <DockPanel Name="customDockPanel">
+        <TextBlock FontSize="19" DockPanel.Dock="Top" TextWrapping="Wrap">
+            Select Items below to select optional customizations to the item. 
+            If a line is highlighted, that means it's selected.
+        </TextBlock>
+        <Button DockPanel.Dock="Bottom" Height="30">
+            &lt;&lt; Back &gt;&gt;
+        </Button>
+    </DockPanel>
 </UserControl>
