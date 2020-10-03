@@ -14,6 +14,13 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using PointOfSale.ItemSelection;
 
+/*
+ * Author: Nicholas Sixbury
+ * Class Name: MainWindow.xaml.cs
+ * Purpose: Holds all the other components together. Who knows, that
+ * might be all it does. 
+ */
+
 namespace PointOfSale
 {
     /// <summary>

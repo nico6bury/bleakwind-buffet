@@ -39,43 +39,43 @@ namespace BleakwindBuffet.Data.Entrees
         /// <summary>
         /// Whether or not this item has bun
         /// </summary>
-        public bool Bun { get { return bun; } set { bun = value; } }
+        public bool Bun { get { return bun; } set { bun = value; NotifyPropertyChanged("Bun"); NotifyPropertyChanged("SpecialInstructions");} }
         /// <summary>
         /// Whether or not this item has ketchup
         /// </summary>
-        public bool Ketchup { get { return ketchup; } set { ketchup = value; } }
+        public bool Ketchup { get { return ketchup; } set { ketchup = value; NotifyPropertyChanged("Ketchup"); NotifyPropertyChanged("SpecialInstructions"); } }
         /// <summary>
         /// Whether or not this item has mustard
         /// </summary>
-        public bool Mustard { get { return mustard; } set { mustard = value; } }
+        public bool Mustard { get { return mustard; } set { mustard = value; NotifyPropertyChanged("Mustard"); NotifyPropertyChanged("SpecialInstructions"); } }
         /// <summary>
         /// Whether or not this item has pickles
         /// </summary>
-        public bool Pickle { get { return pickle; } set { pickle = value; } }
+        public bool Pickle { get { return pickle; } set { pickle = value; NotifyPropertyChanged("Pickle"); NotifyPropertyChanged("SpecialInstructions"); } }
         /// <summary>
         /// Whether or not this item has cheese
         /// </summary>
-        public bool Cheese { get { return cheese; } set { cheese = value; } }
+        public bool Cheese { get { return cheese; } set { cheese = value; NotifyPropertyChanged("Cheese"); NotifyPropertyChanged("SpecialInstructions"); } }
         /// <summary>
         /// Whether or not this item has tomato
         /// </summary>
-        public bool Tomato { get { return tomato; } set { tomato = value; } }
+        public bool Tomato { get { return tomato; } set { tomato = value; NotifyPropertyChanged("Tomato"); NotifyPropertyChanged("SpecialInstructions"); } }
         /// <summary>
         /// Whether or not this item has lettuce
         /// </summary>
-        public bool Lettuce { get { return lettuce; } set { lettuce = value; } }
+        public bool Lettuce { get { return lettuce; } set { lettuce = value; NotifyPropertyChanged("Lettuce"); NotifyPropertyChanged("SpecialInstructions"); } }
         /// <summary>
         /// Whether or not this item has mayo
         /// </summary>
-        public bool Mayo { get { return mayo; } set { mayo = value; } }
+        public bool Mayo { get { return mayo; } set { mayo = value; NotifyPropertyChanged("Mayo"); NotifyPropertyChanged("SpecialInstructions"); } }
         /// <summary>
         /// Whether or not this item has bacon
         /// </summary>
-        public bool Bacon { get { return bacon; } set { bacon = value; } }
+        public bool Bacon { get { return bacon; } set { bacon = value; NotifyPropertyChanged("Bacon"); NotifyPropertyChanged("SpecialInstructions"); } }
         /// <summary>
         /// Whether or not this item has an egg
         /// </summary>
-        public bool Egg { get { return egg; } set { egg = value; } }
+        public bool Egg { get { return egg; } set { egg = value; NotifyPropertyChanged("Egg"); NotifyPropertyChanged("SpecialInstructions"); } }
         /// <summary>
         /// Represents the price of this item
         /// </summary>

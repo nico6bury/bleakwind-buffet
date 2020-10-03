@@ -26,8 +26,13 @@ namespace BleakwindBuffet.Data.Sides
         public override Size Size
         {
             get { return size; }
-            set { size = value; }
-        }//end getter
+            set { 
+                size = value;
+                NotifyPropertyChanged("Size");
+                NotifyPropertyChanged("Price");
+                NotifyPropertyChanged("Calories");
+            }
+        }//end getter and setter
         /// <summary>
         /// Represents the price of this item, dependant
         /// on size

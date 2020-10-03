@@ -27,19 +27,19 @@ namespace BleakwindBuffet.Data.Entrees
         /// <summary>
         /// Whether or not this item has sausage links
         /// </summary>
-        public bool SausageLink { get { return sausageLink; } set { sausageLink = value; } }
+        public bool SausageLink { get { return sausageLink; } set { sausageLink = value; NotifyPropertyChanged("SausageLink"); NotifyPropertyChanged("SpecialInstructions"); } }
         /// <summary>
         /// Whether or not this item has an egg
         /// </summary>
-        public bool Egg { get { return egg; } set { egg = value; } }
+        public bool Egg { get { return egg; } set { egg = value; NotifyPropertyChanged("Egg"); NotifyPropertyChanged("SpecialInstructions"); } }
         /// <summary>
         /// Whether or not this item has hashbrowns
         /// </summary>
-        public bool HashBrowns { get { return hashBrowns; } set { hashBrowns = value; } }
+        public bool HashBrowns { get { return hashBrowns; } set { hashBrowns = value; NotifyPropertyChanged("HashBrowns"); NotifyPropertyChanged("SpecialInstructions"); } }
         /// <summary>
         /// Whether or not this item has pancakes
         /// </summary>
-        public bool Pancake { get { return pancake; } set { pancake = value; } }
+        public bool Pancake { get { return pancake; } set { pancake = value; NotifyPropertyChanged("Pancake"); NotifyPropertyChanged("SpecialInstructions"); } }
         /// <summary>
         /// Represents the price of this item
         /// </summary>

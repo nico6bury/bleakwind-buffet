@@ -25,15 +25,15 @@ namespace BleakwindBuffet.Data.Entrees
         /// <summary>
         /// Whether or not this item is sirloin
         /// </summary>
-        public bool Sirloin { get { return sirloin; } set { sirloin = value; } }
+        public bool Sirloin { get { return sirloin; } set { sirloin = value; NotifyPropertyChanged("Sirloin"); NotifyPropertyChanged("SpecialInstructions"); } }
         /// <summary>
         /// Whether or not this item has onions
         /// </summary>
-        public bool Onion { get { return onion; } set { onion = value; } }
+        public bool Onion { get { return onion; } set { onion = value; NotifyPropertyChanged("Onion"); NotifyPropertyChanged("SpecialInstructions"); } }
         /// <summary>
         /// Whether or not this item has a roll
         /// </summary>
-        public bool Roll { get { return roll; } set { roll = value; } }
+        public bool Roll { get { return roll; } set { roll = value; NotifyPropertyChanged("Roll"); NotifyPropertyChanged("SpecialInstructions"); } }
         /// <summary>
         /// Represents the price of this item
         /// </summary>

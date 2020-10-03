@@ -2,6 +2,7 @@
 using BleakwindBuffet.Data.Entrees;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Reflection;
 using System.Text;
 using System.Windows;
@@ -22,11 +23,7 @@ namespace PointOfSale.ItemSelection
 
     public partial class ItemCustomizer : UserControl
     {
-        /// <summary>
-        /// the item which holds all the properties we're sending around
-        /// </summary>
-        //public IOrderItem item;
-        
+        public event PropertyChangedEventHandler PropertyChanged;
         
         /// <summary>
         /// indicates which page the user was on when they were sent here.

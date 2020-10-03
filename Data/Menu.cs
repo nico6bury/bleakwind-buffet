@@ -4,6 +4,7 @@ using BleakwindBuffet.Data.Enums;
 using BleakwindBuffet.Data.Sides;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 
 /*
  * Author: Nicholas Sixbury
@@ -43,13 +44,13 @@ namespace BleakwindBuffet.Data
         public static IEnumerable<IOrderItem> Sides()
         {
             List<IOrderItem> sides = new List<IOrderItem>();
-            
+
             List<Size> sizes = new List<Size>();
             sizes.Add(Size.Small);
             sizes.Add(Size.Medium);
             sizes.Add(Size.Large);
 
-            for(int i = 0; i < sizes.Count; i++)
+            for (int i = 0; i < sizes.Count; i++)
             {
                 DragonbornWaffleFries dwf = new DragonbornWaffleFries();
                 dwf.Size = sizes[i];
@@ -110,7 +111,7 @@ namespace BleakwindBuffet.Data
                 mm.Size = sizes[i];
                 drinks.Add(mm);
 
-                for(int j = 0; j < flavors.Count; j++)
+                for (int j = 0; j < flavors.Count; j++)
                 {
                     SailorSoda ss = new SailorSoda();
                     ss.Size = sizes[i];
@@ -135,8 +136,8 @@ namespace BleakwindBuffet.Data
             List<IOrderItem> sides = (List<IOrderItem>)Sides();
             List<IOrderItem> drinks = (List<IOrderItem>)Drinks();
             List<IOrderItem> full = new List<IOrderItem>();
-            
-            for(int i = 0; i < entrees.Count; i++)
+
+            for (int i = 0; i < entrees.Count; i++)
             {
                 full.Add(entrees[i]);
             }//end looping to add entrees to full
@@ -148,8 +149,10 @@ namespace BleakwindBuffet.Data
             {
                 full.Add(drinks[i]);
             }//end looping to add drinks to full
-            
+
             return full;
         }//end FullMenu()
+
+        
     }//end class
 }//end namespace

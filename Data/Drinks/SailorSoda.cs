@@ -30,7 +30,11 @@ namespace BleakwindBuffet.Data.Drinks
         public bool Ice
         {
             get { return ice; }
-            set { ice = value; }
+            set { 
+                ice = value;
+                NotifyPropertyChanged("Ice");
+                NotifyPropertyChanged("SpecialInstructions");
+            }
         }//end getter/setter
         /// <summary>
         /// The size of this item, small, medium, or large.
@@ -38,7 +42,12 @@ namespace BleakwindBuffet.Data.Drinks
         public override Size Size
         {
             get { return size; }
-            set { size = value; }
+            set { 
+                size = value;
+                NotifyPropertyChanged("Size");
+                NotifyPropertyChanged("Price");
+                NotifyPropertyChanged("Calories");
+            }
         }//end getter/setter
         /// <summary>
         /// The flavor of this item.
@@ -46,7 +55,10 @@ namespace BleakwindBuffet.Data.Drinks
         public SodaFlavor Flavor
         {
             get { return flavor; }
-            set { flavor = value; }
+            set { 
+                flavor = value;
+                NotifyPropertyChanged("Flavor");
+            }
         }//end getter/setter
         /// <summary>
         /// The Price of this item as a double, which depends on size.

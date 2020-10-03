@@ -31,7 +31,11 @@ namespace BleakwindBuffet.Data.Drinks
         public bool Ice
         {
             get { return ice; }
-            set { ice = value; }
+            set { 
+                ice = value;
+                NotifyPropertyChanged("Ice");
+                NotifyPropertyChanged("SpecialInstructions");
+            }
         }//end getter/setter
         /// <summary>
         /// Whether this item is decaf or not
@@ -39,12 +43,20 @@ namespace BleakwindBuffet.Data.Drinks
         public bool Decaf
         {
             get { return decaf; }
-            set { decaf = value; }
+            set { 
+                decaf = value;
+                NotifyPropertyChanged("Decaf");
+                NotifyPropertyChanged("SpecialInstructions");
+            }
         }//end getter/setter
         public bool RoomForCream
         {
             get { return roomForCream; }
-            set { roomForCream = value; }
+            set { 
+                roomForCream = value;
+                NotifyPropertyChanged("RoomForCream");
+                NotifyPropertyChanged("SpecialInstructions");
+            }
         }//end getter/setter
         /// <summary>
         /// The size of this item
@@ -52,7 +64,12 @@ namespace BleakwindBuffet.Data.Drinks
         public override Size Size
         {
             get { return size; }
-            set { size = value; }
+            set { 
+                size = value;
+                NotifyPropertyChanged("Size");
+                NotifyPropertyChanged("Price");
+                NotifyPropertyChanged("Calories");
+            }
         }//end getter/setter
         /// <summary>
         /// The price of this item, dependant on size

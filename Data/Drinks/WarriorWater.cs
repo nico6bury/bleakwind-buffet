@@ -1,6 +1,7 @@
 ﻿using BleakwindBuffet.Data.Enums;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Text;
 
 /*
@@ -15,7 +16,7 @@ namespace BleakwindBuffet.Data.Drinks
     /// <summary>
     /// Represents the Warrior Water drink
     /// </summary>
-    public class WarriorWater : Drink
+    public class WarriorWater : Drink, INotifyPropertyChanged
     {
         // backer variable for Ice
         private bool ice = true;
@@ -29,7 +30,7 @@ namespace BleakwindBuffet.Data.Drinks
         public bool Ice
         {
             get { return ice; }
-            set { ice = value; }
+            set { ice = value; NotifyPropertyChanged("Ice"); }
         }//end Ice getter/setter
         /// <summary>
         /// Whether the drink is small, medium, or large.
@@ -37,7 +38,7 @@ namespace BleakwindBuffet.Data.Drinks
         public override Size Size
         {
             get { return size; }
-            set { size = value; }
+            set { size = value; NotifyPropertyChanged("Size"); }
         }//end Size getter/setter
         /// <summary>
         /// Whether or not the drink has added lemon.
@@ -45,7 +46,7 @@ namespace BleakwindBuffet.Data.Drinks
         public bool Lemon
         {
             get { return lemon; }
-            set { lemon = value; }
+            set { lemon = value; NotifyPropertyChanged("Lemon"); }
         }//end Lemon getter/setter
         /// <summary>
         /// The Price of this drink, always free.

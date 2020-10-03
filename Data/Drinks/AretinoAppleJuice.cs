@@ -1,6 +1,7 @@
 ﻿using BleakwindBuffet.Data.Enums;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Text;
 
 /*
@@ -15,7 +16,7 @@ namespace BleakwindBuffet.Data.Drinks
     /// <summary>
     /// Represents the Aretino Apple Juice drink item
     /// </summary>
-    public class AretinoAppleJuice : Drink
+    public class AretinoAppleJuice : Drink, INotifyPropertyChanged
     {
         // backer variable for Ice
         private bool ice = false;
@@ -27,7 +28,11 @@ namespace BleakwindBuffet.Data.Drinks
         public bool Ice
         {
             get { return ice; }
-            set { ice = value; }
+            set { 
+                ice = value; 
+                NotifyPropertyChanged("Ice");
+                NotifyPropertyChanged("SpecialInstructions");
+            }
         }//end getter/setter
         /// <summary>
         /// The size of this item
@@ -35,7 +40,12 @@ namespace BleakwindBuffet.Data.Drinks
         public override Size Size
         {
             get { return size; }
-            set { size = value; }
+            set { 
+                size = value; 
+                NotifyPropertyChanged("Size");
+                NotifyPropertyChanged("Price");
+                NotifyPropertyChanged("Calories");
+            }
         }//end getter/setter
         /// <summary>
         /// The price of this item, dependant on size

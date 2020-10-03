@@ -15,10 +15,10 @@
         
         <DockPanel Grid.Row="0" Name="propertyPanel"/>
         
-        <Button Grid.Row="1">
+        <Button Grid.Row="1" Click="AddItem">
             Add Item
         </Button>
-        <Button Grid.Row="2">
+        <Button Grid.Row="2" Click="GoBack">
             &lt;&lt; Back &gt;&gt;
         </Button>
         
