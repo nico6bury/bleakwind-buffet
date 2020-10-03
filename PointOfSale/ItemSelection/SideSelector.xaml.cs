@@ -28,12 +28,11 @@ namespace PointOfSale.ItemSelection
         List<Button> SizeButtons;
         
         /// <summary>
-        /// whether or not the size change has been read or not,
-        /// somehow not redundant because it's used to tell the buttons what they
-        /// should do. There's probably a way to cut it out, but I don't know what,
-        /// and I don't know that I have the time
+        /// This holds the main button which was most recently pressed
+        /// This is a vital variable that I don't know how I'd go without,
+        /// event though it's only used like once.
         /// </summary>
-        bool unreadSizeChange;
+        Button mostRecentButton;
 
         public SideSelector()
         {
@@ -44,8 +43,6 @@ namespace PointOfSale.ItemSelection
             
             foreach (BleakwindBuffet.Data.Enums.Size s in Enum.GetValues(typeof(BleakwindBuffet.Data.Enums.Size)))
                 names.Add(s);
-
-            
 
             for(int i = 0; i < names.Count; i++)
             {
@@ -61,8 +58,6 @@ namespace PointOfSale.ItemSelection
 
                 SizeButtons.Add(button);
             }//end looping over names to add Buttons to SizeButtons
-            
-            unreadSizeChange = false;
         }//end constructor
         
         /// <summary>
@@ -80,19 +75,8 @@ namespace PointOfSale.ItemSelection
         /// </summary>
         public void AddVokunSalad(object sender, RoutedEventArgs e)
         {
-            if (unreadSizeChange)
-            {
-                ItemSelector.itemSelector.Child = ItemSelector.ic;
-                ItemCustomizer.item = new VokunSalad();
-                ItemCustomizer.GetBooleanVars<VokunSalad>();
-                ItemCustomizerCheckUp();
-                ResetButtons();
-            }//end if we have the size already
-            else
-            {
-                ResetButtons();
-                GetSize(vsButton);
-            }//end else we need to get size
+            ResetButtons();
+            GetSize(vsButton);
         }//end AddVokunSalad event handler
 
         /// <summary>
@@ -100,19 +84,8 @@ namespace PointOfSale.ItemSelection
         /// </summary>
         public void AddFriedMiraak(object sender, RoutedEventArgs e)
         {
-            if (unreadSizeChange)
-            {
-                ItemSelector.itemSelector.Child = ItemSelector.ic;
-                ItemCustomizer.item = new FriedMiraak();
-                ItemCustomizer.GetBooleanVars<FriedMiraak>();
-                ItemCustomizerCheckUp();
-                ResetButtons();
-            }//end if we have the size already
-            else
-            {
-                ResetButtons();
-                GetSize(fmButton);
-            }//end else we need to get size
+            ResetButtons();
+            GetSize(fmButton);
         }//end AddFriedMiraak event handler
 
         /// <summary>
@@ -120,19 +93,8 @@ namespace PointOfSale.ItemSelection
         /// </summary>
         public void AddMadOtarGrits(object sender, RoutedEventArgs e)
         {
-            if (unreadSizeChange)
-            {
-                ItemSelector.itemSelector.Child = ItemSelector.ic;
-                ItemCustomizer.item = new MadOtarGrits();
-                ItemCustomizer.GetBooleanVars<MadOtarGrits>();
-                ItemCustomizerCheckUp();
-                ResetButtons();
-            }//end if we have the size already
-            else
-            {
-                ResetButtons();
-                GetSize(mogButton);
-            }//end else we need to get size
+            ResetButtons();
+            GetSize(mogButton);
         }//end AddMadOtarGrits event handler
 
         /// <summary>
@@ -141,19 +103,8 @@ namespace PointOfSale.ItemSelection
         /// </summary>
         public void AddDragonbornWaffleFries(object sender, RoutedEventArgs e)
         {
-            if (unreadSizeChange)
-            {
-                ItemSelector.itemSelector.Child = ItemSelector.ic;
-                ItemCustomizer.item = new DragonbornWaffleFries();
-                ItemCustomizer.GetBooleanVars<DragonbornWaffleFries>();
-                ItemCustomizerCheckUp();
-                ResetButtons();
-            }//end if we have the size already
-            else
-            {
-                ResetButtons();
-                GetSize(dwfButton);
-            }//end else we need to get size
+            ResetButtons();
+            GetSize(dwfButton);
         }//end AddDragonbornWaffleFries event handler
 
         /// <summary>
@@ -167,9 +118,9 @@ namespace PointOfSale.ItemSelection
         /// </summary>
         /// <param name="replacement">the button that these buttons
         /// will cover up</param>
-        /// <returns>The Size that the user selected</returns>
         private void GetSize(Button replacement)
         {
+            mostRecentButton = replacement;
             for (int i = 0; i < 3; i++)
             {
                 SizeButtons[i].Visibility = Visibility.Visible;
@@ -188,10 +139,11 @@ namespace PointOfSale.ItemSelection
         {
             if(sender is Button button)
             {
+
                 //we'll want to do two things here
                 //1. create the IOrderItem object we want to send
                 dynamic item;
-                switch (button.Content)
+                switch (mostRecentButton.Content)
                 {
                     case "Vokun Salad":
                         item = new VokunSalad();
@@ -223,9 +175,6 @@ namespace PointOfSale.ItemSelection
             }//end if the right thing sent the event
         }//end GotSize event handler
 
-        /// <summary>
-        /// Resets Button Visibility to that of default
-        /// </summary>
         private void ResetButtons()
         {
             vsButton.Visibility = Visibility.Visible;
@@ -236,20 +185,6 @@ namespace PointOfSale.ItemSelection
             {
                 SizeButtons[i].Visibility = Visibility.Hidden;
             }//setting all size buttons to not be visible
-
-            unreadSizeChange = false;
         }//end ResetButtons
-
-        /// <summary>
-        /// Just lets the ItemCustomizer know how we've been doing lately.
-        /// I don't think this actually does anything in this class, but it
-        /// will be useful for Drinks and Entrees, so I'll keep it in for 
-        /// consistency I guess.
-        /// </summary>
-        private void ItemCustomizerCheckUp()
-        {
-            ItemCustomizer.cameFrom = "Side";
-            ItemCustomizer.PopulateCheckBoxes();
-        }//end ItemCustomizerCheckUp()
     }//end partial class
 }//end namespace

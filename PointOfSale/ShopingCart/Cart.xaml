@@ -40,7 +40,8 @@
         </Button>
         <DockPanel Grid.Row="2" Grid.ColumnSpan="3">
             <Button DockPanel.Dock="Left" Width="120" Height="30"
-                    Name="cancelOrderButton">
+                    Name="cancelOrderButton"
+                    Click="RemoveOrder">
                 Cancel Order</Button>
             <Button DockPanel.Dock="Right" Width="120" Height="30"
                     Name="checkoutButton">

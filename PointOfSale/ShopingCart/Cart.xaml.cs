@@ -79,11 +79,31 @@ namespace PointOfSale
             UpdateOrderListNumber();
         }//end AddNewOrder event handler
 
+        /// <summary>
+        /// Adds an IOrderItem item to the current OrderList
+        /// </summary>
+        /// <param name="item">The item to be added</param>
         public static void AddItem(IOrderItem item)
         {
             lists[curIndex].items.Add(item);
             lists[curIndex].UpdateItems();
         }//end AddItem(item)
+        
+        /// <summary>
+        /// Removes current order from the list
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        public void RemoveOrder(object sender, RoutedEventArgs e)
+        {
+            lists.RemoveAt(curIndex);
+            curIndex--;
+            if (curIndex < 0) curIndex = 0;
+            if (lists.Count < 1) AddNewOrder(null, null);
+            UpdateOrderListNumber();
+            EnableOrDisableButtons();
+            orderBorder.Child = lists[curIndex];
+        }//end RemoveOrder event handler
 
         /// <summary>
         /// Enables or Disables the priorButton and nextButton objects

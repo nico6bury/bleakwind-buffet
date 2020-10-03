@@ -25,36 +25,39 @@ namespace PointOfSale.ItemSelection
         /// <summary>
         /// the item which holds all the properties we're sending around
         /// </summary>
-        public static IOrderItem item;
+        //public IOrderItem item;
+        
+        
         /// <summary>
         /// indicates which page the user was on when they were sent here.
         /// For the current implementation, this should be Side, Drink, or 
         /// Entree
         /// </summary>
-        public static string cameFrom;
+        public string cameFrom;
         /// <summary>
         /// holds all the boolean variables for item
         /// </summary>
-        static List<FieldInfo> allBools;
-        
-        ListBox customizerListBox;
+        List<PropertyInfo> allBools;
 
+        dynamic item;
+
+        List<CheckBox> checkBoxes;
+        
         public ItemCustomizer()
         {
             InitializeComponent();
-            customizerListBox = new ListBox();
-            customizerListBox.FontSize = 15;
-            customDockPanel.Children.Add(customizerListBox);
-            DockPanel.SetDock(customizerListBox, Dock.Top);
+            checkBoxes = new List<CheckBox>();
         }//end constructor
 
-        public static void GetBooleanVars<T>()
+        public void GetBooleanVars(ItemButton sender)
         {
-            FieldInfo[] allFields = typeof(T).GetFields();
-            List<FieldInfo> tempBools = new List<FieldInfo>();
+            PropertyInfo[] allFields = sender.T.GetProperties();
+            item = Activator.CreateInstance(sender.T);
+            List<PropertyInfo> tempBools = new List<PropertyInfo>();
             for(int i = 0; i < allFields.Length; i++)
             {
-                if(allFields[i].GetType() == typeof(bool))
+                
+                if(allFields[i].PropertyType.Name == "Boolean")
                 {
                     tempBools.Add(allFields[i]);
                 }//end if current Field is of type bool
@@ -66,18 +69,65 @@ namespace PointOfSale.ItemSelection
         /// populates the page with check boxes for all the 
         /// boolean properties
         /// </summary>
-        /// <param name="bools">the list of boolean FIeldInfo
-        /// properties</param>
-        public static void PopulateCheckBoxes()
+        public void PopulateCheckBoxes()
         {
-            ListBox customizerListBox = new ListBox();
-            customizerListBox.Items.Clear();
-            for (int i = 0; i < allBools.Count; i++)
+            //we need to clear dockpanel children before we do anything else
+            propertyPanel.Children.Clear();
+
+            //we maybe probably I think need to clear this?
+            checkBoxes.Clear();
+
+            for(int i = 0; i < allBools.Count; i++)
             {
-                customizerListBox.Items.Add(allBools[i].Name);
-                MessageBox.Show(allBools[i].Name);
-            }//end looping over all bools
+                checkBoxes.Add(new CheckBox());
+                DockPanel.SetDock(checkBoxes[i], Dock.Top);
+                bool propertyValue = (bool)allBools[i].GetValue(item);
+                checkBoxes[i].IsChecked = propertyValue;
+                checkBoxes[i].Content = allBools[i].Name;
+                //go ahead and add this guy in
+                propertyPanel.Children.Add(checkBoxes[i]);
+            }//end setting up all properties and everything for each checkbox
         }//end PopulateCheckBoxes
+
+        /// <summary>
+        /// Event hander for back button, take you back to last page
+        /// you were at.
+        /// </summary>
+        public void GoBack(object sender, RoutedEventArgs e)
+        {
+            switch (cameFrom)
+            {
+                case "Side":
+                    ItemSelector.itemSelector.Child = ItemSelector.ss;
+                    break;
+                case "Drink":
+                    ItemSelector.itemSelector.Child = ItemSelector.ds;
+                    break;
+                case "Entree":
+                    ItemSelector.itemSelector.Child = ItemSelector.es;
+                    break;
+                default:
+                    ItemSelector.itemSelector.Child = ItemSelector.ics;
+                    MessageBox.Show("Error: Previous Page is unidentified, returning" +
+                        " to main menu.", "Unidentified Source", MessageBoxButton.OK,
+                        MessageBoxImage.Error);
+                    break;
+            }//end leaving to other pages depending on where we came from
+        }//end GoBack event handler
+
+        /// <summary>
+        /// Event handler for the Add item button, adds the item you're
+        /// currently on to the 
+        /// </summary>
+        public void AddItem(object sender, RoutedEventArgs e)
+        {
+
+        }//end AddItem event handler
+
+        public T GetInstance<T>(string type)
+        {
+            return (T)Activator.CreateInstance(Type.GetType(type));
+        }//end GetInstance
 
         ///make methods to handle the names and values of the bools
     }//end partial class
