@@ -85,17 +85,17 @@ namespace PointOfSale.ItemSelection
                 }//end switch case to determine item type
 
                 //send item to ItemCustomizer
-                SendToCustomizer(button);
+                SendToCustomizer(button, item);
 
                 //Switch Screens
                 ItemSelector.itemSelector.Child = ItemSelector.ic;
             }//end if sender is right type
         }//end GetSelectedItem event handler
 
-        private void SendToCustomizer(ItemButton sender)
+        private void SendToCustomizer(ItemButton sender, dynamic item)
         {
             ItemSelector.ic.cameFrom = "Entree";
-            ItemSelector.ic.GetBooleanVars(sender);
+            ItemSelector.ic.GetBooleanVars(item);
             ItemSelector.ic.PopulateCheckBoxes();
         }
     }//end partial class

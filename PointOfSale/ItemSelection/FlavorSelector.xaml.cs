@@ -25,12 +25,6 @@ namespace PointOfSale
         /// the item we got from DrinkSelector and will send to ItemCustomizer
         /// </summary>
         SailorSoda item;
-
-        /// <summary>
-        /// the button in DrinkSelector which was pressed. This is just passed along
-        /// to ItemCustomizer
-        /// </summary>
-        ItemButton quester;
         
         /// <summary>
         /// The list of all the buttons with flavors on them
@@ -73,10 +67,9 @@ namespace PointOfSale
         /// </summary>
         /// <param name="soda">the item which have a Flavor property which
         /// this page will get the user to choose</param>
-        public void InitializeItem(SailorSoda soda, ItemButton sender)
+        public void InitializeItem(SailorSoda soda)
         {
             item = soda;
-            quester = sender;
         }//end InitializeItem(soda)
 
         /// <summary>
@@ -106,7 +99,7 @@ namespace PointOfSale
         private void SendToCustomizer()
         {
             ItemSelector.ic.cameFrom = "FlavorSelector";
-            ItemSelector.ic.GetBooleanVars(quester);
+            ItemSelector.ic.GetBooleanVars(item);
             ItemSelector.ic.PopulateCheckBoxes();
         }//end SendToCustomizer
 

@@ -145,14 +145,14 @@ namespace PointOfSale.ItemSelection
                     //switch screens
                     ItemSelector.itemSelector.Child = ItemSelector.fs;
                     //send the item to FlavorSelector
-                    ItemSelector.fs.InitializeItem(item, mostRecentButton);
+                    ItemSelector.fs.InitializeItem(item);
                     //reset the buttons here so it's consistent and doesn't look wonky
                     ResetButtons();
                 }//end if we need to get flavor
                 else
                 {
                     //send object to ItemCustomizer
-                    SendToCustomizer(mostRecentButton);
+                    SendToCustomizer(item);
 
                     //Switch Screens
                     ItemSelector.itemSelector.Child = ItemSelector.ic;
@@ -180,10 +180,10 @@ namespace PointOfSale.ItemSelection
             }//end setting visibility to hidden for each size button
         }//end ResetButtons()
 
-        private void SendToCustomizer(ItemButton sender)
+        private void SendToCustomizer(dynamic item)
         {
             ItemSelector.ic.cameFrom = "Drink";
-            ItemSelector.ic.GetBooleanVars(sender);
+            ItemSelector.ic.GetBooleanVars(item);
             ItemSelector.ic.PopulateCheckBoxes();
         }//end SendToCustomizer()
     }//end partial class

@@ -41,8 +41,14 @@ namespace PointOfSale.ItemSelection
         /// </summary>
         List<PropertyInfo> allBools;
 
+        /// <summary>
+        /// the IOrderItem item that gets passed around all over the place.
+        /// </summary>
         dynamic item;
 
+        /// <summary>
+        /// The list of checkboxes which get dynamically displayed
+        /// </summary>
         List<CheckBox> checkBoxes;
         
         public ItemCustomizer()
@@ -51,10 +57,10 @@ namespace PointOfSale.ItemSelection
             checkBoxes = new List<CheckBox>();
         }//end constructor
 
-        public void GetBooleanVars(ItemButton sender)
+        public void GetBooleanVars(dynamic item)
         {
-            PropertyInfo[] allFields = sender.T.GetProperties();
-            item = Activator.CreateInstance(sender.T);
+            PropertyInfo[] allFields = item.GetType().GetProperties();//sender.T.GetProperties();
+            this.item = item;//Activator.CreateInstance(sender.T);
             List<PropertyInfo> tempBools = new List<PropertyInfo>();
             for(int i = 0; i < allFields.Length; i++)
             {
@@ -122,11 +128,24 @@ namespace PointOfSale.ItemSelection
 
         /// <summary>
         /// Event handler for the Add item button, adds the item you're
-        /// currently on to the 
+        /// currently on to the orderlist. But before it does that, it
+        /// takes information from all the checkboxes and then sets the
+        /// properties of item to be equal to what the user set, all in
+        /// a super cool way using reflection. 
         /// </summary>
         public void AddItem(object sender, RoutedEventArgs e)
         {
+            //update the item with the correct property values
+            for(int i = 0; i < allBools.Count; i++)
+            {
+                allBools[i].SetValue(item, checkBoxes[i].IsChecked);
+            }//end setting property of item for each property in allBools
 
+            //actually ship the item over to the correct OrderList
+            Cart.AddItem(item);
+
+            //switch screens back to the main window
+            ItemSelector.itemSelector.Child = ItemSelector.ics;
         }//end AddItem event handler
 
         public T GetInstance<T>(string type)
