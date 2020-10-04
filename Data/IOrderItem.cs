@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Text;
 
 /*
@@ -15,7 +16,7 @@ namespace BleakwindBuffet.Data
     /// interface for all items that can be ordered, has
     /// price, calories, and special instructions for the item
     /// </summary>
-    public interface IOrderItem
+    public interface IOrderItem : INotifyPropertyChanged
     {
         /// <summary>
         /// The price of the item in question, in dollars

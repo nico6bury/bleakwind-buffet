@@ -125,5 +125,70 @@ namespace BleakwindBuffet.DataTests.UnitTests.DrinkTests
             cc.Size = size;
             Assert.Equal(name, cc.ToString());
         }//end test
+
+        [Theory]
+        [InlineData("Ice")]
+        [InlineData("SpecialInstructions")]
+        public void ChangingIceNotifiesProperties(string property)
+        {
+            var chc = new CandlehearthCoffee();
+            Assert.PropertyChanged(chc, property, () =>
+            {
+                chc.Ice = true;
+            });
+            Assert.PropertyChanged(chc, property, () =>
+            {
+                chc.Ice = false;
+            });
+        }//end test
+
+        [Theory]
+        [InlineData("Decaf")]
+        [InlineData("SpecialInstructions")]
+        public void ChangingDecafNotifiesProperties(string property)
+        {
+            var chc = new CandlehearthCoffee();
+            Assert.PropertyChanged(chc, property, () =>
+            {
+                chc.Decaf = true;
+            });
+            Assert.PropertyChanged(chc, property, () =>
+            {
+                chc.Decaf = false;
+            });
+        }//end test
+
+        [Theory]
+        [InlineData("RoomForCream")]
+        [InlineData("SpecialInstructions")]
+        public void ChangingRoomForCreamNotifiesProperties(string property)
+        {
+            var chc = new CandlehearthCoffee();
+            Assert.PropertyChanged(chc, property, () =>
+            {
+                chc.RoomForCream = true;
+            });
+            Assert.PropertyChanged(chc, property, () =>
+            {
+                chc.RoomForCream = false;
+            });
+        }//end test
+
+        [Theory]
+        [InlineData("Size")]
+        [InlineData("Price")]
+        [InlineData("Calories")]
+        public void ChangingSizeNotifiesProperties(string property)
+        {
+            var chc = new CandlehearthCoffee();
+            Assert.PropertyChanged(chc, property, () =>
+            {
+                chc.Size = Size.Medium;
+            });
+            Assert.PropertyChanged(chc, property, () =>
+            {
+                chc.Size = Size.Large;
+            });
+        }//end test
     }//end class
 }//end namespace

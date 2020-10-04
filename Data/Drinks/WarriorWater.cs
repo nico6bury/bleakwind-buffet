@@ -30,7 +30,10 @@ namespace BleakwindBuffet.Data.Drinks
         public bool Ice
         {
             get { return ice; }
-            set { ice = value; NotifyPropertyChanged("Ice"); }
+            set { ice = value; 
+                NotifyPropertyChanged("Ice");
+                NotifyPropertyChanged("SpecialInstructions");
+            }
         }//end Ice getter/setter
         /// <summary>
         /// Whether the drink is small, medium, or large.
@@ -46,7 +49,10 @@ namespace BleakwindBuffet.Data.Drinks
         public bool Lemon
         {
             get { return lemon; }
-            set { lemon = value; NotifyPropertyChanged("Lemon"); }
+            set { lemon = value; 
+                NotifyPropertyChanged("Lemon");
+                NotifyPropertyChanged("SpecialInstructions");
+            }
         }//end Lemon getter/setter
         /// <summary>
         /// The Price of this drink, always free.

@@ -41,7 +41,7 @@ namespace BleakwindBuffet.Data.Drinks
         {
             get { return size; }
             set { 
-                size = value; 
+                size = value;
                 NotifyPropertyChanged("Size");
                 NotifyPropertyChanged("Price");
                 NotifyPropertyChanged("Calories");
@@ -66,7 +66,7 @@ namespace BleakwindBuffet.Data.Drinks
                     case Size.Large:
                         return 1.01;
                     default:
-                        throw new NotImplementedException("That size is no implemented.");
+                        throw new NotImplementedException("That size is not implemented.");
                 }//end switch case
             }//end getter
         }//end getter

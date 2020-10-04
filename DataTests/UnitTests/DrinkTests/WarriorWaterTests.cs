@@ -98,22 +98,24 @@ namespace BleakwindBuffet.DataTests.UnitTests.DrinkTests
             Assert.Equal(name, ww.ToString());
         }//end test
 
-        [Fact]
-        public void ChangingIceNotifiesIceProperty()
+        [Theory]
+        [InlineData("Ice")]
+        [InlineData("SpecialInstructions")]
+        public void ChangingIceNotifiesProperties(string property)
         {
             var ww = new WarriorWater();
-            Assert.PropertyChanged(ww, "Ice", () =>
+            Assert.PropertyChanged(ww, property, () =>
             {
                 ww.Ice = false;
             });
-            Assert.PropertyChanged(ww, "Ice", () =>
+            Assert.PropertyChanged(ww, property, () =>
             {
                 ww.Ice = true;
             });
         }//end test
 
         [Fact]
-        public void ChangingSizeNotifiesSizeProperty()
+        public void ChangingSizeNotifiesProperties()
         {
             var ww = new WarriorWater();
             Assert.PropertyChanged(ww, "Size", () =>
@@ -126,15 +128,18 @@ namespace BleakwindBuffet.DataTests.UnitTests.DrinkTests
             });
         }//end test
 
-        [Fact]
-        public void ChangingLemonNotifiesLemonProperty()
+        [Theory]
+        [InlineData("Lemon")]
+        [InlineData("SpecialInstructions")]
+        public void ChangingLemonNotifiesProperties(string property)
         {
             var ww = new WarriorWater();
-            Assert.PropertyChanged(ww, "Lemon", () =>
+
+            Assert.PropertyChanged(ww, property, () =>
             {
                 ww.Lemon = true;
             });
-            Assert.PropertyChanged(ww, "Lemon", () =>
+            Assert.PropertyChanged(ww, property, () =>
             {
                 ww.Lemon = false;
             });

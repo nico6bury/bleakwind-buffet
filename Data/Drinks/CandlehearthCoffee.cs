@@ -1,6 +1,7 @@
 ﻿using BleakwindBuffet.Data.Enums;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Text;
 
 /*
@@ -15,7 +16,7 @@ namespace BleakwindBuffet.Data.Drinks
     /// <summary>
     /// Represents the Candlehearth Coffee drink item
     /// </summary>
-    public class CandlehearthCoffee : Drink
+    public class CandlehearthCoffee : Drink, INotifyPropertyChanged
     {
         // backer variable for Ice
         private bool ice = false;

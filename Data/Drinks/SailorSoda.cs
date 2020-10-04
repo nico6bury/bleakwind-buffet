@@ -1,6 +1,7 @@
 ﻿using BleakwindBuffet.Data.Enums;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Text;
 
 /*
@@ -16,7 +17,7 @@ namespace BleakwindBuffet.Data.Drinks
     /// Represents the old-fashioned soda drink 
     /// called Sailor Soda
     /// </summary>
-    public class SailorSoda : Drink
+    public class SailorSoda : Drink, INotifyPropertyChanged
     {
         // backer variable for Ice
         private bool ice = true;
