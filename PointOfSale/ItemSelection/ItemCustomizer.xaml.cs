@@ -15,6 +15,13 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
+/*
+ * Author: Nicholas Sixbury
+ * Class Name: ItemCustomizer.xaml.cs
+ * Purpose: This page allows a user to customize boolean properties on a particular
+ * item that has them.
+ */
+
 namespace PointOfSale.ItemSelection
 {
     /// <summary>

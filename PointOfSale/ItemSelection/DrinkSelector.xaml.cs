@@ -12,6 +12,12 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
+/*
+ * Author: Nicholas Sixbury
+ * Class Name: DrinkSelector.xaml.cs
+ * Purpose: Allows the user to select a drink
+ */
+
 namespace PointOfSale.ItemSelection
 {
     /// <summary>

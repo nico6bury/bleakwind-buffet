@@ -12,6 +12,14 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using PointOfSale.ItemSelection;
 
+/*
+ * Author: Nicholas Sixbury
+ * Class Name: ItemCategorySelector.xaml.cs
+ * Purpose: Allows the user to select from one of the three
+ * main categories of items, Entrees, Drinks, or Sides. It then
+ * uses ItemSelector to redirect the user there
+ */
+
 namespace PointOfSale.ItemSelection
 {
     /// <summary>

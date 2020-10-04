@@ -15,6 +15,13 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
+/*
+ * Author: Nicholas Sixbury
+ * Class Name: OrderList.xaml.cs
+ * Purpose: Holds the information for one particular
+ * order, as well as all the items stored within.
+ */
+
 namespace PointOfSale.ShopingCart
 {
     /// <summary>

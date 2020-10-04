@@ -11,6 +11,16 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
+/*
+ * Author: Nicholas Sixbury
+ * Class Name: ItemSelector.xaml.cs
+ * Purpose: The purpose of this class is basically to coordinate
+ * the change of visible pages on the left side of the main window
+ * by placing various objects inside a border. Anything that wants
+ * to switch pages or go to another screen on the left side of the
+ * MainWindow will probably need to interact with this.
+ */
+
 namespace PointOfSale.ItemSelection
 {
     /// <summary>

@@ -14,6 +14,13 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using BleakwindBuffet.Data;
 
+/*
+ * Author: Nicholas Sixbury
+ * Class Name: SideSelector.xaml.cs
+ * Purpose: allows the user to select a side, at any size even. Users get here 
+ * from the MainWindow
+ */
+
 namespace PointOfSale.ItemSelection
 {
     /// <summary>

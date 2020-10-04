@@ -13,6 +13,13 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
+/*
+ * Author: Nicholas Sixbury
+ * Class Name: Cart.xaml.cs
+ * Purpose: Holds all the OrderLists and allows the user to juggle between
+ * several orders instead of just having one, if they so desire
+ */
+
 namespace PointOfSale
 {
     /// <summary>

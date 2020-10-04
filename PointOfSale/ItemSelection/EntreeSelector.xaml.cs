@@ -11,6 +11,12 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
+/*
+ * Author: Nicholas Sixbury
+ * Class Name: EntreeSelector.xaml.cs
+ * Purpose: Allows the user to select an entree
+ */
+
 namespace PointOfSale.ItemSelection
 {
     /// <summary>
