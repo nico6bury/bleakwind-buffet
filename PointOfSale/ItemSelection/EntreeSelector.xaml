@@ -19,7 +19,7 @@
         </Grid.RowDefinitions>
 
         <Grid.Resources>
-            <Style TargetType="Button">
+            <Style TargetType="local:ItemButton">
                 <Setter Property="ContentTemplate">
                     <Setter.Value>
                         <DataTemplate>
@@ -32,27 +32,34 @@
             </Style>
         </Grid.Resources>
 
-        <Button Grid.Column="0" Grid.Row="0" FontSize="20">
+        <local:ItemButton Grid.Column="0" Grid.Row="0" FontSize="20" Click="GetSelectedItem"
+                          x:Name="bbButton">
             Briarheart Burger
-        </Button>
-        <Button Grid.Column="1" Grid.Row="0" FontSize="20">
+        </local:ItemButton>
+        <local:ItemButton Grid.Column="1" Grid.Row="0" FontSize="20" Click="GetSelectedItem"
+                          x:Name="ddButton">
             Double Draugr
-        </Button>
-        <Button Grid.Column="2" Grid.Row="0" FontSize="20">
+        </local:ItemButton>
+        <local:ItemButton Grid.Column="2" Grid.Row="0" FontSize="20" Click="GetSelectedItem"
+                          x:Name="ttButton">
             Thalmor Triple
-        </Button>
-        <Button Grid.Column="0" Grid.Row="1" FontSize="20">
+        </local:ItemButton>
+        <local:ItemButton Grid.Column="0" Grid.Row="1" FontSize="20" Click="GetSelectedItem"
+                          x:Name="ssButton">
             Smokehouse Skeleton
-        </Button>
-        <Button Grid.Column="1" Grid.Row="1" FontSize="20">
+        </local:ItemButton>
+        <local:ItemButton Grid.Column="1" Grid.Row="1" FontSize="20" Click="GetSelectedItem"
+                          x:Name="gooButton">
             Garden Orc Omelette
-        </Button>
-        <Button Grid.Column="2" Grid.Row="1" FontSize="20">
+        </local:ItemButton>
+        <local:ItemButton Grid.Column="2" Grid.Row="1" FontSize="20" Click="GetSelectedItem"
+                          x:Name="ppButton">
             Philly Poacher
-        </Button>
-        <Button Grid.Column="0" Grid.Row="2" FontSize="20">
+        </local:ItemButton>
+        <local:ItemButton Grid.Column="0" Grid.Row="2" FontSize="20" Click="GetSelectedItem"
+                          x:Name="ttbButton">
             Thugs T-Bone
-        </Button>
+        </local:ItemButton>
 
         <Button Grid.Column="1" Grid.Row="2" FontSize="20" Name="backButton"
                 Grid.ColumnSpan="2" Click="GoBack">
