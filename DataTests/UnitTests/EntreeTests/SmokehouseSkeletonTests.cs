@@ -116,5 +116,29 @@ namespace BleakwindBuffet.DataTests.UnitTests.EntreeTests
             string name = "Smokehouse Skeleton";
             Assert.Equal(name, ss.ToString());
         }//end test
+
+        [Theory]
+        [InlineData("SausageLink")]
+        [InlineData("Egg")]
+        [InlineData("HashBrowns")]
+        [InlineData("Pancake")]
+        public void ChangingPropertiesNotifiesPropertiesChange(string property)
+        {
+            var ss = new SmokehouseSkeleton();
+            Assert.PropertyChanged(ss, property, () =>
+            {
+                ss.SausageLink = true;
+                ss.Egg = true;
+                ss.HashBrowns = true;
+                ss.Pancake = true;
+            });
+            Assert.PropertyChanged(ss, property, () =>
+            {
+                ss.SausageLink = false;
+                ss.Egg = false;
+                ss.HashBrowns = false;
+                ss.Pancake = false;
+            });
+        }//end test
     }//end class
 }//end namespace

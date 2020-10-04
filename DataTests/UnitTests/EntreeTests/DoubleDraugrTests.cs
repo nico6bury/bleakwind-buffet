@@ -189,5 +189,41 @@ namespace BleakwindBuffet.DataTests.UnitTests.EntreeTests
             string name = "Double Draugr";
             Assert.Equal(name, dd.ToString());
         }//end test
+
+        [Theory]
+        [InlineData("Bun")]
+        [InlineData("Ketchup")]
+        [InlineData("Mustard")]
+        [InlineData("Pickle")]
+        [InlineData("Cheese")]
+        [InlineData("Tomato")]
+        [InlineData("Lettuce")]
+        [InlineData("Mayo")]
+        public void ChangingPropertiesNotifiesPropertiesChange(string property)
+        {
+            var dd = new DoubleDraugr();
+            Assert.PropertyChanged(dd, property, () =>
+            {
+                dd.Bun = true;
+                dd.Ketchup = true;
+                dd.Mustard = true;
+                dd.Pickle = true;
+                dd.Cheese = true;
+                dd.Tomato = true;
+                dd.Lettuce = true;
+                dd.Mayo = true;
+            });
+            Assert.PropertyChanged(dd, property, () =>
+            {
+                dd.Bun = false;
+                dd.Ketchup = false;
+                dd.Mustard = false;
+                dd.Pickle = false;
+                dd.Cheese = false;
+                dd.Tomato = false;
+                dd.Lettuce = false;
+                dd.Mayo = false;
+            });
+        }//end test
     }//end class
 }//end namespace

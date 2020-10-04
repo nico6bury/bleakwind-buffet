@@ -115,5 +115,29 @@ namespace BleakwindBuffet.DataTests.UnitTests.EntreeTests
             string name = "Garden Orc Omelette";
             Assert.Equal(name, goo.ToString());
         }//end test
+
+        [Theory]
+        [InlineData("Broccoli")]
+        [InlineData("Mushrooms")]
+        [InlineData("Tomato")]
+        [InlineData("Cheddar")]
+        public void ChangingPropertiesNotifiesPropertiesChange(string property)
+        {
+            var goo = new GardenOrcOmelette();
+            Assert.PropertyChanged(goo, property, () =>
+            {
+                goo.Broccoli = true;
+                goo.Mushrooms = true;
+                goo.Tomato = true;
+                goo.Cheddar = true;
+            });
+            Assert.PropertyChanged(goo, property, () =>
+            {
+                goo.Broccoli = false;
+                goo.Mushrooms = false;
+                goo.Tomato = false;
+                goo.Cheddar = false;
+            });
+        }//end test
     }//end class
 }//end namespace

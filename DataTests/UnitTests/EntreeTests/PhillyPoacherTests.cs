@@ -98,5 +98,26 @@ namespace BleakwindBuffet.DataTests.UnitTests.EntreeTests
             string name = "Philly Poacher";
             Assert.Equal(name, pp.ToString());
         }//end test
+
+        [Theory]
+        [InlineData("Sirloin")]
+        [InlineData("Onion")]
+        [InlineData("Roll")]
+        public void ChangingPropertiesNotifiesPropertiesChange(string property)
+        {
+            var pp = new PhillyPoacher();
+            Assert.PropertyChanged(pp, property, () =>
+            {
+                pp.Sirloin = true;
+                pp.Onion = true;
+                pp.Roll = true;
+            });
+            Assert.PropertyChanged(pp, property, () =>
+            {
+                pp.Sirloin = false;
+                pp.Onion = false;
+                pp.Roll = false;
+            });
+        }//end test
     }//end class
 }//end namespace
