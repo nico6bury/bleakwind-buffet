@@ -140,14 +140,27 @@ namespace PointOfSale.ItemSelection
 
                 //2. Send that object to ItemCustomizer and switch screens
                 // to show ItemCustomizer
-                //send object to ItemCustomizer
-                SendToCustomizer(mostRecentButton);
+                if((string)mostRecentButton.Content == "Sailor's Soda")
+                {
+                    //switch screens
+                    ItemSelector.itemSelector.Child = ItemSelector.fs;
+                    //send the item to FlavorSelector
+                    ItemSelector.fs.InitializeItem(item, mostRecentButton);
+                    //reset the buttons here so it's consistent and doesn't look wonky
+                    ResetButtons();
+                }//end if we need to get flavor
+                else
+                {
+                    //send object to ItemCustomizer
+                    SendToCustomizer(mostRecentButton);
 
-                //Switch Screens
-                ItemSelector.itemSelector.Child = ItemSelector.ic;
+                    //Switch Screens
+                    ItemSelector.itemSelector.Child = ItemSelector.ic;
 
-                //Reset the buttons here, now that we've switched screens
-                ResetButtons();
+                    //Reset the buttons here, now that we've switched screens
+                    ResetButtons();
+                }//end else we can just go right along
+                
             }//end if the right type sent the event
         }//end GotSize event handler
 

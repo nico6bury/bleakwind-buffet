@@ -66,6 +66,11 @@ namespace PointOfSale.ItemSelection
         /// </summary>
         public static ItemCustomizer ic = new ItemCustomizer();
 
+        /// <summary>
+        /// Allows the user to select a flavor for their soda
+        /// </summary>
+        public static FlavorSelector fs = new FlavorSelector();
+
         public ItemSelector()
         {
             InitializeComponent();

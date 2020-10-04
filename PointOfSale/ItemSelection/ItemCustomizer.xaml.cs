@@ -29,9 +29,7 @@ namespace PointOfSale.ItemSelection
     /// </summary>
 
     public partial class ItemCustomizer : UserControl
-    {
-        public event PropertyChangedEventHandler PropertyChanged;
-        
+    {        
         /// <summary>
         /// indicates which page the user was on when they were sent here.
         /// For the current implementation, this should be Side, Drink, or 
@@ -109,6 +107,9 @@ namespace PointOfSale.ItemSelection
                     break;
                 case "Entree":
                     ItemSelector.itemSelector.Child = ItemSelector.es;
+                    break;
+                case "FlavorSelector":
+                    ItemSelector.itemSelector.Child = ItemSelector.fs;
                     break;
                 default:
                     ItemSelector.itemSelector.Child = ItemSelector.ics;
