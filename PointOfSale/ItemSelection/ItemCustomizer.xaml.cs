@@ -148,11 +148,6 @@ namespace PointOfSale.ItemSelection
             ItemSelector.itemSelector.Child = ItemSelector.ics;
         }//end AddItem event handler
 
-        public T GetInstance<T>(string type)
-        {
-            return (T)Activator.CreateInstance(Type.GetType(type));
-        }//end GetInstance
-
         ///make methods to handle the names and values of the bools
     }//end partial class
 }//end namespace

@@ -85,14 +85,14 @@ namespace PointOfSale.ItemSelection
                 }//end switch case to determine item type
 
                 //send item to ItemCustomizer
-                SendToCustomizer(button, item);
+                SendToCustomizer(item);
 
                 //Switch Screens
                 ItemSelector.itemSelector.Child = ItemSelector.ic;
             }//end if sender is right type
         }//end GetSelectedItem event handler
 
-        private void SendToCustomizer(ItemButton sender, dynamic item)
+        private void SendToCustomizer(dynamic item)
         {
             ItemSelector.ic.cameFrom = "Entree";
             ItemSelector.ic.GetBooleanVars(item);

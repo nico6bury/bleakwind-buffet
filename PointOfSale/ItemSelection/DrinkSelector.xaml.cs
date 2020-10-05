@@ -25,8 +25,16 @@ namespace PointOfSale.ItemSelection
     /// </summary>
     public partial class DrinkSelector : UserControl
     {
+        /// <summary>
+        /// These are the buttons that appear which allow 
+        /// the user to select the size of an item
+        /// </summary>
         List<Button> SizeButtons;
-
+        
+        /// <summary>
+        /// This holds the main button which was most recently pressed
+        /// This is a vital variable that I don't know how I'd go without
+        /// </summary>=
         ItemButton mostRecentButton;
 
         public DrinkSelector()
