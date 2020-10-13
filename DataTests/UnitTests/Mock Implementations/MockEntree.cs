@@ -89,5 +89,14 @@ namespace BleakwindBuffet.DataTests.UnitTests.Mock_Implementations
         {
             this.GenericOption = GenericOption;
         }//end 1-arg constructor
+
+        /// <summary>
+        /// returns a string representation of this object
+        /// </summary>
+        /// <returns></returns>
+        public override string ToString()
+        {
+            return "MockEntree";
+        }//end ToString()
     }//end GenericEntree
 }//end namespace
