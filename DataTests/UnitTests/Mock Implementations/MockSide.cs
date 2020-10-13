@@ -1,5 +1,6 @@
 ﻿using BleakwindBuffet.Data;
 using BleakwindBuffet.Data.Enums;
+using BleakwindBuffet.Data.Sides;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -16,18 +17,18 @@ namespace BleakwindBuffet.DataTests.UnitTests.Mock_Implementations
     /// <summary>
     /// A mock implementation for the Side class
     /// </summary>
-    public class MockSide : IOrderItem
+    public class MockSide : Side, IOrderItem
     {
         /// <summary>
         /// an event to call when the properties change
         /// </summary>
-        public event PropertyChangedEventHandler PropertyChanged;
+        public event PropertyChangedEventHandler PropertyChangedM;
 
         private Size size = Size.Small;
         /// <summary>
         /// the side of this item
         /// </summary>
-        public Size Size
+        public override Size Size
         {
             get { return size; }
             set
@@ -35,9 +36,9 @@ namespace BleakwindBuffet.DataTests.UnitTests.Mock_Implementations
                 if(size != value)
                 {
                     size = value;
-                    PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Size"));
-                    PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Price"));
-                    PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Calories"));
+                    PropertyChangedM?.Invoke(this, new PropertyChangedEventArgs("Size"));
+                    PropertyChangedM?.Invoke(this, new PropertyChangedEventArgs("Price"));
+                    PropertyChangedM?.Invoke(this, new PropertyChangedEventArgs("Calories"));
                 }//end if the property actually changed
             }//end setter
         }//end Size
@@ -45,7 +46,7 @@ namespace BleakwindBuffet.DataTests.UnitTests.Mock_Implementations
         /// <summary>
         /// the price of this item
         /// </summary>
-        public double Price
+        public override double Price
         {
             get
             {
@@ -66,7 +67,7 @@ namespace BleakwindBuffet.DataTests.UnitTests.Mock_Implementations
         /// <summary>
         /// the number of calories of energy this item contains
         /// </summary>
-        public uint Calories
+        public override uint Calories
         {
             get
             {
@@ -96,8 +97,8 @@ namespace BleakwindBuffet.DataTests.UnitTests.Mock_Implementations
                 if (genericOption != value)
                 {
                     genericOption = value;
-                    PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("GenericOption"));
-                    PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("SpecialInstructions"));
+                    PropertyChangedM?.Invoke(this, new PropertyChangedEventArgs("GenericOption"));
+                    PropertyChangedM?.Invoke(this, new PropertyChangedEventArgs("SpecialInstructions"));
                 }//end if the property is actually changing
             }//end setter
         }//end GenericOption
@@ -105,7 +106,7 @@ namespace BleakwindBuffet.DataTests.UnitTests.Mock_Implementations
         /// <summary>
         /// returns a list of special instructions for this item
         /// </summary>
-        public List<string> SpecialInstructions
+        public override List<string> SpecialInstructions
         {
             get
             {

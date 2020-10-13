@@ -16,17 +16,17 @@ namespace BleakwindBuffet.DataTests.UnitTests.Mock_Implementations
     /// <summary>
     /// A mock implementation for the entree class
     /// </summary>
-    public class MockEntree : IOrderItem
+    public class MockEntree : Entree, IOrderItem
     {
         /// <summary>
         /// event called when one of this item's properties changes
         /// </summary>
-        public event PropertyChangedEventHandler PropertyChanged;
+        public event PropertyChangedEventHandler PropertyChangedM;
 
         /// <summary>
         /// the price of this item
         /// </summary>
-        public double Price
+        public override double Price
         {
             get { return 3.99; }
         }//end Price
@@ -34,7 +34,7 @@ namespace BleakwindBuffet.DataTests.UnitTests.Mock_Implementations
         /// <summary>
         /// the calories of this item
         /// </summary>
-        public uint Calories
+        public override uint Calories
         {
             get { return 400; }
         }//end Calories
@@ -51,8 +51,8 @@ namespace BleakwindBuffet.DataTests.UnitTests.Mock_Implementations
                 if(genericOption != value)
                 {
                     genericOption = value;
-                    PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("GenericOption"));
-                    PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("SpecialInstructions"));
+                    PropertyChangedM?.Invoke(this, new PropertyChangedEventArgs("GenericOption"));
+                    PropertyChangedM?.Invoke(this, new PropertyChangedEventArgs("SpecialInstructions"));
                 }//end if the property is actually changing
             }//end setter
         }//end GenericOption
@@ -60,7 +60,7 @@ namespace BleakwindBuffet.DataTests.UnitTests.Mock_Implementations
         /// <summary>
         /// the special instructions for this item
         /// </summary>
-        public List<string> SpecialInstructions
+        public override List<string> SpecialInstructions
         {
             get
             {
