@@ -81,6 +81,7 @@ namespace PointOfSale.ShopingCart
 
         public void RemoveItem(object sender, RoutedEventArgs e)
         {
+            //crashes if user hits button again without selecting other item
             int index = orderItems.SelectedIndex;
             items.RemoveAt(index);
             UpdateItems();
