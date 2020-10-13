@@ -210,7 +210,7 @@ namespace BleakwindBuffet.Data
                     throw new NotImplementedException("NotifyCollectionChangedAction." + 
                         e.Action + " not supported.");
             }
-        }//end CollectionChangedListener(sender, e)
+        }//end CollectionChangedListener event handler
 
         /// <summary>
         /// event handler for when the properties of one of the items in 
@@ -229,7 +229,7 @@ namespace BleakwindBuffet.Data
                 //notify that the collection changed
                 CollectionChanged?.Invoke(this, new NotifyCollectionChangedEventArgs(NotifyCollectionChangedAction.Replace));
             }//end if property is size
-        }//end CollectionItemChangedListener(sender, e)
+        }//end CollectionItemChangedListener event handler
 
         public IEnumerator<IOrderItem> GetEnumerator()
         {
