@@ -124,7 +124,25 @@ namespace BleakwindBuffet.Data
             }//end getter
         }//end property
 
-        public int Count { get; private set; } = 0;
+        /// <summary>
+        /// the number of IOrderItems stored in this object
+        /// </summary>
+        public int Count
+        {
+            get
+            {
+                return data.Count;
+            }//end getter
+        }//end property
+
+        /// <summary>
+        /// just a normal indexer
+        /// </summary>
+        public IOrderItem this[int index]
+        {
+            get { return data[index]; }
+            set { data[index] = value; }
+        }//end indexer
 
         public Order()
         {
@@ -137,6 +155,7 @@ namespace BleakwindBuffet.Data
         public void Add(IOrderItem item)
         {
             data.Add(item);
+
             CollectionChanged?.Invoke(this, new NotifyCollectionChangedEventArgs(NotifyCollectionChangedAction.Add));
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Subtotal"));
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Tax"));
@@ -147,6 +166,7 @@ namespace BleakwindBuffet.Data
         public void Clear()
         {
             data.Clear();
+
             CollectionChanged?.Invoke(this, new NotifyCollectionChangedEventArgs(NotifyCollectionChangedAction.Reset));
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Subtotal"));
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Tax"));
@@ -167,11 +187,13 @@ namespace BleakwindBuffet.Data
         public bool Remove(IOrderItem item)
         {
             bool outcome = data.Remove(item);
+
             CollectionChanged?.Invoke(this, new NotifyCollectionChangedEventArgs(NotifyCollectionChangedAction.Remove));
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Subtotal"));
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Tax"));
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Total"));
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Calories"));
+
             return outcome;
         }//end Remove(item)
 
