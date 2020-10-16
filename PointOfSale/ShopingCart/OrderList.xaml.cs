@@ -26,6 +26,8 @@ namespace PointOfSale.ShopingCart
 {
     /// <summary>
     /// Interaction logic for OrderList.xaml
+    /// TODO:
+    /// Allow the user to customize items after they've been entered
     /// </summary>
     public partial class OrderList : UserControl
     {
