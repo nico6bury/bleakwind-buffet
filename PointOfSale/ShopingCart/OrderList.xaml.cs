@@ -47,16 +47,16 @@ namespace PointOfSale.ShopingCart
             List<string> updated = new List<string>();
             foreach(IOrderItem item in items)
             {
-                StringBuilder sb = new StringBuilder();
-                sb.Append(item.ToString());
-                sb.Append("\t"); // the space between the item name and its calories
+                //StringBuilder sb = new StringBuilder();
+                //sb.Append(items.BuildString(item)); //sb.Append(item.ToString());
+                //sb.Append("\t"); // the space between the item name and its calories
                 
                 //sb.Append(item.Calories);
                 //sb.Append("calories");
                 //sb.Append(" "); // the space between the item calories and its price
-                sb.Append("$");
-                sb.Append(item.Price);
-                updated.Add(sb.ToString());
+                //sb.Append("$");
+                //sb.Append(item.Price);
+                updated.Add(items.BuildString(item));
             }//end putting each item from items into updated
 
             orderItems.Items.Clear();
@@ -74,11 +74,11 @@ namespace PointOfSale.ShopingCart
         public void UpdateTotal()
         {
             StringBuilder totalBuilder = new StringBuilder();
-            totalBuilder.Append("Subtotal");
+            totalBuilder.Append("Subtotal: $");
             totalBuilder.Append(items.Subtotal);
-            totalBuilder.Append("\nTax");
+            totalBuilder.Append("\nTax: $");
             totalBuilder.Append(items.Tax);
-            totalBuilder.Append("\nTotal");
+            totalBuilder.Append("\nTotal: $");
             totalBuilder.Append(items.Total);
 
             orderTotalTextBlock.Text = totalBuilder.ToString();

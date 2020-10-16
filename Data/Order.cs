@@ -80,7 +80,7 @@ namespace BleakwindBuffet.Data
         {
             get
             {
-                return Math.Round(SalesTaxRate * Total, 2);
+                return Math.Round(SalesTaxRate * Subtotal, 2);
             }//end getter
         }//end property
 
@@ -158,6 +158,74 @@ namespace BleakwindBuffet.Data
             Number = nextOrderNumber;
             nextOrderNumber++;
         }//end no-arg constructor
+
+        /// <summary>
+        /// Builds a combination of the ToString and SpecialInstructions
+        /// </summary>
+        /// <param name="item">The item in the list to build the string from</param>
+        /// <returns>returns a nice combination of the ToString and 
+        /// SpecialInstructions()</returns>
+        public string BuildString(IOrderItem item)
+        {
+            if (!data.Contains(item))
+            {
+                throw new ArgumentException("that item is not in the list");
+            }//end if the item isn't in the list
+            else
+            {
+                return BuildStringHelper(item);
+            }//end else the item is properly in the list
+        }//end BuildString(item)
+
+        /// <summary>
+        /// Builds a combination of the ToString and SpecialInstructions
+        /// </summary>
+        /// <param name="index">The index of the item in this list to build
+        /// a string from</param>
+        /// <returns>returns a nice combination of the ToString and 
+        /// SpecialInstructions()</returns>
+        public string BuildString(int index)
+        {
+            if(index < 0 || index > data.Count)
+            {
+                throw new IndexOutOfRangeException("Index out of range of data");
+            }//end if index is out of range
+            else
+            {
+                return BuildStringHelper(data[index]);
+            }//end else the index is more or less in range
+        }//end BuildString(index)
+
+        /// <summary>
+        /// actually goes ahead and builds the string which gets returned
+        /// </summary>
+        /// <param name="item">the item whose information will be used in the
+        /// string. It needs to implement IOrderItem and have a properly 
+        /// implemented ToString() and SpecialInstructions() method</param>
+        /// <returns>returns a nice combination of the ToString and 
+        /// SpecialInstructions()</returns>
+        private string BuildStringHelper(IOrderItem item)
+        {
+            string itemName = item.ToString();
+
+            List<string> instructions = item.SpecialInstructions;
+            
+            StringBuilder helper = new StringBuilder();
+
+            helper.Append(" ");
+            helper.Append(itemName);
+
+            helper.Append("\t$");
+            helper.Append(item.Price);
+
+            foreach(string str in instructions)
+            {
+                helper.Append("\n- ");
+                helper.Append(str);
+            }//end foreach string in instructions
+
+            return helper.ToString();
+        }//end BuildStringHelper(item)
 
         /// <summary>
         /// adds an item to the order
