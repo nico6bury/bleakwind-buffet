@@ -55,7 +55,7 @@ namespace PointOfSale
             curIndex = lists.Count;
             lists.Add(list);
             orderBorder.Child = list;
-            list.orderListCustName.Text = "Customer Name " + (curIndex+1);
+            list.orderListCustName.Text = "Order " + list.items.Number; //(curIndex+1);
             EnableOrDisableButtons();
             UpdateOrderListNumber();
         }//end AddNewOrder event handler
@@ -103,13 +103,22 @@ namespace PointOfSale
         /// <param name="e"></param>
         public void RemoveOrder(object sender, RoutedEventArgs e)
         {
-            lists.RemoveAt(curIndex);
-            curIndex--;
-            if (curIndex < 0) curIndex = 0;
-            if (lists.Count < 1) AddNewOrder(null, null);
-            UpdateOrderListNumber();
-            EnableOrDisableButtons();
-            orderBorder.Child = lists[curIndex];
+            if(lists.Count <= 1)
+            {
+                lists[curIndex].items.Clear();
+                lists[curIndex].UpdateItems();
+                lists[curIndex].UpdateTotal();
+            }//end if there's only one order
+            else
+            {
+                lists.RemoveAt(curIndex);
+                curIndex--;
+                if (curIndex < 0) curIndex = 0;
+                if (lists.Count < 1) AddNewOrder(null, null);
+                UpdateOrderListNumber();
+                EnableOrDisableButtons();
+                orderBorder.Child = lists[curIndex];
+            }//end else we can go ahead and remove one
         }//end RemoveOrder event handler
 
         /// <summary>

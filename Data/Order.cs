@@ -18,7 +18,7 @@ namespace BleakwindBuffet.Data
     /// <summary>
     /// Represents a collection of IOrderItems
     /// </summary>
-    class Order : ICollection<IOrderItem>, INotifyCollectionChanged, INotifyPropertyChanged
+    public class Order : ICollection<IOrderItem>, INotifyCollectionChanged, INotifyPropertyChanged
     {
         /// <summary>
         /// event that is called when the collection changes
@@ -42,6 +42,9 @@ namespace BleakwindBuffet.Data
         /// </summary>
         private static int nextOrderNumber = 1;
 
+        /// <summary>
+        /// the order number, should be unique to each order object
+        /// </summary>
         public int Number;
 
         /// <summary>
@@ -89,11 +92,11 @@ namespace BleakwindBuffet.Data
             get
             {
                 double totalPrice = 0;
-                foreach(IOrderItem item in data)
+                for(int i = 0; i < data.Count; i++)
                 {
-                    totalPrice += item.Price;
+                    totalPrice += data[i].Price;
                 }//end adding price up foreach item
-                return Math.Round(totalPrice, 2);
+                return Math.Round(totalPrice, 2); //this seems to cause a stack overflow?
             }//end getter
         }//end property
 
@@ -144,6 +147,10 @@ namespace BleakwindBuffet.Data
             set { data[index] = value; }
         }//end indexer
 
+        /// <summary>
+        /// constuctor to set things up, sets SalesTaxRate to .12
+        /// by default
+        /// </summary>
         public Order()
         {
             SalesTaxRate = 0.12;
@@ -152,6 +159,10 @@ namespace BleakwindBuffet.Data
             nextOrderNumber++;
         }//end no-arg constructor
 
+        /// <summary>
+        /// adds an item to the order
+        /// </summary>
+        /// <param name="item">the item you're adding</param>
         public void Add(IOrderItem item)
         {
             data.Add(item);
@@ -196,6 +207,22 @@ namespace BleakwindBuffet.Data
 
             return outcome;
         }//end Remove(item)
+
+        /// <summary>
+        /// Removes an item in the Order at a particular index
+        /// </summary>
+        /// <param name="index">the zero based index at which to
+        /// remove the item</param>
+        public void RemoveAt(int index)
+        {
+            data.RemoveAt(index);
+
+            CollectionChanged?.Invoke(this, new NotifyCollectionChangedEventArgs(NotifyCollectionChangedAction.Remove));
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Subtotal"));
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Tax"));
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Total"));
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Calories"));
+        }//end RemoveAt(index)
 
         /// <summary>
         /// event handler for a collection change

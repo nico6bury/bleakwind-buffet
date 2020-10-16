@@ -268,8 +268,8 @@ namespace BleakwindBuffet.Data
             if(e.PropertyName == "Size")
             {
                 //calories, price, and the item which changed are changed
-                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Calories"));
                 PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Price"));
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Calories"));
             }//end if the Size changed
             if(e.PropertyName == "SpecialInstructions")
             {

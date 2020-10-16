@@ -15,8 +15,8 @@
                  FontSize="20" Name="orderListCustName"/>
 
 
-        <Border DockPanel.Dock="Bottom" Height="20" BorderThickness="1" BorderBrush="SlateGray">
-            <TextBlock Name="orderTotalTextBlock" TextAlignment="Center">
+        <Border DockPanel.Dock="Bottom" Height="50" BorderThickness="1" BorderBrush="SlateGray">
+            <TextBlock Name="orderTotalTextBlock" TextAlignment="Center" TextWrapping="Wrap">
                 Total goes here
             </TextBlock>
         </Border>

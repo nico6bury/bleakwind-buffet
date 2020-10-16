@@ -29,12 +29,12 @@ namespace PointOfSale.ShopingCart
     /// </summary>
     public partial class OrderList : UserControl
     {
-        public List<IOrderItem> items;
+        public Order items;
 
         public OrderList()
         {
             InitializeComponent();
-            items = new List<IOrderItem>();
+            items = new Order();
             UpdateItems();
         }//end constructor
 
@@ -68,23 +68,41 @@ namespace PointOfSale.ShopingCart
             UpdateTotal();
         }//end AddItem(item)
 
+        /// <summary>
+        /// Update the total to be correct
+        /// </summary>
         public void UpdateTotal()
         {
-            decimal total = 0M;
-            foreach(IOrderItem item in items)
-            {
-                total += (decimal)item.Price;
-            }//end adding item prices to total
+            StringBuilder totalBuilder = new StringBuilder();
+            totalBuilder.Append("Subtotal");
+            totalBuilder.Append(items.Subtotal);
+            totalBuilder.Append("\nTax");
+            totalBuilder.Append(items.Tax);
+            totalBuilder.Append("\nTotal");
+            totalBuilder.Append(items.Total);
 
-            orderTotalTextBlock.Text = "Order Total: " + total.ToString("C2");
+            orderTotalTextBlock.Text = totalBuilder.ToString();
         }//end UpdateTotal()
 
+        /// <summary>
+        /// Removes the selected item
+        /// </summary>
         public void RemoveItem(object sender, RoutedEventArgs e)
         {
             //crashes if user hits button again without selecting other item
-            int index = orderItems.SelectedIndex;
-            items.RemoveAt(index);
-            UpdateItems();
+            try
+            {
+                int index = orderItems.SelectedIndex;
+                items.RemoveAt(index);
+                UpdateItems();
+            }//end try
+            catch(ArgumentException)
+            {
+                MessageBox.Show("It seems you have clicked the \"remove selected index" +
+                    "\" button without selecting anything. Please actually select " +
+                    "something.", "You didn't select anything.", MessageBoxButton.OK,
+                    MessageBoxImage.Error);
+            }//end catch
         }//end RemoveItem event handler
     }//end partial class
 }//end namespace
