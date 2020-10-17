@@ -98,9 +98,7 @@ namespace PointOfSale
         /// </summary>
         private void SendToCustomizer()
         {
-            ItemSelector.ic.cameFrom = "FlavorSelector";
-            ItemSelector.ic.GetBooleanVars(item);
-            ItemSelector.ic.PopulateCheckBoxes();
+            ItemSelector.ic.GetBooleanVars(item, false, this);
         }//end SendToCustomizer
 
         /// <summary>

@@ -32,10 +32,10 @@ namespace PointOfSale.ItemSelection
     {        
         /// <summary>
         /// indicates which page the user was on when they were sent here.
-        /// For the current implementation, this should be Side, Drink, or 
-        /// Entree
+        /// The object that gets sent will probably have been initializaed in
+        /// ItemSelector
         /// </summary>
-        public string cameFrom;
+        public UserControl cameFrom;
         /// <summary>
         /// holds all the boolean variables for item
         /// </summary>
@@ -50,6 +50,12 @@ namespace PointOfSale.ItemSelection
         /// The list of checkboxes which get dynamically displayed
         /// </summary>
         List<CheckBox> checkBoxes;
+
+        /// <summary>
+        /// if true, addItem will return user to the main menu screen, otherwise
+        /// the user will be returned to cameFrom
+        /// </summary>
+        bool returnToMenu;
         
         public ItemCustomizer()
         {
@@ -57,8 +63,34 @@ namespace PointOfSale.ItemSelection
             checkBoxes = new List<CheckBox>();
         }//end constructor
 
-        public void GetBooleanVars(dynamic item)
+        /// <summary>
+        /// constructor that also calls GetBooleanVars along with setting everything else up
+        /// </summary>
+        /// <param name="item">the item to customize</param>
+        /// <param name="returnToMenu">whether or not you should return to the main
+        /// menu after adding the item or not</param>
+        /// <param name="cameFrom">the screen that you came from before switching to
+        /// this screen</param>
+        public ItemCustomizer(dynamic item, bool returnToMenu, UserControl cameFrom)
         {
+            InitializeComponent();
+            checkBoxes = new List<CheckBox>();
+            GetBooleanVars(item, returnToMenu, cameFrom);
+        }//end 3-arg constructor
+
+        /// <summary>
+        /// Gets everything set up with the specified item.
+        /// </summary>
+        /// <param name="item">the item to customize</param>
+        /// <param name="returnToMenu">whether or not you should return to the main
+        /// menu after adding the item or not</param>
+        /// <param name="cameFrom">the screen that you came from before switching to
+        /// this screen</param>
+        public void GetBooleanVars(dynamic item, bool returnToMenu, UserControl cameFrom)
+        {
+            this.returnToMenu = returnToMenu;
+            this.cameFrom = cameFrom;
+
             PropertyInfo[] allFields = item.GetType().GetProperties();//sender.T.GetProperties();
             this.item = item;//Activator.CreateInstance(sender.T);
             List<PropertyInfo> tempBools = new List<PropertyInfo>();
@@ -71,6 +103,8 @@ namespace PointOfSale.ItemSelection
                 }//end if current Field is of type bool
             }//end looping to get all bools from allFields
             allBools = tempBools;
+
+            PopulateCheckBoxes();
         }//end GetBooleanVars(objs)
 
         /// <summary>
@@ -101,29 +135,9 @@ namespace PointOfSale.ItemSelection
         /// Event hander for back button, take you back to last page
         /// you were at.
         /// </summary>
-        public void GoBack(object sender, RoutedEventArgs e)
+        private void GoBack(object sender, RoutedEventArgs e)
         {
-            switch (cameFrom)
-            {
-                case "Side":
-                    ItemSelector.itemSelector.Child = ItemSelector.ss;
-                    break;
-                case "Drink":
-                    ItemSelector.itemSelector.Child = ItemSelector.ds;
-                    break;
-                case "Entree":
-                    ItemSelector.itemSelector.Child = ItemSelector.es;
-                    break;
-                case "FlavorSelector":
-                    ItemSelector.itemSelector.Child = ItemSelector.fs;
-                    break;
-                default:
-                    ItemSelector.itemSelector.Child = ItemSelector.ics;
-                    MessageBox.Show("Error: Previous Page is unidentified, returning" +
-                        " to main menu.", "Unidentified Source", MessageBoxButton.OK,
-                        MessageBoxImage.Error);
-                    break;
-            }//end leaving to other pages depending on where we came from
+            ItemSelector.itemSelector.Child = cameFrom;
         }//end GoBack event handler
 
         /// <summary>
@@ -133,7 +147,7 @@ namespace PointOfSale.ItemSelection
         /// properties of item to be equal to what the user set, all in
         /// a super cool way using reflection. 
         /// </summary>
-        public void AddItem(object sender, RoutedEventArgs e)
+        private void AddItem(object sender, RoutedEventArgs e)
         {
             //update the item with the correct property values
             for(int i = 0; i < allBools.Count; i++)
@@ -147,7 +161,5 @@ namespace PointOfSale.ItemSelection
             //switch screens back to the main window
             ItemSelector.itemSelector.Child = ItemSelector.ics;
         }//end AddItem event handler
-
-        ///make methods to handle the names and values of the bools
     }//end partial class
 }//end namespace

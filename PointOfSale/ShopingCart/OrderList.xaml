@@ -23,6 +23,10 @@
         <Button DockPanel.Dock="Bottom" Height="25" Name="removeButton" Click="RemoveItem">
             Remove Selected Item
         </Button>
+        <Button DockPanel.Dock="Bottom" Height="25"
+                Click="EditItem">
+            Edit Selected Item
+        </Button>
         <ListView Name="orderItems" DockPanel.Dock="Bottom"/>
     </DockPanel>
 </UserControl>

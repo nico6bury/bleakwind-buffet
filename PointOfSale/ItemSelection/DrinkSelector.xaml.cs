@@ -190,9 +190,7 @@ namespace PointOfSale.ItemSelection
 
         private void SendToCustomizer(dynamic item)
         {
-            ItemSelector.ic.cameFrom = "Drink";
-            ItemSelector.ic.GetBooleanVars(item);
-            ItemSelector.ic.PopulateCheckBoxes();
+            ItemSelector.ic.GetBooleanVars(item, false, this);
         }//end SendToCustomizer()
     }//end partial class
 }//end namespace

@@ -94,9 +94,7 @@ namespace PointOfSale.ItemSelection
 
         private void SendToCustomizer(dynamic item)
         {
-            ItemSelector.ic.cameFrom = "Entree";
-            ItemSelector.ic.GetBooleanVars(item);
-            ItemSelector.ic.PopulateCheckBoxes();
-        }
+            ItemSelector.ic.GetBooleanVars(item, false, this);
+        }//end SendToCustomizer(item)
     }//end partial class
 }//end namespace

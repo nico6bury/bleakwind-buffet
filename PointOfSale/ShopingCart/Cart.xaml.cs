@@ -55,7 +55,7 @@ namespace PointOfSale
             curIndex = lists.Count;
             lists.Add(list);
             orderBorder.Child = list;
-            list.orderListCustName.Text = "Order " + list.items.Number; //(curIndex+1);
+            list.orderListCustName.Text = "Order " + list.order.Number; //(curIndex+1);
             EnableOrDisableButtons();
             UpdateOrderListNumber();
         }//end AddNewOrder event handler
@@ -92,7 +92,7 @@ namespace PointOfSale
         /// <param name="item">The item to be added</param>
         public static void AddItem(IOrderItem item)
         {
-            lists[curIndex].items.Add(item);
+            lists[curIndex].order.Add(item);
             lists[curIndex].UpdateItems();
         }//end AddItem(item)
         
@@ -105,7 +105,7 @@ namespace PointOfSale
         {
             if(lists.Count <= 1)
             {
-                lists[curIndex].items.Clear();
+                lists[curIndex].order.Clear();
                 lists[curIndex].UpdateItems();
                 lists[curIndex].UpdateTotal();
             }//end if there's only one order

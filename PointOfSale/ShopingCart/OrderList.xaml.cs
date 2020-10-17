@@ -14,6 +14,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using PointOfSale.ItemSelection;
 
 /*
  * Author: Nicholas Sixbury
@@ -31,12 +32,12 @@ namespace PointOfSale.ShopingCart
     /// </summary>
     public partial class OrderList : UserControl
     {
-        public Order items;
+        public Order order;
 
         public OrderList()
         {
             InitializeComponent();
-            items = new Order();
+            order = new Order();
             UpdateItems();
         }//end constructor
 
@@ -47,18 +48,9 @@ namespace PointOfSale.ShopingCart
         public void UpdateItems()
         {
             List<string> updated = new List<string>();
-            foreach(IOrderItem item in items)
+            foreach(IOrderItem item in order)
             {
-                //StringBuilder sb = new StringBuilder();
-                //sb.Append(items.BuildString(item)); //sb.Append(item.ToString());
-                //sb.Append("\t"); // the space between the item name and its calories
-                
-                //sb.Append(item.Calories);
-                //sb.Append("calories");
-                //sb.Append(" "); // the space between the item calories and its price
-                //sb.Append("$");
-                //sb.Append(item.Price);
-                updated.Add(items.BuildString(item));
+                updated.Add(order.BuildString(item));
             }//end putting each item from items into updated
 
             orderItems.Items.Clear();
@@ -77,11 +69,11 @@ namespace PointOfSale.ShopingCart
         {
             StringBuilder totalBuilder = new StringBuilder();
             totalBuilder.Append("Subtotal: $");
-            totalBuilder.Append(items.Subtotal);
+            totalBuilder.Append(order.Subtotal);
             totalBuilder.Append("\nTax: $");
-            totalBuilder.Append(items.Tax);
+            totalBuilder.Append(order.Tax);
             totalBuilder.Append("\nTotal: $");
-            totalBuilder.Append(items.Total);
+            totalBuilder.Append(order.Total);
 
             orderTotalTextBlock.Text = totalBuilder.ToString();
         }//end UpdateTotal()
@@ -95,7 +87,7 @@ namespace PointOfSale.ShopingCart
             try
             {
                 int index = orderItems.SelectedIndex;
-                items.RemoveAt(index);
+                order.RemoveAt(index);
                 UpdateItems();
             }//end try
             catch(ArgumentException)
@@ -106,5 +98,33 @@ namespace PointOfSale.ShopingCart
                     MessageBoxImage.Error);
             }//end catch
         }//end RemoveItem event handler
+
+        /// <summary>
+        /// Allows the user to edit the selected item
+        /// </summary>
+        public void EditItem(object sender, RoutedEventArgs e)
+        {
+            //crashes if user hits button again without selecting other item
+            try
+            {
+                //grab the item
+                int index = orderItems.SelectedIndex;
+                dynamic item = order[index];
+
+                ItemSelector.ic.GetBooleanVars(item, false, (UserControl)ItemSelector.itemSelector.Child);
+                ItemSelector.itemSelector.Child = ItemSelector.ic;
+
+                order.Remove(item);
+                UpdateTotal();
+                UpdateItems();
+            }//end try
+            catch (ArgumentException)
+            {
+                MessageBox.Show("It seems you have clicked the \"remove selected index" +
+                    "\" button without selecting anything. Please actually select " +
+                    "something.", "You didn't select anything.", MessageBoxButton.OK,
+                    MessageBoxImage.Error);
+            }//end catch
+        }//end EditItem event handler
     }//end partial class
 }//end namespace
