@@ -158,8 +158,16 @@ namespace PointOfSale.ItemSelection
             //actually ship the item over to the correct OrderList
             Cart.AddItem(item);
 
-            //switch screens back to the main window
-            ItemSelector.itemSelector.Child = ItemSelector.ics;
+            if (returnToMenu)
+            {
+                //switch screens back to the main window
+                ItemSelector.itemSelector.Child = ItemSelector.ics;
+            }//end if we should return to the main menu
+            else
+            {
+                //switch back to whatever screen we came from
+                ItemSelector.itemSelector.Child = cameFrom;
+            }//end else we should return from whence we came
         }//end AddItem event handler
     }//end partial class
 }//end namespace
