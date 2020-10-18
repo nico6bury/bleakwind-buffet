@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PointOfSale.Payment;
+using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Windows;
@@ -70,6 +71,18 @@ namespace PointOfSale.ItemSelection
         /// Allows the user to select a flavor for their soda
         /// </summary>
         public static FlavorSelector fs = new FlavorSelector();
+
+        /// <summary>
+        /// Allows the user to select whether or not they want to pay
+        /// with cash or card
+        /// </summary>
+        public static PaymentOptions po = new PaymentOptions();
+
+        /// <summary>
+        /// Processes the cash and change that the customer will use to
+        /// pay for their food.
+        /// </summary>
+        public static CashProcessing cp = new CashProcessing();
 
         public ItemSelector()
         {

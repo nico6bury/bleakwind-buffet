@@ -6,11 +6,11 @@
         xmlns:local="clr-namespace:PointOfSale" 
         xmlns:local1="clr-namespace:PointOfSale.ItemSelection"
         mc:Ignorable="d"
-        Title="Bleakwind Buffet" Height="450" Width="800">
+        Title="Bleakwind Buffet" Height="450" Width="820">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="1*"/>
-            <ColumnDefinition Width="240"/>
+            <ColumnDefinition Width="260"/>
         </Grid.ColumnDefinitions>
         <Border BorderThickness="1" BorderBrush="SlateGray">
             <Grid>

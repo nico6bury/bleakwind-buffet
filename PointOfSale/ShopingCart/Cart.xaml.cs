@@ -1,4 +1,5 @@
 ﻿using BleakwindBuffet.Data;
+using PointOfSale.ItemSelection;
 using PointOfSale.ShopingCart;
 using System;
 using System.Collections.Generic;
@@ -99,8 +100,6 @@ namespace PointOfSale
         /// <summary>
         /// Removes current order from the list
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
         public void RemoveOrder(object sender, RoutedEventArgs e)
         {
             if(lists.Count <= 1)
@@ -120,6 +119,21 @@ namespace PointOfSale
                 orderBorder.Child = lists[curIndex];
             }//end else we can go ahead and remove one
         }//end RemoveOrder event handler
+
+        /// <summary>
+        /// Checks out the current order and allows the customer to
+        /// initiate payment
+        /// </summary>
+        private void CheckoutOrder(object sender, RoutedEventArgs e)
+        {
+            //set up the next screen and switch screens
+            ItemSelector.po.PreparePage(
+                (UserControl)ItemSelector.itemSelector.Child,
+                lists[curIndex].order);
+
+            //change screens
+            ItemSelector.itemSelector.Child = ItemSelector.po;
+        }//end CheckoutOrder
 
         /// <summary>
         /// Enables or Disables the priorButton and nextButton objects

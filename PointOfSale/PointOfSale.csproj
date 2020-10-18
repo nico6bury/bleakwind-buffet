@@ -7,7 +7,23 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Payment\Images\Cards.jpg" />
+    <None Remove="Payment\Images\Cash.jpg" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\Data\Data.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="RoundRegister">
+      <HintPath>RoundRegister.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Payment\Images\Cards.jpg" />
+    <Resource Include="Payment\Images\Cash.jpg" />
   </ItemGroup>
 
 </Project>

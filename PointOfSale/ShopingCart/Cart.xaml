@@ -26,15 +26,15 @@
             </TextBlock>
         </Border>
 
-        <Button Grid.Row="3" Grid.Column="0" Name="priorButton" Width="80" 
+        <Button Grid.Row="3" Grid.Column="0" Name="priorButton"
                 Height="30" Click="PriorOrder">
             &lt; Prior Order
         </Button>
-        <Button Grid.Row="3" Grid.Column="1" Click="AddNewOrder" Width="80" 
+        <Button Grid.Row="3" Grid.Column="1" Click="AddNewOrder"
                 Height="30">
             Add Order
         </Button>
-        <Button Grid.Row="3" Grid.Column="2" Name="nextButton" Width="80" 
+        <Button Grid.Row="3" Grid.Column="2" Name="nextButton" 
                 Height="30" Click="NextOrder">
             Next Order &gt;
         </Button>
@@ -44,7 +44,7 @@
                     Click="RemoveOrder">
                 Cancel Order</Button>
             <Button DockPanel.Dock="Right" Width="120" Height="30"
-                    Name="checkoutButton">
+                    Name="checkoutButton" Click="CheckoutOrder">
                 Checkout</Button>
         </DockPanel>
         <Border Name="orderBorder" Grid.ColumnSpan="3" Grid.RowSpan="1"/>
