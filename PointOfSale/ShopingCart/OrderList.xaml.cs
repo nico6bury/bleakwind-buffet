@@ -68,12 +68,12 @@ namespace PointOfSale.ShopingCart
         public void UpdateTotal()
         {
             StringBuilder totalBuilder = new StringBuilder();
-            totalBuilder.Append("Subtotal: $");
-            totalBuilder.Append(order.Subtotal);
-            totalBuilder.Append("\nTax: $");
-            totalBuilder.Append(order.Tax);
-            totalBuilder.Append("\nTotal: $");
-            totalBuilder.Append(order.Total);
+            totalBuilder.Append("Subtotal: ");
+            totalBuilder.Append(order.Subtotal.ToString("C2"));
+            totalBuilder.Append("\nTax: ");
+            totalBuilder.Append(order.Tax.ToString("C2"));
+            totalBuilder.Append("\nTotal: ");
+            totalBuilder.Append(order.Total.ToString("C2"));
 
             orderTotalTextBlock.Text = totalBuilder.ToString();
         }//end UpdateTotal()

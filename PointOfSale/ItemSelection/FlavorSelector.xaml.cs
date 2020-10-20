@@ -98,7 +98,7 @@ namespace PointOfSale
         /// </summary>
         private void SendToCustomizer()
         {
-            ItemSelector.ic.GetBooleanVars(item, false, this);
+            ItemSelector.ic.GetBooleanVars(item, true, this);
         }//end SendToCustomizer
 
         /// <summary>

@@ -156,7 +156,7 @@ namespace PointOfSale.ItemSelection
             }//end setting property of item for each property in allBools
 
             //actually ship the item over to the correct OrderList
-            Cart.AddItem(item);
+            MainWindow.Cart.AddItem(item);
 
             if (returnToMenu)
             {

@@ -52,7 +52,47 @@ namespace PointOfSale.Payment
         /// payment method
         /// change owed
         /// </summary>
-        private string recieptStart;
+        private string recieptStart
+        {
+            get
+            {
+                //build the first part of the reciept
+                StringBuilder sb = new StringBuilder();
+
+                //add the order number to reciept
+                sb.Append("Order Number: ");
+                sb.Append(order.Number);
+                sb.Append("\n");
+
+                //add the current data and time to the order
+                sb.Append(DateTime.Now);
+                sb.Append("\n");
+
+                //add list of all the items in the order, using BuildString()
+                sb.Append("Your Order:\n");
+                foreach (IOrderItem item in order)
+                {
+                    sb.Append(order.BuildString(item));
+                    sb.Append("\n");
+                }//end building string foreach item
+
+                //add price information
+                sb.Append("Subtotal: ");
+                sb.Append(order.Subtotal);
+                sb.Append("\n");
+
+                sb.Append("Tax: ");
+                sb.Append(order.Tax);
+                sb.Append("\n");
+
+                sb.Append("Total: ");
+                sb.Append(order.Total);
+                sb.Append("\n");
+
+                //actually add the string we've built to the right variable
+                return sb.ToString();
+            }//end getter
+        }//end recieptStart
 
         /// <summary>
         /// default constructor for this object. Doesn't 
@@ -68,42 +108,6 @@ namespace PointOfSale.Payment
             //set a few variables up
             this.cameFrom = cameFrom;
             this.order = order;
-
-            //build the first part of the reciept
-            StringBuilder sb = new StringBuilder();
-
-            //add the order number to reciept
-            sb.Append("Order Number: ");
-            sb.Append(order.Number);
-            sb.Append("\n");
-
-            //add the current data and time to the order
-            sb.Append(DateTime.Now);
-            sb.Append("\n");
-
-            //add list of all the items in the order, using BuildString()
-            sb.Append("Your Order:\n");
-            foreach(IOrderItem item in order)
-            {
-                sb.Append(order.BuildString(item));
-                sb.Append("\n");
-            }//end building string foreach item
-
-            //add price information
-            sb.Append("Subtotal: ");
-            sb.Append(order.Subtotal);
-            sb.Append("\n");
-
-            sb.Append("Tax: ");
-            sb.Append(order.Tax);
-            sb.Append("\n");
-            
-            sb.Append("Total: ");
-            sb.Append(order.Total);
-            sb.Append("\n");
-
-            //actually add the string we've built to the right variable
-            recieptStart = sb.ToString();
         }//end PreparePage()
 
         /// <summary>
@@ -131,6 +135,12 @@ namespace PointOfSale.Payment
 
                 //print receipt
                 PrintReciept(sb.ToString());
+
+                //change screens back to the menu
+                ItemSelector.itemSelector.Child = ItemSelector.ics;
+
+                //remove the right order
+                MainWindow.Cart.RemoveOrder(null, null);
             }//end if we should continue
             else MessageBox.Show($"Card {CardReaderResult}");
         }//end PayCard event handler
@@ -141,9 +151,42 @@ namespace PointOfSale.Payment
         /// </summary>
         private void PayCash(object sender, RoutedEventArgs e)
         {
+            //set up CashProcessing
+            ItemSelector.cp.SetUpClass(order);
 
+            //switch screens
+            ItemSelector.itemSelector.Child = ItemSelector.cp;
         }//end PayCash event handler
         
+        /// <summary>
+        /// called by CashProcessing to finish up the process of...
+        /// paying for the order... with cash... yeah, the name of
+        /// the method sorta gives it away.
+        /// </summary>
+        public void FinishCashProcessing()
+        {
+            decimal change = ItemSelector.cpmv.changeOwed;
+
+            StringBuilder sb = new StringBuilder();
+
+            //recieptStart should have a \n at the end of it
+            sb.Append(recieptStart);
+
+            sb.Append("Payment Method: Cash\n");
+
+            sb.Append("Change Owed: ");
+
+            sb.Append(change.ToString("C2"));
+
+            PrintReciept(sb.ToString());
+
+            //change screens back to the main menu
+            ItemSelector.itemSelector.Child = ItemSelector.ics;
+
+            //remove the (hopefully) right order
+            MainWindow.Cart.RemoveOrder(null, null);
+        }//end FinishCashProcessing()
+
         /// <summary>
         /// Prints out a particulat string to the reciept and cuts the tape
         /// </summary>
@@ -153,41 +196,51 @@ namespace PointOfSale.Payment
         {
             StringBuilder sb = new StringBuilder();
 
-            //build the full string we want to print out
-            for (int i = 0; i < message.Length; i++)
+            int lastNewLine = 0;
+            for(int i = 0; i < message.Length; i++)
             {
-                for(int j = i; j < (40 + i); j++)
-                {
-                    sb.Append(message[i]);
-                    if(message[j] == '\n')
-                    {
-                        j = 40 + i;
-                    }
-                }//end looping up to forty characters over to the next newline
-                if (sb.ToString()[sb.Length - 1] != '\n')
+                if (message[i] != '\n') lastNewLine++;
+                else lastNewLine = 0;
+
+                sb.Append(message[i]);
+                if(lastNewLine >= 39)
                 {
                     sb.Append('\n');
-                }//end if we haven't already added a new line
-            }//end looping over each letter 
+                    lastNewLine = 0;
+                }//end if we need to add an extra \n character
+            }//end looping for each index of message
 
             //actually gets that string printed out with all those newlines
             string output = sb.ToString();
-            File.Create("reciept.txt");
-            StreamWriter scribe = new StreamWriter(System.IO.Path.GetFullPath("reciept.txt"));
+
+            
+            //write the reciept to the file
+            File.Create("reciept.txt").Dispose();
+            /*
+            string fullPath = System.IO.Path.GetFullPath("reciept.txt");
+
+            using(StreamWriter sw = File.CreateText(fullPath))
+            {
+                sw.WriteLine(output);
+            }//end use of stream writer=
+            */
+
             sb.Clear();
             for (int i = 0; i < output.Length; i++)
             {
                 if(output[i] != '\n')
                 {
-                    sb.Append(output);
+                    sb.Append(output[i]);
                 }//end if we have more to add to this line
                 else
                 {
+                    //for some reason this seems to be printing to my reciept file. Why???
                     RecieptPrinter.PrintLine(sb.ToString());
-                    scribe.WriteLine(sb.ToString());
+
                     sb.Clear();
                 }//end else we want to print the line to the printer
             }//end looping to actually print out everything
+            if (sb.Length > 0) RecieptPrinter.PrintLine(sb.ToString());
 
             //cuts off the end of the reciept so that it can detach
             RecieptPrinter.CutTape();

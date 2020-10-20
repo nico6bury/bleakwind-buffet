@@ -28,9 +28,20 @@ namespace PointOfSale
     /// </summary>
     public partial class MainWindow : Window
     {
+        /// <summary>
+        /// This is the Cart that is always to the right of the main window.
+        /// I shoe-horned it in here because I couldn't figure out a better
+        /// way to access it from a child of ItemSelector without a major rework
+        /// of the class. One of the requirements for this assignment went a bit
+        /// outside my expectations of what I'd need back when I was first 
+        /// designing things, so this is my solution.
+        /// </summary>
+        public static Cart Cart = new Cart();
+
         public MainWindow()
         {
             InitializeComponent();
+            CartBorder.Child = Cart;
         }//end constructor
     }//end partial class
 }//end namespace

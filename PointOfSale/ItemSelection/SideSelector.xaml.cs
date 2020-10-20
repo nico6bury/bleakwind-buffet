@@ -172,7 +172,7 @@ namespace PointOfSale.ItemSelection
                 item.Size = (BleakwindBuffet.Data.Enums.Size)button.Content;
                 //2. send that object to the Cart and Switch screens
                 //item sent to Cart
-                Cart.AddItem(item);
+                MainWindow.Cart.AddItem(item);
 
                 //Switch screens
                 ItemSelector.itemSelector.Child = ItemSelector.ics;

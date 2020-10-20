@@ -190,7 +190,7 @@ namespace PointOfSale.ItemSelection
 
         private void SendToCustomizer(dynamic item)
         {
-            ItemSelector.ic.GetBooleanVars(item, false, this);
+            ItemSelector.ic.GetBooleanVars(item, true, this);
         }//end SendToCustomizer()
     }//end partial class
 }//end namespace

@@ -5,8 +5,88 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:PointOfSale.Payment"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
-    <Grid>
+             d:DesignHeight="450" d:DesignWidth="600">
+    <Grid Background="SeaShell" Name="CashGrid">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="40"/>
             
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+
+            <RowDefinition Height="40"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="225"/>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="150"/>
+        </Grid.ColumnDefinitions>
+
+        <Grid Grid.Row="14" Grid.Column="0" Background="BlanchedAlmond">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="80"/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+
+            <TextBlock TextWrapping="Wrap" FontSize="15"
+                       TextAlignment="Right">
+                Amount Due
+            </TextBlock>
+
+            <TextBlock Grid.Column="1" FontSize="25" TextAlignment="Center"
+                       VerticalAlignment="Center" HorizontalAlignment="Center"
+                       Name="amountDue" Background="PaleGreen">
+                $12.15
+            </TextBlock>
+        </Grid>
+
+        <Button FontSize="20" Background="Azure" Click="FinalizeSale">
+            Finalize Sale  &gt;&gt;
+        </Button>
+
+        <TextBlock Grid.Column="1" FontSize="15.1" TextAlignment="Center" 
+                   VerticalAlignment="Bottom" Background="BlanchedAlmond"
+                   TextWrapping="Wrap">
+            Number of Coins Recieved <LineBreak/> From Customer
+        </TextBlock>
+
+        <TextBlock Grid.Column="2" TextWrapping="Wrap"  FontSize="15" 
+                   TextAlignment="Center" VerticalAlignment="Bottom"
+                   Background="BlanchedAlmond">
+            Number to Give Customer as Change
+        </TextBlock>
+
+        <Grid Grid.Row="14" Grid.Column="1" Background="BlanchedAlmond">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="80"/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+
+            <TextBlock TextWrapping="Wrap" FontSize="15"
+                       TextAlignment="Right">
+                Change Owed
+            </TextBlock>
+
+            <TextBlock Grid.Column="1" FontSize="25" TextAlignment="Left"
+                       VerticalAlignment="Center" HorizontalAlignment="Center"
+                       Name="changeOwed" Background="PaleGreen">
+                $0.00
+            </TextBlock>
+        </Grid>
+
+        <Button Grid.Row="14" Grid.Column="2" FontSize="20" Background="Azure"
+                Click="GoBack">
+            &lt;&lt; Back
+        </Button>
     </Grid>
 </UserControl>

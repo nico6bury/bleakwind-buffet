@@ -31,8 +31,8 @@
                 </Grid>
             </Grid>
         </Border>
-        <Border Grid.Column="1" BorderThickness="1" BorderBrush="SlateGray">
-            <local:Cart/>
+        <Border Grid.Column="1" BorderThickness="1" BorderBrush="SlateGray"
+                Name="CartBorder">
         </Border>
     </Grid>
 </Window>

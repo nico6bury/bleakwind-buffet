@@ -84,6 +84,12 @@ namespace PointOfSale.ItemSelection
         /// </summary>
         public static CashProcessing cp = new CashProcessing();
 
+        /// <summary>
+        /// this is the modelview for CashProcessing, and it contains a bunch
+        /// of logic and stuff.
+        /// </summary>
+        public static CashProcessingModelView cpmv = new CashProcessingModelView();
+
         public ItemSelector()
         {
             InitializeComponent();

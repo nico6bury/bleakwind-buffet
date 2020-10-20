@@ -32,7 +32,7 @@ namespace PointOfSale
         /// <summary>
         /// Holds all the orders for different customers
         /// </summary>
-        static List<OrderList> lists = new List<OrderList>();
+        public static List<OrderList> lists = new List<OrderList>();
 
         /// <summary>
         /// Holds which index of lists is currently displayed
@@ -91,7 +91,7 @@ namespace PointOfSale
         /// Adds an IOrderItem item to the current OrderList
         /// </summary>
         /// <param name="item">The item to be added</param>
-        public static void AddItem(IOrderItem item)
+        public void AddItem(IOrderItem item)
         {
             lists[curIndex].order.Add(item);
             lists[curIndex].UpdateItems();
