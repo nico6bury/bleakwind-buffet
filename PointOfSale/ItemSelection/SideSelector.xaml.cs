@@ -185,10 +185,6 @@ namespace PointOfSale.ItemSelection
                 {
                     MainWindow.Cart.AddItem(item);
                 }//end if this isn't a combo
-                else
-                {
-                    ItemSelector.ics.ComboChanged();
-                }//end else this is a combo
 
                 //Switch screens
                 ItemSelector.itemSelector.Child = ItemSelector.ics;
@@ -204,6 +200,8 @@ namespace PointOfSale.ItemSelection
                 {
                     ItemSelector.ic.IsCombo = true;
                     ItemSelector.ic.nextComboItem = "Side";
+                    ItemSelector.CurCombo.Side = item;
+                    ItemSelector.ics.ComboChanged();
                 }//end if this item is part of a combo
                 else
                 {

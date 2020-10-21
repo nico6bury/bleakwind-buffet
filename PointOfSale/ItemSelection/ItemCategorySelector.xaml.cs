@@ -97,73 +97,70 @@ namespace PointOfSale.ItemSelection
                 ComboCurrent = false;
                 SetButtonEnablement(true);
                 ComboButton.Background = Brushes.Azure;
+                ClearCombo(null, null);
             }//end else we should switch combos off
         }//end SelectCombo event listener (these are actually event listners, aren't they?)
 
         public void ComboChanged()
         {
-            if(!(ItemSelector.itemSelector.Child == ItemSelector.ics))
+            int numNotNull = 0;
+
+            if (ItemSelector.CurCombo.Entree != null)
             {
-                int numNotNull = 0;
+                numNotNull++;
+                TextBlock blocky = new TextBlock
+                {
+                    Text = ItemSelector.CurCombo.Entree.ToString(),
+                    TextWrapping = TextWrapping.Wrap,
+                    FontSize = 30
+                };
+                EntreeButton.Content = blocky;
+            }//end if the combo has an entree
+            else
+            {
+                EntreeButton.Content = "Entree";
+            }//end else it isn't there
 
-                if(ItemSelector.CurCombo.Entree != null)
+            if (ItemSelector.CurCombo.Side != null)
+            {
+                numNotNull++;
+                TextBlock blocky = new TextBlock
                 {
-                    numNotNull++;
-                    TextBlock blocky = new TextBlock
-                    {
-                        Text = ItemSelector.CurCombo.Entree.ToString(),
-                        TextWrapping = TextWrapping.Wrap,
-                        FontSize = 30
-                    };
-                    EntreeButton.Content = blocky;
-                }//end if the combo has an entree
-                else
-                {
-                    EntreeButton.Content = "Entree";
-                }//end else it isn't there
+                    Text = ItemSelector.CurCombo.Side.ToString(),
+                    TextWrapping = TextWrapping.Wrap,
+                    FontSize = 30
+                };
+                SideButton.Content = blocky;
+            }//end if the combo has a side
+            else
+            {
+                SideButton.Content = "Side";
+            }//end else it isn't there
 
-                if (ItemSelector.CurCombo.Side != null)
+            if (ItemSelector.CurCombo.Drink != null)
+            {
+                numNotNull++;
+                TextBlock blocky = new TextBlock
                 {
-                    numNotNull++;
-                    TextBlock blocky = new TextBlock
-                    {
-                        Text = ItemSelector.CurCombo.Side.ToString(),
-                        TextWrapping = TextWrapping.Wrap,
-                        FontSize = 30
-                    };
-                    SideButton.Content = blocky;
-                }//end if the combo has a side
-                else
-                {
-                    SideButton.Content = "Side";
-                }//end else it isn't there
+                    Text = ItemSelector.CurCombo.Drink.ToString(),
+                    TextWrapping = TextWrapping.Wrap,
+                    FontSize = 30
+                };
+                DrinkButton.Content = blocky;
+            }//end if the combo has a drink
+            else
+            {
+                DrinkButton.Content = "Drink";
+            }//end else it isn't there
 
-                if (ItemSelector.CurCombo.Drink != null)
-                {
-                    numNotNull++;
-                    TextBlock blocky = new TextBlock
-                    {
-                        Text = ItemSelector.CurCombo.Drink.ToString(),
-                        TextWrapping = TextWrapping.Wrap,
-                        FontSize = 30
-                    };
-                    DrinkButton.Content = blocky;
-                }//end if the combo has a drink
-                else
-                {
-                    DrinkButton.Content = "Drink";
-                }//end else it isn't there
-
-                if (numNotNull > 0)
-                {
-                    ShowComboButtons();
-                }//end if we should break out the buttons
-                else
-                {
-                    HideComboButtons();
-                }//end else we should put the buttons away
-
-            }//end if we're on a screen other than the current one
+            if (numNotNull > 0)
+            {
+                ShowComboButtons();
+            }//end if we should break out the buttons
+            else
+            {
+                HideComboButtons();
+            }//end else we should put the buttons away
         }//end ComboChanged()
 
         private void HideComboButtons()
@@ -196,6 +193,7 @@ namespace PointOfSale.ItemSelection
             EntreeButton.IsEnabled = true;
             SideButton.IsEnabled = true;
             DrinkButton.IsEnabled = true;
+            ComboCurrent = false;
         }//end ClearCombo event listener?
 
         /// <summary>

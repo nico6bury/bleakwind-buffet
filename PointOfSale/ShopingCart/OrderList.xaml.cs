@@ -111,6 +111,13 @@ namespace PointOfSale.ShopingCart
                 int index = orderItems.SelectedIndex;
                 dynamic item = order[index];
 
+                if(item is Combo)
+                {
+                    throw new NotImplementedException("The implementation for " +
+                        "editing comboes is not currently available. Please go" +
+                        " ahead and just remove it and add it again.");
+                }//end if the item we're trying to edit is a combo
+
                 ItemSelector.ic.GetBooleanVars(item, false, (UserControl)ItemSelector.itemSelector.Child);
                 ItemSelector.itemSelector.Child = ItemSelector.ic;
 
@@ -124,6 +131,10 @@ namespace PointOfSale.ShopingCart
                     "\" button without selecting anything. Please actually select " +
                     "something.", "You didn't select anything.", MessageBoxButton.OK,
                     MessageBoxImage.Error);
+            }//end catch
+            catch (NotImplementedException exception)
+            {
+                MessageBox.Show(exception.Message);
             }//end catch
         }//end EditItem event handler
     }//end partial class
