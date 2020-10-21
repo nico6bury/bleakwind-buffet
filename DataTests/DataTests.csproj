@@ -19,6 +19,13 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Data\Data.csproj" />
+    <ProjectReference Include="..\PointOfSale\PointOfSale.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="RoundRegister">
+      <HintPath>..\PointOfSale\RoundRegister.dll</HintPath>
+    </Reference>
   </ItemGroup>
 
 </Project>

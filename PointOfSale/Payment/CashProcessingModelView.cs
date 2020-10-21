@@ -170,28 +170,14 @@ namespace PointOfSale.Payment
         /// </summary>
         public void AddToDrawer()
         {
+            CashDrawer.OpenDrawer();
+
             FieldInfo[] allFields = typeof(CashDrawer).GetFields();
             List<FieldInfo> allCurrencies = new List<FieldInfo>();
             for(int i = 0; i < allFields.Length; i++)
             {
                 if (allFields[i].Name != "Total") allCurrencies.Add(allFields[i]);
             }//end looping for each field in all fields of CashDrawer
-
-            /*
-            CashDrawer.Pennies -= FromCust[0].Number;
-            CashDrawer.Nickels -= FromCust[1].Number;
-            CashDrawer.Dimes -= FromCust[2].Number;
-            CashDrawer.Quarters -= FromCust[3].Number;
-            CashDrawer.HalfDollars -= FromCust[4].Number;
-            CashDrawer.Dollars -= FromCust[5].Number;
-            CashDrawer.Ones -= FromCust[6].Number;
-            CashDrawer.Twos -= FromCust[7].Number;
-            CashDrawer.Fives -= FromCust[8].Number;
-            CashDrawer.Tens -= FromCust[9].Number;
-            CashDrawer.Twenties -= FromCust[10].Number;
-            CashDrawer.Fifties -= FromCust[11].Number;
-            CashDrawer.Hundreds -= FromCust[12].Number;
-            */
 
             for(int i = 0; i < FromCust.Count; i++)
             {
@@ -225,22 +211,6 @@ namespace PointOfSale.Payment
             {
                 InDrawer[i].Number = (int)allCurrencies[i].GetValue(null);
             }//end looping over each currency type
-
-            /*
-            InDrawer[0].Number = CashDrawer.Pennies;
-            InDrawer[1].Number = CashDrawer.Nickels;
-            InDrawer[2].Number = CashDrawer.Dimes;
-            InDrawer[3].Number = CashDrawer.Quarters;
-            InDrawer[4].Number = CashDrawer.HalfDollars;
-            InDrawer[5].Number = CashDrawer.Dollars;
-            InDrawer[6].Number = CashDrawer.Ones;
-            InDrawer[7].Number = CashDrawer.Twos;
-            InDrawer[8].Number = CashDrawer.Fives;
-            InDrawer[9].Number = CashDrawer.Tens;
-            InDrawer[10].Number = CashDrawer.Twenties;
-            InDrawer[11].Number = CashDrawer.Fifties;
-            InDrawer[12].Number = CashDrawer.Hundreds;
-            */
         }//end UpdateDrawer()
     }//end class
 }//end namespace
