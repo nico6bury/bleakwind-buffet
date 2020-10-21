@@ -1,6 +1,8 @@
-﻿using PointOfSale.Payment;
+﻿using BleakwindBuffet.Data;
+using PointOfSale.Payment;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Text;
 using System.Windows;
 using System.Windows.Controls;
@@ -89,6 +91,23 @@ namespace PointOfSale.ItemSelection
         /// of logic and stuff.
         /// </summary>
         public static CashProcessingModelView cpmv = new CashProcessingModelView();
+
+        private static Combo curCombo = new Combo();
+        /// <summary>
+        /// the combo item that the user is currently getting
+        /// </summary>
+        public static Combo CurCombo
+        {
+            get
+            {
+                return curCombo;
+            }//end getter
+            set
+            {
+                curCombo = value;
+                ics.ComboChanged();
+            }//end setter
+        }//end CurCombo
 
         public ItemSelector()
         {

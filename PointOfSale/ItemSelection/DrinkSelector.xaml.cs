@@ -1,4 +1,5 @@
-﻿using BleakwindBuffet.Data.Drinks;
+﻿using BleakwindBuffet.Data;
+using BleakwindBuffet.Data.Drinks;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -36,6 +37,11 @@ namespace PointOfSale.ItemSelection
         /// This is a vital variable that I don't know how I'd go without
         /// </summary>=
         ItemButton mostRecentButton;
+
+        /// <summary>
+        /// whether or not we're currently trying to do a combo
+        /// </summary>
+        public bool IsCombo = false;
 
         public DrinkSelector()
         {
@@ -77,6 +83,10 @@ namespace PointOfSale.ItemSelection
         {
             ItemSelector.itemSelector.Child = ItemSelector.ics;
             ResetButtons();
+            if (IsCombo)
+            {
+                ItemSelector.ics.SideButton.IsEnabled = true;
+            }//end if we're doing a combo
         }//end GoBack
 
         /// <summary>
@@ -167,6 +177,17 @@ namespace PointOfSale.ItemSelection
 
                     //Reset the buttons here, now that we've switched screens
                     ResetButtons();
+
+                    //handle combo things
+                    if (IsCombo)
+                    {
+                        ItemSelector.ic.IsCombo = true;
+                        ItemSelector.ic.nextComboItem = "Drink";
+                    }//end if this item is part of a combo
+                    else
+                    {
+                        ItemSelector.ic.IsCombo = false;
+                    }//end else this item isn't part of a combo
                 }//end else we can just go right along
                 
             }//end if the right type sent the event

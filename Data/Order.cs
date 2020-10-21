@@ -213,6 +213,7 @@ namespace BleakwindBuffet.Data
             StringBuilder helper = new StringBuilder();
 
             helper.Append(" ");
+            if (itemName.Contains("Combo")) itemName = "Combo";
             helper.Append(itemName);
 
             helper.Append("\t$");

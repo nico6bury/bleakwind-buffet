@@ -10,6 +10,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using BleakwindBuffet.Data;
 using BleakwindBuffet.Data.Drinks;
 using BleakwindBuffet.Data.Enums;
 using PointOfSale.ItemSelection;
@@ -30,6 +31,12 @@ namespace PointOfSale
         /// The list of all the buttons with flavors on them
         /// </summary>
         List<Button> flavorButtons;
+
+        /// <summary>
+        /// whether or not we're currently trying to do a combo
+        /// </summary>
+        public bool IsCombo = false;
+
         public FlavorSelector()
         {
             InitializeComponent();
@@ -89,6 +96,17 @@ namespace PointOfSale
 
                 //switch screens to the item customizer
                 ItemSelector.itemSelector.Child = ItemSelector.ic;
+
+                //handle combo things
+                if (IsCombo)
+                {
+                    ItemSelector.ic.IsCombo = true;
+                    ItemSelector.ic.nextComboItem = "Drink";
+                    }//end if this item is part of a combo
+                else
+                {
+                    ItemSelector.ic.IsCombo = false;
+                }//end else this item isn't part of a combo
             }//end if the event was sent by the correct type
         }//end SelectFlavor event handler
 

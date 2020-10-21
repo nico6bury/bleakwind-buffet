@@ -5,7 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:PointOfSale.ItemSelection"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
+             d:DesignHeight="450" d:DesignWidth="600">
     <Border BorderThickness="1">
         <Grid>
             <Grid.ColumnDefinitions>
@@ -13,17 +13,44 @@
                 <ColumnDefinition/>
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
-            <Button Grid.Column="0" FontWeight="Bold" FontSize="50"
-                    Click="SelectDrink">
+
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition Height=".3*"/>
+            </Grid.RowDefinitions>
+            
+            <Button Grid.Column="0" FontWeight="Bold" FontSize="45"
+                    Click="SelectDrink" Name="DrinkButton"
+                    Background="Azure">
                 Drinks
             </Button>
-            <Button Grid.Column="1" FontWeight="Bold" FontSize="50"
-                    Click="SelectEntree">
+            <Button Grid.Column="1" FontWeight="Bold" FontSize="45"
+                    Click="SelectEntree" Name="EntreeButton"
+                    Background="Azure">
                 Entrees
             </Button>
-            <Button Grid.Column="2" FontWeight="Bold" FontSize="50"
-                    Click="SelectSide">
+            <Button Grid.Column="2" FontWeight="Bold" FontSize="45"
+                    Click="SelectSide" Name="SideButton"
+                    Background="Azure" BorderBrush="Black">
                 Sides
+            </Button>
+
+            <Button Grid.Row="1" Grid.ColumnSpan="1" Grid.Column="1"
+                    FontWeight="Bold" FontSize="45" Click="SelectCombo" 
+                    Name="ComboButton" Background="Azure">
+                Combo
+            </Button>
+
+            <Button Grid.Row="1" Grid.ColumnSpan="1" Grid.Column="0"
+                    FontWeight="Bold" FontSize="45" Click="ClearCombo" 
+                    Name="ComboClearButton" Background="Azure">
+                Clear
+            </Button>
+
+            <Button Grid.Row="1" Grid.ColumnSpan="1" Grid.Column="2"
+                    FontWeight="Bold" FontSize="45" Click="FinalizeCombo" 
+                    Name="ComboFinalizeButton" Background="Azure">
+                Finalize
             </Button>
         </Grid>
     </Border>

@@ -1,4 +1,5 @@
-﻿using BleakwindBuffet.Data.Entrees;
+﻿using BleakwindBuffet.Data;
+using BleakwindBuffet.Data.Entrees;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -25,6 +26,11 @@ namespace PointOfSale.ItemSelection
     /// </summary>
     public partial class EntreeSelector : UserControl
     {
+        /// <summary>
+        /// whether or not we're currently trying to do a combo
+        /// </summary>
+        public bool IsCombo = false;
+
         public EntreeSelector()
         {
             InitializeComponent();
@@ -44,6 +50,10 @@ namespace PointOfSale.ItemSelection
         public void GoBack(object sender, RoutedEventArgs e)
         {
             ItemSelector.itemSelector.Child = ItemSelector.ics;
+            if (IsCombo)
+            {
+                ItemSelector.ics.SideButton.IsEnabled = true;
+            }//end if we're doing a combo
         }//end GoBack
 
         /// <summary>
@@ -84,17 +94,29 @@ namespace PointOfSale.ItemSelection
                             "implemented yet. See source of error for more detail.");
                 }//end switch case to determine item type
 
-                //send item to ItemCustomizer
+                //send item to ItemCustomizer (if it actually had any bools to customize, this'd be useful)
                 SendToCustomizer(item);
 
                 //Switch Screens
                 ItemSelector.itemSelector.Child = ItemSelector.ic;
+
+                //tell ic whether or not we're dealing with a combo
+                ItemSelector.ic.IsCombo = IsCombo;
+
+                if (IsCombo)
+                {
+                    ItemSelector.CurCombo.Entree = item;
+                }//end if this item is part of a combo
             }//end if sender is right type
         }//end GetSelectedItem event handler
 
+        /// <summary>
+        /// method doesn't really do much of anything, so please ignore it
+        /// </summary>
         private void SendToCustomizer(dynamic item)
         {
             ItemSelector.ic.GetBooleanVars(item, true, this);
+            ItemSelector.ic.nextComboItem = "Entree";
         }//end SendToCustomizer(item)
     }//end partial class
 }//end namespace

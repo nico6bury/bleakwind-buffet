@@ -41,6 +41,11 @@ namespace PointOfSale.ItemSelection
         /// </summary>
         Button mostRecentButton;
 
+        /// <summary>
+        /// whether or not we're currently trying to do a combo
+        /// </summary>
+        public bool IsCombo = false;
+
         public SideSelector()
         {
             InitializeComponent();
@@ -75,6 +80,10 @@ namespace PointOfSale.ItemSelection
         {
             ItemSelector.itemSelector.Child = ItemSelector.ics;
             ResetButtons();
+            if (IsCombo)
+            {
+                ItemSelector.ics.SideButton.IsEnabled = true;
+            }//end if we're doing a combo
         }//end GoBack
 
         /// <summary>
@@ -172,13 +181,34 @@ namespace PointOfSale.ItemSelection
                 item.Size = (BleakwindBuffet.Data.Enums.Size)button.Content;
                 //2. send that object to the Cart and Switch screens
                 //item sent to Cart
-                MainWindow.Cart.AddItem(item);
+                if (!IsCombo)
+                {
+                    MainWindow.Cart.AddItem(item);
+                }//end if this isn't a combo
+                else
+                {
+                    ItemSelector.ics.ComboChanged();
+                }//end else this is a combo
 
                 //Switch screens
                 ItemSelector.itemSelector.Child = ItemSelector.ics;
 
                 //Reset the buttons after we switch screens
                 ResetButtons();
+
+                //tell ic whether or not we're dealing with a combo
+                ItemSelector.ic.IsCombo = IsCombo;
+
+                //handle combo things
+                if (IsCombo)
+                {
+                    ItemSelector.ic.IsCombo = true;
+                    ItemSelector.ic.nextComboItem = "Side";
+                }//end if this item is part of a combo
+                else
+                {
+                    ItemSelector.ic.IsCombo = false;
+                }//end else this item isn't part of a combo
             }//end if the right thing sent the event
         }//end GotSize event handler
 

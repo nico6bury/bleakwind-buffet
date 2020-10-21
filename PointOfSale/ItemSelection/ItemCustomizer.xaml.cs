@@ -56,7 +56,22 @@ namespace PointOfSale.ItemSelection
         /// the user will be returned to cameFrom
         /// </summary>
         bool returnToMenu;
-        
+
+        /// <summary>
+        /// whether or not we're currently trying to do a combo
+        /// </summary>
+        public bool IsCombo = false;
+
+        /// <summary>
+        /// the current combo object
+        /// </summary>
+        public Combo curCombo = new Combo();
+
+        /// <summary>
+        /// tells us what type of item we're adding to the combo
+        /// </summary>
+        public string nextComboItem = "";
+
         public ItemCustomizer()
         {
             InitializeComponent();
@@ -155,8 +170,32 @@ namespace PointOfSale.ItemSelection
                 allBools[i].SetValue(item, checkBoxes[i].IsChecked);
             }//end setting property of item for each property in allBools
 
-            //actually ship the item over to the correct OrderList
-            MainWindow.Cart.AddItem(item);
+            if (IsCombo)
+            {
+                switch (nextComboItem)
+                {
+                    case "Drink":
+                        ItemSelector.CurCombo.Drink = item;
+                        break;
+                    case "Side":
+                        ItemSelector.CurCombo.Side = item;
+                        break;
+                    case "Entree":
+                        ItemSelector.CurCombo.Entree = item;
+                        break;
+                    default:
+                        throw new NotImplementedException("That combo component hasn't been initialized yet. " +
+                            "Please use either \"Drink\" or \"Side\" or \"Entree\" for nextComboItem.");
+                }//end switch case
+
+                //I think this'll come in handy
+                ItemSelector.ics.ComboChanged();
+            }//end if this item is part of a combo
+            else
+            {
+                //actually ship the item over to the correct OrderList
+                MainWindow.Cart.AddItem(item);
+            }//end else this item isn't part of a combo
 
             if (returnToMenu)
             {
