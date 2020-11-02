@@ -3,8 +3,73 @@
 @{
     ViewData["Title"] = "Home page";
 }
+@using BleakwindBuffet.Data
+@using System.Text
+@functions{
+    /// <summary>
+    /// Builds the string that is displayed
+    /// </summary>
+    /// <param name="item">the item that you want displayed</param>
+    /// <returns>returns string to display</returns>
+    public static string BuildString(IOrderItem item)
+    {
+        StringBuilder sb = new StringBuilder();
+        //name of item, price, and calories
+        sb.Append(item.ToString());
+        sb.Append("\t");
+        sb.Append(item.Calories);
+        sb.Append(" Cals\t");
+        sb.Append(item.Price.ToString("C2"));
+        return sb.ToString();
+    }//end BuildString(item, hasSizeProperty)
+}
+
 
 <div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+    <h1 class="display-4">Bleakwind Buffet</h1>
+    <p>
+        We at Bleakwind Buffet are proud to bring you authentic
+        fantasy meals straight from the world of Skyrim. Shake the
+        blood off your sword and sake your thirst with one of our
+        old-fashioned sailor sodas. Hack into a Smokehouse Skeleton
+        with your dagger. Or vanquish the the mighty Thalmor Triple
+        Burger! You’ve had a hard adventure and earned your loot,
+        so spend it with us!.
+    </p>
+
+    <h2>Entrees</h2>
+    @foreach (IOrderItem item in Menu.Entrees())
+    {
+        <div>
+            @BuildString(item)
+        </div>
+    }
+
+    <h2>Sides</h2>
+    @foreach (IOrderItem item in Menu.Sides())
+    {
+        <div>
+            @BuildString(item)
+        </div>
+    }
+
+    <h2>Drinks</h2>
+    @foreach (IOrderItem item in Menu.Drinks())
+    {
+        <div>
+            @BuildString(item)
+        </div>
+    }
+
+    <h2>Combos</h2>
+    <p>
+        Any entree, side, and drink can be combined into a Combo with
+        a $1 discount.
+    </p>
+
+    <h2>Soda Flavors</h2>
+    <p>
+        The currently available flavors of soda are Blackberry, Cherry,
+        Grapefruit, Lemon, Peach, Watermelon.
+    </p>
 </div>
