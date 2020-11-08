@@ -19,8 +19,6 @@ namespace Website.Pages
             _logger = logger;
         }//end constructor
 
-        
-
         public void OnGet()
         {
 

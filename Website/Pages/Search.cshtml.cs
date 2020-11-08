@@ -14,13 +14,13 @@ namespace Website.Pages
     public class SearchModel : PageModel
     {
         public static string SearchTerms;
-        public IEnumerable<IOrderItem> items;
+        public static IEnumerable<IOrderItem> items;
         public static string[] OrderTypes { get; set; }
         public static int CaloriesMin;
         public static int CaloriesMax;
         public static double PriceMin;
         public static double PriceMax = 8.32;
-        public void OnGet(double PriceMin, double PriceMax)
+        public void OnGet()
         {
             SearchTerms = Request.Query["SearchTerms"];
             OrderTypes = Request.Query["OrderTypes"];
