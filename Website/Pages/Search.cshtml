@@ -1,0 +1,90 @@
+﻿@page
+@model Website.Pages.SearchModel
+@using BleakwindBuffet.Data
+@using System.Text
+@{
+    ViewData["Title"] = "Search Page";
+    //need text search, checkboxes for type of order,
+    //two number inputs specifying calories range, and two number
+    //inpute specifying price range
+}
+@functions{
+    /// <summary>
+    /// Builds the string that is displayed
+    /// </summary>
+    /// <param name="item">the item that you want displayed</param>
+    /// <returns>returns string to display</returns>
+    public static string BuildString(IOrderItem item)
+    {
+        StringBuilder sb = new StringBuilder();
+        //name of item, price, and calories
+        sb.Append(item.ToString());
+        sb.Append("\t");
+        sb.Append(item.Calories);
+        sb.Append(" Cals\t");
+        sb.Append(item.Price.ToString("C2"));
+        return sb.ToString();
+    }//end BuildString(item, hasSizeProperty)
+}
+
+<form id="item-menu">
+    <div id="search">
+        <input type="text" name="SearchTerms" value="@SearchModel.SearchTerms"
+               />
+        <input type="submit" value="Search" />
+    </div>
+
+    <div id="filters">
+        <h4>Order Type</h4>
+        <label>
+            <input type="checkbox" name="OrderTypes" value="Entrees"
+                   checked="@SearchModel.OrderTypes.Contains("Entrees")" />
+            Entrees
+        </label>
+        <label>
+            <input type="checkbox" name="OrderTypes" value="Sides"
+                   checked="@SearchModel.OrderTypes.Contains("Sides")" />
+            Sides
+        </label>
+        <label>
+            <input type="checkbox" name="OrderTypes" value="Drinks"
+                   checked="@SearchModel.OrderTypes.Contains("Drinks")" />
+            Drinks
+        </label>
+
+        <h4>Calories</h4>
+        <div>
+            Between
+            <input name="CaloriesMin" type="number" min="0" max="982" step="1"
+                   placeholder="min"
+                   value="@SearchModel.CaloriesMin" />
+            and
+            <input name="CaloriesMax" type="number" min="0" max="982" step="1"
+                   placeholder="max"
+                   value="@SearchModel.CaloriesMax" />
+        </div>
+
+        <h4>Price</h4>
+        <div>
+            Between
+            <input name="PriceMin" type="number" min="0" max="8.32" step="0.01"
+                   placeholder="min"
+                   value="@SearchModel.PriceMin" />
+            and
+            <input name="PriceMax" type="number" min="0" max="8.32" step="0.01"
+                   placeholder="max"
+                   value="@SearchModel.PriceMax" />
+        </div>
+    </div>
+</form>
+
+<h1>Search Results</h1>
+
+<ul class="item-list">
+    @foreach (IOrderItem item in Model.items)
+    {
+        <li>
+            @BuildString(item)
+        </li>
+    }
+</ul>
