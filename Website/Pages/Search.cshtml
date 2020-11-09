@@ -81,7 +81,7 @@
 <h1>Search Results</h1>
 
 <ul class="item-list">
-    @foreach (IOrderItem item in Model.items)
+    @foreach (IOrderItem item in SearchModel.items)
     {
         <li>
             @BuildString(item)

@@ -207,5 +207,75 @@ namespace BleakwindBuffet.DataTests.UnitTests
 
             Assert.False(foundDupe);
         }//end test
+
+        [Theory]
+        [InlineData("medium")]
+        [InlineData("Soda")]
+        public void SearchFilteredItemsContainSearchTerm(string term)
+        {
+            List<IOrderItem> filteredItems = (List<IOrderItem>)Menu.Search(Menu.FullMenu(), term);
+            foreach(IOrderItem item in filteredItems)
+            {
+                Assert.Contains(term.ToLower(), item.ToString().ToLower());
+            }//end looping foreach item in the list of filtered items
+        }//end test
+
+        [Theory]
+        [InlineData("Soda")]
+        [InlineData("medium")]
+        public void SearchFilterIsNotCaseSensitive(string term)
+        {
+            string termLower = term.ToLower();
+            string termUpper = term.ToUpper();
+            List<IOrderItem> filteredItemsLower = (List<IOrderItem>)Menu.Search(Menu.FullMenu(), termLower);
+            List<IOrderItem> filteredItemsUpper = (List<IOrderItem>)Menu.Search(Menu.FullMenu(), termUpper);
+            for(int i = 0; i < filteredItemsLower.Count; i++)
+            {
+                Assert.Equal(filteredItemsLower[i].ToString(), filteredItemsUpper[i].ToString());
+            }//end looping for each item
+        }//end test
+
+        [Theory]
+        [InlineData(typeof(Entree))]
+        [InlineData(typeof(Side))]
+        [InlineData(typeof(Drink))]
+        public void OrderTypeFilteredItemsAreRightType(Type type)
+        {
+            StringBuilder sb = new StringBuilder();
+            sb.Append(type.Name);
+            sb.Append("s");
+            List<string> types = new List<string>();
+            types.Add(sb.ToString());
+            List<IOrderItem> items = (List<IOrderItem>)Menu.FilterByOrderType(Menu.FullMenu(), types);
+            foreach(IOrderItem item in items)
+            {
+                Assert.IsAssignableFrom(type, item);
+            }//end looping over each item
+        }//end test
+
+        [Theory]
+        [InlineData(100, 200)]
+        [InlineData(200, 400)]
+        [InlineData(500, 900)]
+        public void CaloriesFilteredItemsAreInRange(uint min, uint max)
+        {
+            List<IOrderItem> items = (List<IOrderItem>)Menu.FilterByCalories(Menu.FullMenu(), (int)min, (int)max);
+            foreach(IOrderItem item in items)
+            {
+                Assert.InRange(item.Calories, min, max);
+            }//end looping for each item
+        }//end test
+
+        [Theory]
+        [InlineData(1.20, 2.40)]
+        [InlineData(3.60, 4.80)]
+        [InlineData(6.20, 9.40)]
+        public void PriceFilteredItemsAreInRange(double min, double max)
+        {
+            foreach(IOrderItem item in Menu.FilterByPrice(Menu.FullMenu(), min, max))
+            {
+                Assert.InRange(item.Price, min, max);
+            }//end looping over each filtered item
+        }//end test
     }//end class
 }//end namespace
