@@ -167,7 +167,7 @@ namespace BleakwindBuffet.Data
             {
                 List<IOrderItem> results = new List<IOrderItem>();
 
-                foreach (IOrderItem item in Menu.FullMenu())
+                foreach (IOrderItem item in items)
                 {
                     if (item.ToString().ToLower().Contains(terms.ToLower())) results.Add(item);
                 }//end looping foreach item on the menu
@@ -233,7 +233,7 @@ namespace BleakwindBuffet.Data
             {
                 List<IOrderItem> results = new List<IOrderItem>();
 
-                foreach (IOrderItem item in Menu.FullMenu())
+                foreach (IOrderItem item in items)
                 {
                     if (item.Calories >= CalMin && item.Calories <= CalMax)
                         results.Add(item);
@@ -258,7 +258,7 @@ namespace BleakwindBuffet.Data
             {
                 List<IOrderItem> results = new List<IOrderItem>();
 
-                foreach (IOrderItem item in Menu.FullMenu())
+                foreach (IOrderItem item in items)
                 {
                     if (item.Price >= PriceMin && item.Price <= PriceMax)
                         results.Add(item);
