@@ -5,25 +5,7 @@
 }
 @using BleakwindBuffet.Data
 @using System.Text
-@functions{
-    /// <summary>
-    /// Builds the string that is displayed
-    /// </summary>
-    /// <param name="item">the item that you want displayed</param>
-    /// <returns>returns string to display</returns>
-    public static string BuildString(IOrderItem item)
-    {
-        StringBuilder sb = new StringBuilder();
-        //name of item, price, and calories
-        sb.Append(item.ToString());
-        sb.Append("\t");
-        sb.Append(item.Calories);
-        sb.Append(" Cals\t");
-        sb.Append(item.Price.ToString("C2"));
-        return sb.ToString();
-    }//end BuildString(item, hasSizeProperty)
-}
-
+@using System.Reflection
 
 <div class="text-center">
     <h1 class="display-4">Bleakwind Buffet</h1>
@@ -37,27 +19,27 @@
         so spend it with us!.
     </p>
 
-    <h2>Entrees</h2>
+    <h2 class="flex-columns">Entrees</h2>
     @foreach (IOrderItem item in Menu.Entrees())
     {
         <div>
-            @BuildString(item)
+            @IndexModel.BuildString(item)
         </div>
     }
 
-    <h2>Sides</h2>
+    <h2 class="flex-columns">Sides</h2>
     @foreach (IOrderItem item in Menu.Sides())
     {
         <div>
-            @BuildString(item)
+            @IndexModel.BuildString(item)
         </div>
     }
 
-    <h2>Drinks</h2>
+    <h2 class="flex-columns">Drinks</h2>
     @foreach (IOrderItem item in Menu.Drinks())
     {
         <div>
-            @BuildString(item)
+            @IndexModel.BuildString(item)
         </div>
     }
 

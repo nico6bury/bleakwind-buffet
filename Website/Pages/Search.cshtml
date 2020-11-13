@@ -8,24 +8,6 @@
     //two number inputs specifying calories range, and two number
     //inpute specifying price range
 }
-@functions{
-    /// <summary>
-    /// Builds the string that is displayed
-    /// </summary>
-    /// <param name="item">the item that you want displayed</param>
-    /// <returns>returns string to display</returns>
-    public static string BuildString(IOrderItem item)
-    {
-        StringBuilder sb = new StringBuilder();
-        //name of item, price, and calories
-        sb.Append(item.ToString());
-        sb.Append("\t");
-        sb.Append(item.Calories);
-        sb.Append(" Cals\t");
-        sb.Append(item.Price.ToString("C2"));
-        return sb.ToString();
-    }//end BuildString(item, hasSizeProperty)
-}
 
 <form id="item-menu">
     <div id="search">
@@ -84,7 +66,7 @@
     @foreach (IOrderItem item in SearchModel.items)
     {
         <li>
-            @BuildString(item)
+            @IndexModel.BuildString(item)
         </li>
     }
 </ul>

@@ -33,5 +33,10 @@ namespace BleakwindBuffet.Data
         /// an empty list if there are no special instructions
         /// </summary>
         List<string> SpecialInstructions { get; }
+
+        /// <summary>
+        /// A description of this item
+        /// </summary>
+        string Description { get; }
     }//end interface
 }//end namespace

@@ -44,8 +44,25 @@ namespace Website.Pages
 
             items = Menu.FullMenu();
 
+            List<Type> types = new List<Type>();
+            foreach(string type in OrderTypes)
+            {
+                switch (type)
+                {
+                    case "Entrees":
+                        types.Add(typeof(Entree));
+                        break;
+                    case "Sides":
+                        types.Add(typeof(Side));
+                        break;
+                    case "Drinks":
+                        types.Add(typeof(Drink));
+                        break;
+                }//end switch case
+            }//end foreach loop
+
             items = Menu.Search(items, SearchTerms);
-            items = Menu.FilterByOrderType(items, OrderTypes);
+            items = Menu.FilterByOrderType(items, types);
             items = Menu.FilterByCalories(items, CaloriesMin, CaloriesMax);
             items = Menu.FilterByPrice(items, PriceMin, PriceMax);
         }//end OnGet()

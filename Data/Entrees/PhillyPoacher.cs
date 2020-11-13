@@ -64,6 +64,15 @@ namespace BleakwindBuffet.Data.Entrees
         }//end getter
 
         /// <summary>
+        /// A description of this item
+        /// </summary>
+        public override string Description
+        {
+            get { return "Cheesesteak sandwich made from grilled sirloin," +
+                    " topped with onions on a fried roll."; }
+        }//end Description
+
+        /// <summary>
         /// ToString() returns a string representation of the object,
         /// in this case the name and nothing else
         /// </summary>

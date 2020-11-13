@@ -43,6 +43,14 @@ namespace BleakwindBuffet.Data.Entrees
         }//end getter
 
         /// <summary>
+        /// A description of this item
+        /// </summary>
+        public override string Description
+        {
+            get { return "Juicy T-Bone, not much else to say."; }
+        }//end Description
+
+        /// <summary>
         /// ToString() returns a string representation of the object,
         /// in this case the name and nothing else
         /// </summary>

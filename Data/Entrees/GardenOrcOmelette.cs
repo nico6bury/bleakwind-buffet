@@ -71,6 +71,16 @@ namespace BleakwindBuffet.Data.Entrees
         }//end getter
 
         /// <summary>
+        /// A description of this item
+        /// </summary>
+        public override string Description
+        {
+            get { return "Vegetarian. Two egg omelette packed with a mix" +
+                    " of broccoli, mushrooms, and tomatoes. Topped with" +
+                    " cheddar cheese."; }
+        }//end Description
+
+        /// <summary>
         /// ToString() returns a string representation of the object,
         /// in this case the name and nothing else
         /// </summary>

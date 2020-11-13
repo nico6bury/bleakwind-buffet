@@ -45,6 +45,14 @@ namespace BleakwindBuffet.Data.Sides
         public abstract List<string> SpecialInstructions { get; }
 
         /// <summary>
+        /// A description of this item
+        /// </summary>
+        public virtual string Description
+        {
+            get { return "A generic item"; }
+        }//end Description
+
+        /// <summary>
         /// This method invokes a PropertyChanged event whenever a method changes a
         /// property and calls this method. It's real handy because now instead of 
         /// writing the same method 16 times, I only have to write it 3 times. Nice.

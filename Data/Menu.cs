@@ -162,18 +162,22 @@ namespace BleakwindBuffet.Data
         /// <returns>Returns a filtered list as an IEnumerable</returns>
         public static IEnumerable<IOrderItem> Search(IEnumerable<IOrderItem> items, string terms)
         {
-            if (terms == null) return items;
-            else
+            // gather all the search results
+            if (terms == null || terms.Length == 0) return items;
+            string[] splitTerms = terms.Split(' ');
+            HashSet<IOrderItem> results = new HashSet<IOrderItem>();
+            for (int i = 0; i < splitTerms.Length; i++)
             {
-                List<IOrderItem> results = new List<IOrderItem>();
+                var temp = from item in items
+                           where item.Description.Contains(splitTerms[i])
+                           || item.ToString().Contains(splitTerms[i])
+                           select item;
 
-                foreach (IOrderItem item in items)
-                {
-                    if (item.ToString().ToLower().Contains(terms.ToLower())) results.Add(item);
-                }//end looping foreach item on the menu
+                foreach (IOrderItem item in temp)
+                    results.Add(item);
+            }//end looping for each list
 
-                return results;
-            }//end else we can go ahead and search
+            return results;
         }//end Search(terms)
 
         /// <summary>
@@ -183,39 +187,21 @@ namespace BleakwindBuffet.Data
         /// <param name="items">The collection of IOrderItems to search through</param>
         /// <param name="types">the list of types that you want items to have</param>
         /// <returns>Returns a filtered list as an IEnumerable</returns>
-        public static IEnumerable<IOrderItem> FilterByOrderType(IEnumerable<IOrderItem> items, IEnumerable<string> types)
+        public static IEnumerable<IOrderItem> FilterByOrderType(IEnumerable<IOrderItem> items, List<Type> types)
         {
             if (types.Count() == 0) return items;
-            else
+            HashSet<IOrderItem> results = new HashSet<IOrderItem>();
+            for(int i = 0; i < types.Count(); i++)
             {
-                List<IOrderItem> results = new List<IOrderItem>();
-                foreach (IOrderItem item in items)
-                {
-                    foreach (string type in types)
-                    {
-                        switch (type)
-                        {
-                            case "Entrees":
-                                if (item is Entree && !results.Contains(item))
-                                    results.Add(item);
-                                break;
-                            case "Sides":
-                                if (item is Side && !results.Contains(item))
-                                    results.Add(item);
-                                break;
-                            case "Drinks":
-                                if (item is Drink && !results.Contains(item))
-                                    results.Add(item);
-                                break;
-                            default:
-                                // How exceptional:
-                                throw new Exception("I'm the exception!");
-                        }//end switch case
-                    }//end looping foreach type
-                }//end looping foreach item
+                var temp = from item in items
+                           where item.GetType().IsAssignableFrom(types[i])
+                           select item;
 
-                return results;
-            }//end else
+                foreach (IOrderItem item in temp)
+                    results.Add(item);
+            }//end looping for each potential
+
+            return results;
         }//end FilterByOrderType
 
         /// <summary>
@@ -231,15 +217,10 @@ namespace BleakwindBuffet.Data
             if (CalMin > CalMax) return items;
             else
             {
-                List<IOrderItem> results = new List<IOrderItem>();
-
-                foreach (IOrderItem item in items)
-                {
-                    if (item.Calories >= CalMin && item.Calories <= CalMax)
-                        results.Add(item);
-                }//end testing each item in menu
-
-                return results;
+                return from item in items
+                       where item.Calories >= CalMin &&
+                       item.Calories <= CalMax
+                       select item;
             }//end else we need to filter things
         }//end FilterByCalories(CalMin, CalMax)
 
@@ -256,15 +237,10 @@ namespace BleakwindBuffet.Data
             if (PriceMin > PriceMax) return items;
             else
             {
-                List<IOrderItem> results = new List<IOrderItem>();
-
-                foreach (IOrderItem item in items)
-                {
-                    if (item.Price >= PriceMin && item.Price <= PriceMax)
-                        results.Add(item);
-                }//end testing each item in menu
-
-                return results;
+                return from item in items
+                       where item.Price >= PriceMin &&
+                       item.Price <= PriceMax
+                       select item;
             }//end else we need to filter things
         }//end FilterByPrice
     }//end class

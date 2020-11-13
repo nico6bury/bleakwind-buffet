@@ -107,6 +107,14 @@ namespace BleakwindBuffet.Data.Drinks
         }//end getter
 
         /// <summary>
+        /// A description of this item
+        /// </summary>
+        public override string Description
+        {
+            get { return "Hormone-free organic 2% milk."; }
+        }//end Description
+
+        /// <summary>
         /// A String representation of this item, in this case
         /// specifying the size and name of this object.
         /// </summary>

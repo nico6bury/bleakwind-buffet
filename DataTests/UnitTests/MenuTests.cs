@@ -211,6 +211,7 @@ namespace BleakwindBuffet.DataTests.UnitTests
         [Theory]
         [InlineData("medium")]
         [InlineData("Soda")]
+        [InlineData("")]
         public void SearchFilteredItemsContainSearchTerm(string term)
         {
             List<IOrderItem> filteredItems = (List<IOrderItem>)Menu.Search(Menu.FullMenu(), term);
@@ -223,6 +224,7 @@ namespace BleakwindBuffet.DataTests.UnitTests
         [Theory]
         [InlineData("Soda")]
         [InlineData("medium")]
+        [InlineData("")]
         public void SearchFilterIsNotCaseSensitive(string term)
         {
             string termLower = term.ToLower();

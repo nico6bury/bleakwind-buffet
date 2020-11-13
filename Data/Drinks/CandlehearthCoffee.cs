@@ -133,6 +133,14 @@ namespace BleakwindBuffet.Data.Drinks
         }//end getter
 
         /// <summary>
+        /// A description of this item
+        /// </summary>
+        public override string Description
+        {
+            get { return "Fair trade, fresh ground dark roast coffee."; }
+        }//end Description
+
+        /// <summary>
         /// ToString() represents the object as a string, in
         /// this case showing the size, name, and caffine of
         /// this object.

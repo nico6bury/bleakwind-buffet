@@ -238,6 +238,14 @@ namespace BleakwindBuffet.Data
         }//end property
 
         /// <summary>
+        /// the description of this item
+        /// </summary>
+        public string Description
+        {
+            get { return "A combo meal"; }
+        }//end Description
+
+        /// <summary>
         /// Initializes the components of the combo as null
         /// </summary>
         public Combo()

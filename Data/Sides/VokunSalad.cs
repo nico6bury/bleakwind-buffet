@@ -95,6 +95,15 @@ namespace BleakwindBuffet.Data.Sides
         }//end getter
 
         /// <summary>
+        /// A description of this item
+        /// </summary>
+        public override string Description
+        {
+            get { return "A seasonal fruit salad of mellons, berries, mango," +
+                    " grape, apple, and oranges."; }
+        }//end Description
+
+        /// <summary>
         /// A String representation of this item, in this case
         /// showing the name and size of the object.
         /// </summary>
